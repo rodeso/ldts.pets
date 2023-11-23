@@ -75,4 +75,5 @@ public class Menu {
         }
     }
     public int getFinalOption(){return finalOption;}
+    public void setFinalOption(){finalOption=-1;}
 }
