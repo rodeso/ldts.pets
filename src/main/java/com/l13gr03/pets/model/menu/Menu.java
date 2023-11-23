@@ -1,4 +1,4 @@
-package com.l13gr03.pets;
+package com.l13gr03.pets.model.menu;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
@@ -10,6 +10,7 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+
 
 import java.io.IOException;
 
@@ -23,14 +24,14 @@ public class Menu {
     public Menu() {
 
     }
-
     public void draw(Screen screen) throws IOException {
 
         TextGraphics textGraphics = screen.newTextGraphics();
 
         drawOption(screen, textGraphics, "Play", 0);
-        drawOption(screen, textGraphics, "Settings", 1);
-        drawOption(screen, textGraphics, "Close", 2);
+        drawOption(screen, textGraphics, "Multiplayer", 1);
+        drawOption(screen, textGraphics, "Settings", 2);
+        drawOption(screen, textGraphics, "Close", 3);
 
 
     }
@@ -63,25 +64,15 @@ public class Menu {
         }
     }
 
-    void processKey(KeyStroke key) {
+    public void processKey(KeyStroke key) {
         if (key.getKeyType() == KeyType.ArrowDown) {
-            selectedOption = (selectedOption + 1) % 3; // 3 é o número total de opções no menu
+            selectedOption = (selectedOption + 1) % 4; // 4 é o número total de opções no menu
         } else if (key.getKeyType() == KeyType.ArrowUp) {
-            selectedOption = (selectedOption - 1 + 3) % 3; // 3 é o número total de opções no menu
+            selectedOption = (selectedOption - 1 + 4) % 4; // 4 é o número total de opções no menu
         } else if (key.getKeyType() == KeyType.Enter) {
             // Lógica para executar a opção selecionada
-            switch (selectedOption) {
-                case 0:
-                    finalOption=0;
-                    break;
-                case 1:
-                    finalOption=1;
-                    break;
-                case 2:
-                    finalOption=2;
-                    break;
-            }
+            finalOption=selectedOption;
         }
     }
-    int getFinalOption(){return finalOption;}
+    public int getFinalOption(){return finalOption;}
 }

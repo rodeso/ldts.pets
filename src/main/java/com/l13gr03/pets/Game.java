@@ -6,8 +6,10 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.l13gr03.pets.model.menu.Menu;
 
 import java.io.IOException;
+import com.l13gr03.pets.model.menu.Menu;
 
 public class Game {
     Menu menu=new Menu();
@@ -19,6 +21,7 @@ public class Game {
     boolean inMenu=true;
     boolean inSettings=false;
     boolean inGame=false;
+    boolean inMulti=false;
     public Game(){
         try {
             terminalSize = new TerminalSize(x, y);
@@ -46,11 +49,16 @@ public class Game {
                         break;
                     }
                     case 1:{
-                        inSettings=true;
+                        inMulti=true;
                         inMenu=false;
                         break;
                     }
                     case 2:{
+                        inSettings=true;
+                        inMenu=false;
+                        break;
+                    }
+                    case 3:{
                         screen.close();
                     }
                 }
@@ -68,6 +76,9 @@ public class Game {
         if (inGame){
 
         }
+        if (inMulti){
+
+        }
         if (inSettings){
 
         }
@@ -78,6 +89,9 @@ public class Game {
             menu.processKey(key);
         }
         if (inGame){
+
+        }
+        if (inMulti){
 
         }
         if (inSettings){
