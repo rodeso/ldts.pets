@@ -1,6 +1,6 @@
-package com.l13gr03.model.game.entities;
+package com.l13gr03.pets.model.game.entities;
 
-import com.l13gr03.model.Position;
+import com.l13gr03.pets.model.Position;
 
 public class Entity {
     Position position;

@@ -1,4 +1,4 @@
-package com.l13gr03.model;
+package com.l13gr03.pets.model;
 
 import java.util.Objects;
 

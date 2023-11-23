@@ -1,4 +1,4 @@
-package com.l13gr03;
+package com.l13gr03.pets;
 
 import java.io.IOException;
 
