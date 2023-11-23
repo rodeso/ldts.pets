@@ -1,4 +1,4 @@
-package com.l13gr03;
+package com.l13gr03.pets;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;

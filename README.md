@@ -1,21 +1,22 @@
 ## LDTS_1303 - Pixelated Entities Tactical Showdown [P.E.T.S]
 
-> Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
+Welcome to the dazzling realm of Pixelated Entities Tactical Showdown (PETS), a riveting turn-based battle game that pits players against each other in an epic clash of strategic prowess. In this pixelated universe, you have the power to assemble a team of three extraordinary PETS, each belonging to one of seven unique types: AquaticAlly, BiomorphicBeast, CelestialGuardian, CyberneticCompanion, LavaLurker, StoneGolem, and ShadowSpecters.
 
-**Example**:
+Dive into the awe-inspiring world of PETS, where your tactical decisions will determine the outcome of intense battles. Each Pet boasts a distinct design, a captivating name, and a set of powerful moves, ranging from physical and special attacks to cunning status-inflicting maneuvers. Unleash the full potential of your team and outsmart your opponents with a combination of brute force, strategic planning, and a touch of elemental mastery.
 
-In this exciting platform game you can help KangarooBoy save the world, by collecting all the coins throughout ten different levels in which you will […].
+The AquaticAlly, gracefully navigating water-themed attacks, can flood the battlefield with its watery might. The BiomorphicBeast, a creature of adaptability, morphs and manipulates its form to confound foes. The CelestialGuardian, with celestial energy at its disposal, bestows divine buffs upon its allies while smiting enemies with holy wrath. The CyberneticCompanion, a fusion of technology and loyalty, utilizes advanced gadgets to control the flow of battle. The LavaLurker, a fiery force from the depths, engulfs adversaries with molten fury. The StoneGolem, an unyielding colossus, relies on rugged defense and earth-shaking blows. Lastly, the elusive ShadowSpecters harness the power of darkness, weaving in and out of the shadows to confound and strike at will.
 
-This project was developed by *John Doe* (*john.doe*@fe.up.pt) and *Jane Doe* (*jane.doe*@fe.up.pt) for LPOO 2018⁄19.
+Beyond their diverse move sets, each type of PETS possesses unique abilities tied to their elemental nature. Whether it's a defensive buff, a critical hit bonus, or a status ailment immunity, these abilities add an extra layer of strategy to your team-building and battle tactics.
+
+Engage in thrilling battles, challenge friends, and climb the ranks to become the ultimate PETS champion. Choose your team wisely, master the strengths and weaknesses of each type, and embark on an adventure where pixelated entities come to life in a tactical showdown like never before! Are you ready to unleash the power of your PETS?
+
+This project was developed by Afonso Mansilha (up20220****@up.pt), Eduardo Cruz (up20220****@up.pt) e Rodrigo de Sousa (up202205751@up.pt) for LDTS 2023⁄24.
 
 ### IMPLEMENTED FEATURES
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
-
-**Examples**:
-
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+- **Choose Your Own Team** - Each Player can create their dream Team by picking their favourites from the great Pet selection.
+- **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
+- **Alone or With Friends** - The Battles can be fought agaisnt Friends in a PVP Battle or Practice against CPU.
 
 ### PLANNED FEATURES
 
@@ -30,42 +31,6 @@ This project was developed by *John Doe* (*john.doe*@fe.up.pt) and *Jane Doe* (*
 - **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
 - **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
 
-**Example of one of such subsections**:
-
-------
-
-#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE
-
-**Problem in Context**
-
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
-
-**The Pattern**
-
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
-
-**Implementation**
-
-The following figure shows how the pattern’s roles were mapped to the application classes.
-
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
-
-These classes can be found in the following files:
-
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
-- [JumpAbilityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java)
-- [DoubleJumpState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java)
-- [HelicopterState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java)
-- [IncreasedGravityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java)
-
-**Consequences**
-
-The use of the State Pattern in the current design allows the following benefits:
-
-- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.
-- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.
-- There are now more classes and instances to manage, but still in a reasonable number.
-
 #### KNOWN CODE SMELLS
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
@@ -77,9 +42,6 @@ The use of the State Pattern in the current design allows the following benefits
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
+- Afonso Mansilha =
+- Eduardo Cruz = 
+- Rodrigo de Sousa =
