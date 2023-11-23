@@ -4,9 +4,9 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
-        Menu menu= new Menu();
+        Game game= new Game();
         try {
-            menu.run();
+            game.run();
         }catch (IOException e) {
             e.getStackTrace();
         }

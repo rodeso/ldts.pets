@@ -10,15 +10,24 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import java.io.IOException;
 
 public class Game {
+    Menu menu=new Menu();
     TerminalSize terminalSize;
+    private int x=155;
+    private int y=50;
     Screen screen;
-    public Game(int x, int y){
+
+    boolean inMenu=true;
+    boolean inSettings=false;
+    boolean inGame=false;
+    public Game(){
         try {
-            TerminalSize terminalSize = new TerminalSize(x, y);
+            terminalSize = new TerminalSize(x, y);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-            Screen screen = new TerminalScreen(terminalFactory.createTerminal());
+            screen = new TerminalScreen(terminalFactory.createTerminal());
             screen.startScreen();
-        } catch (IOException e){e.getStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     public void run() throws IOException{
@@ -29,17 +38,51 @@ public class Game {
             if (key.getKeyType() == KeyType.Character && key.getCharacter()=='q'){
                 screen.close();
             } else if (key.getKeyType()==KeyType.EOF) {break;}
-
+            if (menu.getFinalOption()>-1){
+                switch (menu.getFinalOption()){
+                    case 0:{
+                        inMenu=false;
+                        inGame=true;
+                        break;
+                    }
+                    case 1:{
+                        inSettings=true;
+                        inMenu=false;
+                        break;
+                    }
+                    case 2:{
+                        screen.close();
+                    }
+                }
+            }
 
 
         }
 
     }
     public void draw() throws IOException{
+        screen.clear();
+        if (inMenu){
+            menu.draw(screen);
+        }
+        if (inGame){
 
+        }
+        if (inSettings){
+
+        }
+        screen.refresh();
     }
     private void processKey(KeyStroke key) {
+        if (inMenu){
+            menu.processKey(key);
+        }
+        if (inGame){
 
+        }
+        if (inSettings){
+
+        }
     }
 
 }
