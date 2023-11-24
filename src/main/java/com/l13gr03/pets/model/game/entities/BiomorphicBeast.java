@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 public class BiomorphicBeast extends Entity{
-    private static final String ability = "Grassy Feet"; //+Spd
+    private static final String ability = "Nature's gift"; //Regenerates a certain amount of health each round
 
 
     public BiomorphicBeast(String n) {

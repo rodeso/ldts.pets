@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 public class CyberneticCompanion extends Entity{
-    private static final String ability = "Metal Body"; //+Def
+    private static final String ability = "Metal Power"; //Boosts the physical attacks
 
 
     public CyberneticCompanion(String n) {

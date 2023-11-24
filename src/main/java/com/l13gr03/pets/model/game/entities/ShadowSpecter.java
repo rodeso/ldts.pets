@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 public class ShadowSpecter extends Entity{
-    private static final String ability = "Shadow Body"; //Gains the opponents ability
+    private static final String ability = "Shadow Sneak"; //Always attacks first
 
 
     public ShadowSpecter(String n) {
