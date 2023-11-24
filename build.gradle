@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    //id 'org.kordamp.gradle.errorprone' version "0.47.0"
 }
 
 group = 'com.l13gr03'
@@ -13,9 +14,24 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'net.jqwik:jqwik:1.5.1'
 }
 
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines ('junit-jupiter', 'jqwik')
+    }
 }
+
+/*
+pitest {
+    junitSPluginVersion = '0.12'
+    pitestVersion = '1.15.0'
+    excludedClasses = []
+}
+application {
+
+}
+*/
