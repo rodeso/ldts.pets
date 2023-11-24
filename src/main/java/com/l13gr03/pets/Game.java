@@ -95,7 +95,7 @@ public class Game {
                     break;
                 }
                 case 2:{
-                    x=50;y=50;
+                    x=110;y=50;
                     break;
                 }
             }
