@@ -76,7 +76,8 @@ public abstract class Entity {
     public void setShiny() {
         shiny = true;
     }
-    //Attack class is
+
+    //Attack Class
     public static class Attack {
         private String type;
         private String attack_element;
