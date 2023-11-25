@@ -6,17 +6,12 @@ public abstract class Entity {
     private Position position;
     //Attributes
     private String name;
-    private int id;
-    private static int nextId = 1;
     private static boolean shiny = false;
     private int[] stats = new int[6];
+    private Attack[] attacks = new Attack[4];
 
     //Methods
-    public Entity(String n) {
-        name = n;
-        id = nextId;
-        nextId++;
-    }
+    public Entity(String n) {name = n;}
     public void setPosition(Position p) {
         position = p;
     }
@@ -24,14 +19,13 @@ public abstract class Entity {
         return position;
     }
 
+    abstract public int getId();
     public String getName() {
         return name;
     }
 
-    public int getId() {
-        return id;
-    }
 
+    //Stats Setter
     public void setStats(int[] newStats) {
         if (newStats.length == stats.length) {
             System.arraycopy(newStats, 0, stats, 0, stats.length);
@@ -40,6 +34,13 @@ public abstract class Entity {
             throw error;
         }*/
     }
+    //Attacks Setter
+    public void setAttacks(Attack[] newAttacks){
+        if (newAttacks.length == attacks.length) {
+            System.arraycopy(newAttacks, 0, attacks, 0, attacks.length);
+        }
+    }
+    //Stats Getters
     public int getHP() {
         return stats[0];
     }
@@ -58,8 +59,56 @@ public abstract class Entity {
     public int getSpd() {
         return stats[5];
     }
-
+    //Attacks Getters
+    public Attack getFirst() {
+        return attacks[0];
+    }
+    public Attack getSecond() {
+        return attacks[1];
+    }
+    public Attack getThird() {
+        return attacks[2];
+    }
+    public Attack getFourth() {
+        return attacks[3];
+    }
+    //Shiny Setter
     public void setShiny() {
         shiny = true;
     }
+    //Attack class is
+    public static class Attack {
+        private String type;
+        private String attack_element;
+        private String description;
+        private int damage;
+        private int elementId;
+        public Attack(String t, String desc,String ae, int d, int eId) {
+            type = t;
+            description = desc;
+            attack_element = ae;
+            damage = d;
+            elementId = eId;
+
+        }
+        public int getDamage() {
+            return damage;
+        }
+        public int getElementId() {
+            return elementId;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public String getAttack_element() { return attack_element; }
+
+        public void setElementId(int eId) { this.elementId = eId; }
+    }
+
 }
