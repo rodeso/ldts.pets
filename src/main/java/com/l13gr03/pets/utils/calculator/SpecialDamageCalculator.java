@@ -7,6 +7,12 @@ public class SpecialDamageCalculator implements Calculator{
         int moveDamage = attackerAttack.getDamage();
         int power = attacker.getSAtk();
         int def = defender.getSDef();
-        return (double) power /def * moveDamage;
+        if(attackerAttack.getElementId() == attacker.getId() || attackerAttack.getElementId() == 7){
+            return (double) power /def * moveDamage;
+        }
+        else{
+            return (double) power/def * moveDamage * 0.75;
+        }
     }
 }
+

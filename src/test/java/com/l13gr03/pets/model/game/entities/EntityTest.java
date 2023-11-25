@@ -18,10 +18,10 @@ public class EntityTest {
 
         reumatoide.setStats(new int[]{79, 83, 100, 85, 105, 78});
         reumatoide.setAttacks(new Attack[]{
-                new Attack("Special", "Aqua Jet", 30),
-                new Attack("Physical", "Hydro Pump", 90),
-                new Attack("Status", "Blizzard", 80),
-                new Attack("Physical", "Tackle", 40)});
+                new Attack("Special", "Aqua Jet", "Aquatic",30,0),
+                new Attack("Physical", "Hydro Pump","Aquatic", 90,0),
+                new Attack("Status", "Blizzard","", 80,0),
+                new Attack("Physical", "Tackle","Null", 40,7)});
         // Test stats getters
         assertEquals(79, reumatoide.getHP());
         assertEquals(83, reumatoide.getAtk());
@@ -48,10 +48,10 @@ public class EntityTest {
 
         venusaurio.setStats(new int[]{90, 83, 60, 85, 105, 30});
         venusaurio.setAttacks(new Attack[]{
-                new Attack("Physical", "Bullet Seed", 30),
-                new Attack("Special", "Vine Whip", 90),
-                new Attack("Status", "Poison", 80),
-                new Attack("Physical", "Tackle", 40)});
+                new Attack("Physical", "Bullet Seed","Bio", 30,1),
+                new Attack("Special", "Vine Whip","Bio", 90,1),
+                new Attack("Status", "Poison","Bio", 80,1),
+                new Attack("Physical", "Tackle", "Null",40,7)});
         // Test stats getters
         assertEquals(90, venusaurio.getHP());
         assertEquals(83, venusaurio.getAtk());
@@ -78,10 +78,10 @@ public class EntityTest {
 
         doxxis.setStats(new int[]{50, 150, 50, 150, 50, 150});
         doxxis.setAttacks(new Attack[]{
-                new Attack("Status", "Calm Mind", 30),
-                new Attack("Special", "Psychic Shock", 90),
-                new Attack("Special", "Blizzard", 80),
-                new Attack("Physical", "Tackle", 40)});
+                new Attack("Status", "Calm Mind","Celestial", 30,2),
+                new Attack("Special", "Psychic Shock","Celestial", 90,2),
+                new Attack("Special", "Shadow Ball","Shadow", 80,5),
+                new Attack("Physical", "Tackle","Null", 40,0)});
         // Test stats getters
         assertEquals(50, doxxis.getHP());
         assertEquals(150, doxxis.getAtk());

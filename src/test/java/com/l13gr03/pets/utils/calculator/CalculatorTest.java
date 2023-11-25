@@ -9,7 +9,7 @@ public class CalculatorTest {
     @Test
     public void testPhysicalDamageCalculator() {
         Calculator physicalDamageCalculator = new PhysicalDamageCalculator();
-        Entity.Attack attack = new Entity.Attack("Physical", "Water Slap", 50);
+        Entity.Attack attack = new Entity.Attack("Physical", "Water Slap", "Aquatic",50, 0);
         AquaticAlly attacker = new AquaticAlly("Attacker");
         StoneGolem defender = new StoneGolem("Defender");
 
@@ -22,7 +22,7 @@ public class CalculatorTest {
     @Test
     public void testSpecialDamageCalculator() {
         Calculator specialDamageCalculator = new SpecialDamageCalculator();
-        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", 60);
+        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,1);
         BiomorphicBeast attacker = new BiomorphicBeast("Attacker");
         LavaLurker defender = new LavaLurker("Defender");
 
@@ -33,9 +33,22 @@ public class CalculatorTest {
     }
 
     @Test
+    public void testSpecialDamageCalculatorIfAttackTypeIsDifferent() {
+        Calculator specialDamageCalculator = new SpecialDamageCalculator();
+        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,1);
+        CelestialGuardian attacker = new CelestialGuardian("Attacker");
+        LavaLurker defender = new LavaLurker("Defender");
+
+        double result = specialDamageCalculator.execute(attack, attacker, defender);
+
+        // Asserting that the result is within a small tolerance due to double precision
+        assertEquals(36.429, result, 0.001); // (85/105 * 60) * 0.75
+    }
+
+    @Test
     public void testAdvantageCalculator() {
         Calculator advantageCalculator = new AdvantageCalculator();
-        Entity.Attack attack = new Entity.Attack("Special", "Cosmic Power",70);
+        Entity.Attack attack = new Entity.Attack("Special", "Cosmic Power","Celestial",70,2);
         CelestialGuardian attacker = new CelestialGuardian("Attacker");
         CyberneticCompanion defender = new CyberneticCompanion("Defender");
 

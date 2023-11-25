@@ -11,9 +11,7 @@ public abstract class Entity {
     private Attack[] attacks = new Attack[4];
 
     //Methods
-    public Entity(String n) {
-        name = n;
-    }
+    public Entity(String n) {name = n;}
     public void setPosition(Position p) {
         position = p;
     }
@@ -81,15 +79,23 @@ public abstract class Entity {
     //Attack class is
     public static class Attack {
         private String type;
+        private String attack_element;
         private String description;
         private int damage;
-        public Attack(String t, String desc, int d) {
+        private int elementId;
+        public Attack(String t, String desc,String ae, int d, int eId) {
             type = t;
             description = desc;
+            attack_element = ae;
             damage = d;
+            elementId = eId;
+
         }
         public int getDamage() {
             return damage;
+        }
+        public int getElementId() {
+            return elementId;
         }
 
         public String getType() {
@@ -99,5 +105,10 @@ public abstract class Entity {
         public String getDescription() {
             return description;
         }
+
+        public String getAttack_element() { return attack_element; }
+
+        public void setElementId(int eId) { this.elementId = eId; }
     }
+
 }

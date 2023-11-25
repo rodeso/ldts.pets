@@ -9,6 +9,7 @@ public class StoneGolem extends Entity{
     public StoneGolem(String n) {
         super(n);
         super.setStats(new int[]{79, 83, 100, 85, 105, 78});
+
     }
     public int getId() {
         return id;

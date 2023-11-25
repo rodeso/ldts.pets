@@ -17,15 +17,18 @@ public class AdvantageCalculator implements Calculator {
         put(3, 0);
     }};
 
-    public double execute(Entity.Attack attackerAttack, Entity attacker, Entity defender) {
-        if (CHEAT_SHEET.get(attacker.getId()) == defender.getId()) {
+    public double execute(Entity.Attack attackerAttack,Entity attacker, Entity defender) {
+        if (CHEAT_SHEET.get(attackerAttack.getElementId())== defender.getId()) {
             return 2.0;
-        } else if (CHEAT_SHEET.get(defender.getId()) == attacker.getId()) {
+        } else if (CHEAT_SHEET.get(defender.getId()) == attackerAttack.getElementId()) {
             return 0.5;
         } else {
             return 1.0;
         }
     }
+
 }
+
+
 
 

@@ -7,7 +7,12 @@ public class PhysicalDamageCalculator implements Calculator{
         int moveDamage = attackerAttack.getDamage();
         int power = attacker.getAtk();
         int def = defender.getDef();
-        return (double) power /def * moveDamage;
+        if(attackerAttack.getElementId() == attacker.getId() || attackerAttack.getElementId() == 7){
+            return (double) power /def * moveDamage;
+        }
+        else{
+            return (double) power /def * moveDamage * 0.75;
+        }
     }
 
 }
