@@ -14,7 +14,7 @@ public class EntityTest {
         assertNotNull(reumatoide);
         assertEquals("Reumatoide", reumatoide.getName());
         //assertNotNull(reumatoide.getPosition()); // Assuming position is set elsewhere
-        assertEquals(1, reumatoide.getId());
+        assertEquals(0, reumatoide.getId());
 
         reumatoide.setStats(new int[]{79, 83, 100, 85, 105, 78});
         reumatoide.setAttacks(new Attack[]{
@@ -74,7 +74,7 @@ public class EntityTest {
         assertNotNull(doxxis);
         assertEquals("Doxxis", doxxis.getName());
         //assertNotNull(doxxis.getPosition()); // Assuming position is set elsewhere
-        assertEquals(1, doxxis.getId());
+        assertEquals(2, doxxis.getId());
 
         doxxis.setStats(new int[]{50, 150, 50, 150, 50, 150});
         doxxis.setAttacks(new Attack[]{
