@@ -12,7 +12,7 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 
 This project was developed by Afonso Mansilha (up202206002@up.pt), Eduardo Cruz (up202205138@up.pt) e Rodrigo de Sousa (up202205751@up.pt) for LDTS 2023⁄24.
 
-## UML Class Diagram
+### UML Class Diagram
 
 A UML class diagram showcasing used Design Patterns:
 
