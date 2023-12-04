@@ -2,21 +2,22 @@ package com.l13gr03.pets.utils.random;
 
 import java.util.Random;
 
-public class StatusRandomizer implements Randomizer{
+public class TurnRandomizer implements Randomizer{
     private final Random random;
-    public StatusRandomizer() {
+    public TurnRandomizer() {
         this.random = new Random();
     }
-
-    @Override
     public boolean decide() {
+        return (random.nextInt(2) == 0);
+    }
+    @Override
+    public boolean oneInTen() {
         return false;
     }
 
-    public boolean oneInTen() {
-        return (random.nextInt(10) == 0);
-    }
+    @Override
     public boolean oneInFifty() {
-        return (random.nextInt(50) == 0);
+        return false;
     }
+
 }

@@ -20,15 +20,4 @@ public class Party {
     public Entity getP3() {
         return p3;
     }
-    public void addP1(Entity p) {
-        p1 = p;
-    }
-    public void addP2(Entity p) {
-        p2 = p;
-    }
-    public void addP3(Entity p) {
-        p3 = p;
-    }
-
-
 }

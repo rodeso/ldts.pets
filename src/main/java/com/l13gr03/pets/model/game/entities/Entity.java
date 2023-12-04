@@ -77,6 +77,10 @@ public abstract class Entity {
         shiny = true;
     }
 
+    public void setHP(int max) {
+        stats[0] = max;
+    }
+
     //Attack Class
     public static class Attack {
         private String type;
