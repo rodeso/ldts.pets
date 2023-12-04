@@ -84,6 +84,7 @@ public class Battlefield {
                 defender.setHP(Math.max(newDefenderHP, 0));
 
             } else if (Objects.equals(attackerAttack.getType(), "Special")) {
+                //if special
                 double d = spe.execute(attackerAttack, attacker, defender);
                 double damage = d * adv.execute(attackerAttack, attacker, defender);
                 int newDefenderHP = defender.getHP() - (int) damage;
@@ -98,14 +99,15 @@ public class Battlefield {
                     double d = phy.execute(defenderAttack, defender, attacker);
                     double damage = d * adv.execute(defenderAttack, defender, attacker);
                     int newDefenderHP = attacker.getHP() - (int) damage;
-                    //set new hp to the defending entity
+                    //set new hp to the attacking entity
                     attacker.setHP(Math.max(newDefenderHP, 0));
 
                 } else if (Objects.equals(defenderAttack.getType(), "Special")) {
+                    //if special
                     double d = spe.execute(defenderAttack, defender, attacker);
                     double damage = d * adv.execute(defenderAttack, defender, attacker);
                     int newDefenderHP = attacker.getHP() - (int) damage;
-                    //set new hp to the defending entity
+                    //set new hp to the attacking entity
                     attacker.setHP(Math.max(newDefenderHP, 0));
                 }
             }
