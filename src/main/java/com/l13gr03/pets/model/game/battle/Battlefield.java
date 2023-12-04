@@ -8,7 +8,8 @@ public class Battlefield {
     private Entity.Attack attack;
     private int hp1, hp2;
     private Position position1, position2;
-    private Entity[] party1;
-    private Entity[] party2;
+    private Party player1, player2;
+
+
 
 }
