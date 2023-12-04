@@ -16,7 +16,6 @@ public class Battlefield {
     private Round currentRound;
     private int height, width;
     private Stack<Round> history;
-    private int hp1, hp2;
     private Position position1, position2;
     private Party player1, player2;
 
@@ -31,25 +30,23 @@ public class Battlefield {
         return history.size();
     }
 
-    public void newRound(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int hp1, int hp2) {
-        currentRound = new Round(p1, p2, a1, a2, hp1, hp2, history.size() + 1);
+    public void newRound(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, boolean change1, boolean change2) {
+        if (change1) {a1 = null;}
+        if (change2) {a2 = null;}
+        currentRound = new Round(p1, p2, a1, a2, history.size() + 1);
         history.push(currentRound);
     }
 
     public class Round {
         private Entity e1, e2;
         private Entity.Attack c1, c2;
-        private int hp1, hp2;
         private int roundNumber;
-        public Round(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int hp1, int hp2, int rn) {
+        private Round(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int rn) {
             e1 = p1;
             e2 = p2;
             c1 = a1;
             c2 = a2;
-            this.hp1 = hp1;
-            this.hp2 = hp2;
             roundNumber = rn;
-
         }
 
         public void playRound() {
