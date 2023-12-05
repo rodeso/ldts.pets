@@ -12,4 +12,36 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 
 This project was developed by Afonso Mansilha (up202206002@up.pt), Eduardo Cruz (up202205138@up.pt) e Rodrigo de Sousa (up202205751@up.pt) for LDTS 2023⁄24.
 
+### UML Class Diagram
 
+A UML class diagram showcasing used Design Patterns:
+
+![UML class diagram](docs/ClassUML.png)
+
+### IMPLEMENTED FEATURES
+
+- **Choose Your Own Team** - Each Player can create their dream Team by picking their favourites from the great Pet selection.
+- **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
+- **Alone or With Friends** - The Battles can be fought agaisnt Friends in a PVP Battle or Practice against CPU.
+
+### PLANNED FEATURES
+
+- Actual Playable Battles where the User selects three Pets with predetermined moves;
+- How To Play section;
+- Play agaisnt a CPU;
+
+### DESIGN
+
+
+#### KNOWN CODE SMELLS
+
+> This section should describe 3 to 5 different code smells that you have identified in your current implementation.
+### TESTING
+
+Only Unit Testing for Enitity creation and Damage calculation.
+
+### SELF-EVALUATION
+
+- Afonso Mansilha =
+- Eduardo Cruz = 
+- Rodrigo de Sousa =
