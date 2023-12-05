@@ -6,12 +6,16 @@ public abstract class Entity {
     private Position position;
     //Attributes
     private String name;
+    private int id;
     private static boolean shiny = false;
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
 
     //Methods
     public Entity(String n) {name = n;}
+    public abstract int getId();
+
+
     public void setPosition(Position p) {
         position = p;
     }
@@ -19,7 +23,6 @@ public abstract class Entity {
         return position;
     }
 
-    abstract public int getId();
     public String getName() {
         return name;
     }

@@ -11,6 +11,7 @@ public class StoneGolem extends Entity{
         super.setStats(new int[]{79, 83, 100, 85, 105, 78});
 
     }
+    @Override
     public int getId() {
         return id;
     }

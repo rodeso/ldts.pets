@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class AdvantageCalculator implements Calculator {
 
-    private static final Map<Integer, Integer> CHEAT_SHEET = new HashMap<Integer, Integer>() {{
+    public static final Map<Integer, Integer> CHEAT_SHEET = new HashMap<Integer, Integer>() {{
         put(0, 4);
         put(4, 1);
         put(1, 6);
