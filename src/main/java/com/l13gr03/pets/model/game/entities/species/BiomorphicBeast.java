@@ -20,7 +20,7 @@ public class BiomorphicBeast extends Entity {
         return ability;
     }
 
-    public void useAbility(){
+    public void useAbility(int n){
         if(this.getHP() > 0 && this.getHP() < 91){
             if(this.getHP() < 81){
                 setHP(getHP() + 10);

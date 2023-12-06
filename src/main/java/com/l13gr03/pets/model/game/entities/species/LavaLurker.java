@@ -20,7 +20,7 @@ public class LavaLurker extends Entity {
     public String getAbility() {
         return ability;
     }
-    public void useAbility(){
+    public void useAbility(int n){
         Randomizer r = new StatusRandomizer();
         boolean res = r.oneInTen();
         if(res){

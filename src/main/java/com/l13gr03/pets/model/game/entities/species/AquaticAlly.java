@@ -20,8 +20,10 @@ public class AquaticAlly extends Entity {
         return ability;
     }
 
-    public void useAbility(){
-        if(Battlefield.getRoundCounter() == 0){ //depois de criar o battlefield ver se este problema continua
-
+    public void useAbility(int n){
+        if (n == 0) {
+            turnAbilityOn();
+        }
+        else turnAbilityOff();
     }
 }

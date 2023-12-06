@@ -20,7 +20,7 @@ public class StoneGolem extends Entity {
     public String getAbility() {
         return ability;
     }
-    public void useAbility(){
+    public void useAbility(int n){
         turnAbilityOn();
     }
 }

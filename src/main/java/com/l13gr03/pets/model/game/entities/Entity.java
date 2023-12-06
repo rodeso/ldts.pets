@@ -9,6 +9,7 @@ public abstract class Entity {
     private final int id = 0;
     private static boolean shiny = false;
     private boolean abilityState = false;
+    private boolean condition = false; //false is no condition, true is either burn or poison
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
 
@@ -103,9 +104,17 @@ public abstract class Entity {
     public void turnAbilityOn(){
         abilityState = true;
     }
+    public void turnAbilityOff(){
+        abilityState = false;
+    }
     public boolean isAbilityOn(){
         return abilityState;
     }
+
+    public void setCondition() {condition = true;}
+    public boolean hasCondition() {return condition;}
+
+    public abstract void useAbility(int n);
 
     //Attack Class
     public static class Attack {
@@ -114,6 +123,7 @@ public abstract class Entity {
         private String description;
         private int damage;
         private int elementId;
+        private boolean miss = false;
         public Attack(String t, String desc,String ae, int d, int eId) {
             type = t;
             description = desc;
@@ -140,6 +150,12 @@ public abstract class Entity {
         public String getAttack_element() { return attack_element; }
 
         public void setElementId(int eId) { this.elementId = eId; }
+        public void miss() {
+            miss = true;
+        }
+        public boolean missed() {
+            return miss;
+        }
     }
 
 }
