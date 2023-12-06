@@ -50,7 +50,7 @@ public class Battlefield {
             roundNumber = rn;
         }
 
-        public void playRound() { //TODO: Add isAbilityOn() to inflict burn or thorns on the opponent
+        public void playRound() {
             Randomizer random = new TurnRandomizer();
             Randomizer hit = new StatusRandomizer();
 
