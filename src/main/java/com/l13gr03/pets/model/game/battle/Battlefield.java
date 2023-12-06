@@ -197,71 +197,74 @@ public class Battlefield {
             }
 
             // Check if the defender is still alive and let it attack
-            if (defender.getHP() > 0) {
-                if (Objects.equals(defenderAttack.getType(), "Physical")) {
-                    //if physical
-                    double d = phy.execute(defenderAttack, defender, attacker);
-                    double damage = d * adv.execute(defenderAttack, defender, attacker);
-                    int newDefenderHP = attacker.getHP() - (int) damage;
-                    //set new hp to the attacking entity
-                    attacker.setHP(Math.max(newDefenderHP, 0));
+            if (!defenderAttack.missed()) {
+                if (defender.getHP() > 0) {
+                    if (Objects.equals(defenderAttack.getType(), "Physical")) {
+                        //if physical
+                        double d = phy.execute(defenderAttack, defender, attacker);
+                        double damage = d * adv.execute(defenderAttack, defender, attacker);
+                        int newDefenderHP = attacker.getHP() - (int) damage;
+                        //set new hp to the attacking entity
+                        attacker.setHP(Math.max(newDefenderHP, 0));
 
-                } else if (Objects.equals(defenderAttack.getType(), "Special")) {
-                    //if special
-                    double d = spe.execute(defenderAttack, defender, attacker);
-                    double damage = d * adv.execute(defenderAttack, defender, attacker);
-                    int newDefenderHP = attacker.getHP() - (int) damage;
-                    //set new hp to the attacking entity
-                    attacker.setHP(Math.max(newDefenderHP, 0));
-                } else if (Objects.equals(attackerAttack.getType(), "Status")) {
-                    //if status
-                    int a = defenderAttack.getElementId();
-                    switch (a) {
-                        case 0: //boost hp
-                            defender.setHP(defender.getHP() + defenderAttack.getDamage());
-                            break;
-                        case 1: //boost atk
-                            defender.setAtk(defender.getAtk() + defenderAttack.getDamage());
-                            break;
-                        case 2: //boost def
-                            defender.setDef(defender.getDef() + defenderAttack.getDamage());
-                            break;
-                        case 3: //boost sp. atk
-                            defender.setSAtk(defender.getSAtk() + defenderAttack.getDamage());
-                            break;
-                        case 4: //boost sp. def
-                            defender.setSDef(defender.getSDef() + defenderAttack.getDamage());
-                            break;
-                        case 5: //boost speed
-                            defender.setSpd(defender.getSpd() + defenderAttack.getDamage());
-                            break;
-                        case 6: //poison or burn
-                            attacker.setCondition();
-                            break;
-                        case 7: //nerf atk
-                            attacker.setAtk(defender.getAtk() - defenderAttack.getDamage());
-                            break;
-                        case 8: //nerf def
-                            attacker.setDef(defender.getDef() - defenderAttack.getDamage());
-                            break;
-                        case 9: //nerf sp. atk
-                            attacker.setSAtk(defender.getSAtk() - defenderAttack.getDamage());
-                            break;
-                        case 10: //nerf sp. def
-                            attacker.setSDef(defender.getSDef() - defenderAttack.getDamage());
-                            break;
-                        case 11: //nerf speed
-                            attacker.setSpd(defender.getHP() - defenderAttack.getDamage());
-                            break;
+                    } else if (Objects.equals(defenderAttack.getType(), "Special")) {
+                        //if special
+                        double d = spe.execute(defenderAttack, defender, attacker);
+                        double damage = d * adv.execute(defenderAttack, defender, attacker);
+                        int newDefenderHP = attacker.getHP() - (int) damage;
+                        //set new hp to the attacking entity
+                        attacker.setHP(Math.max(newDefenderHP, 0));
+                    } else if (Objects.equals(attackerAttack.getType(), "Status")) {
+                        //if status
+                        int a = defenderAttack.getElementId();
+                        switch (a) {
+                            case 0: //boost hp
+                                defender.setHP(defender.getHP() + defenderAttack.getDamage());
+                                break;
+                            case 1: //boost atk
+                                defender.setAtk(defender.getAtk() + defenderAttack.getDamage());
+                                break;
+                            case 2: //boost def
+                                defender.setDef(defender.getDef() + defenderAttack.getDamage());
+                                break;
+                            case 3: //boost sp. atk
+                                defender.setSAtk(defender.getSAtk() + defenderAttack.getDamage());
+                                break;
+                            case 4: //boost sp. def
+                                defender.setSDef(defender.getSDef() + defenderAttack.getDamage());
+                                break;
+                            case 5: //boost speed
+                                defender.setSpd(defender.getSpd() + defenderAttack.getDamage());
+                                break;
+                            case 6: //poison or burn
+                                attacker.setCondition();
+                                break;
+                            case 7: //nerf atk
+                                attacker.setAtk(defender.getAtk() - defenderAttack.getDamage());
+                                break;
+                            case 8: //nerf def
+                                attacker.setDef(defender.getDef() - defenderAttack.getDamage());
+                                break;
+                            case 9: //nerf sp. atk
+                                attacker.setSAtk(defender.getSAtk() - defenderAttack.getDamage());
+                                break;
+                            case 10: //nerf sp. def
+                                attacker.setSDef(defender.getSDef() - defenderAttack.getDamage());
+                                break;
+                            case 11: //nerf speed
+                                attacker.setSpd(defender.getHP() - defenderAttack.getDamage());
+                                break;
 
+                        }
                     }
+
                 }
-                //status conditions
-                if (attacker.hasCondition()) attacker.setHP(attacker.getHP()-5);
-                if (defender.hasCondition()) defender.setHP(defender.getHP()-5);
-
             }
+            //status conditions
+            if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
+            if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
 
+            //end round
         }
     }
 }
