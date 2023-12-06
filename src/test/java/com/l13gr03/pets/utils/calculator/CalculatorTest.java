@@ -9,7 +9,7 @@ public class CalculatorTest {
     @Test
     public void testPhysicalDamageCalculator() {
         Calculator physicalDamageCalculator = new PhysicalDamageCalculator();
-        Entity.Attack attack = new Entity.Attack("Physical", "Water Slap", "Aquatic",50, 0);
+        Entity.Attack attack = new Entity.Attack("Physical", "Water Slap", "Aquatic",50, 1);
         AquaticAlly attacker = new AquaticAlly("Attacker");
         StoneGolem defender = new StoneGolem("Defender");
 
@@ -22,7 +22,7 @@ public class CalculatorTest {
     @Test
     public void testSpecialDamageCalculator() {
         Calculator specialDamageCalculator = new SpecialDamageCalculator();
-        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,1);
+        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,2);
         BiomorphicBeast attacker = new BiomorphicBeast("Attacker");
         LavaLurker defender = new LavaLurker("Defender");
 
@@ -35,7 +35,7 @@ public class CalculatorTest {
     @Test
     public void testSpecialDamageCalculatorIfAttackTypeIsDifferent() {
         Calculator specialDamageCalculator = new SpecialDamageCalculator();
-        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,1);
+        Entity.Attack attack = new Entity.Attack("Special", "Seed Bomb", "Bio",60,2);
         CelestialGuardian attacker = new CelestialGuardian("Attacker");
         LavaLurker defender = new LavaLurker("Defender");
 
@@ -48,7 +48,7 @@ public class CalculatorTest {
     @Test
     public void testAdvantageCalculator() {
         Calculator advantageCalculator = new AdvantageCalculator();
-        Entity.Attack attack = new Entity.Attack("Special", "Cosmic Power","Celestial",70,2);
+        Entity.Attack attack = new Entity.Attack("Special", "Cosmic Power","Celestial",70,3);
         CelestialGuardian attacker = new CelestialGuardian("Attacker");
         CyberneticCompanion defender = new CyberneticCompanion("Defender");
 

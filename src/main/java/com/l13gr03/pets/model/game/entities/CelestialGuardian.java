@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 public class CelestialGuardian extends Entity{
-    private static final int id = 2;
+    private static final int id = 3;
     private static final String ability = "Cosmic Mind"; //Boosts all special attacks
 
 

@@ -8,13 +8,14 @@ import java.util.Map;
 public class AdvantageCalculator implements Calculator {
 
     public static final Map<Integer, Integer> CHEAT_SHEET = new HashMap<Integer, Integer>() {{
-        put(0, 4);
-        put(4, 1);
-        put(1, 6);
-        put(6, 5);
+        put(0, 0);
+        put(1, 5);
         put(5, 2);
-        put(2, 3);
-        put(3, 0);
+        put(2, 7);
+        put(7, 6);
+        put(6, 3);
+        put(3, 4);
+        put(4, 1);
     }};
 
     public double execute(Entity.Attack attackerAttack,Entity attacker, Entity defender) {

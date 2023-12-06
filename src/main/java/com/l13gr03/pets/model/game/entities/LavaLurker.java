@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 public class LavaLurker extends Entity{
-    private static final int id = 4;
+    private static final int id = 5;
     private static final String ability = "Flame Fists"; // Every time it lands a physical attack 10% chance it burns
 
 

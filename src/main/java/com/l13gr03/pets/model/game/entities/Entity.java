@@ -6,7 +6,7 @@ public abstract class Entity {
     private Position position;
     //Attributes
     private String name;
-    private int id;
+    private final int id = 0;
     private static boolean shiny = false;
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
