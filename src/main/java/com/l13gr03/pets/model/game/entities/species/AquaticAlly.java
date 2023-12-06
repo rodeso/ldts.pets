@@ -1,6 +1,8 @@
-package com.l13gr03.pets.model.game.entities;
+package com.l13gr03.pets.model.game.entities.species;
 
-public class AquaticAlly extends Entity{
+import com.l13gr03.pets.model.game.entities.Entity;
+
+public class AquaticAlly extends Entity {
     private static final int id = 1;
     private static final String ability = "Bubble Shield"; //It defends the first attack
 

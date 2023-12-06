@@ -2,6 +2,7 @@ package com.l13gr03.pets.model.game.battle.bots;
 
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.entities.*;
+import com.l13gr03.pets.model.game.entities.species.*;
 import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.ThreeRandomizer;
 

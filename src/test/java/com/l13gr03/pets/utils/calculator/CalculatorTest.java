@@ -1,6 +1,7 @@
 package com.l13gr03.pets.utils.calculator;
 
 import com.l13gr03.pets.model.game.entities.*;
+import com.l13gr03.pets.model.game.entities.species.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

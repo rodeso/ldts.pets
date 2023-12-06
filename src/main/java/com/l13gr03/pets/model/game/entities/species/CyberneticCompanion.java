@@ -1,6 +1,8 @@
-package com.l13gr03.pets.model.game.entities;
+package com.l13gr03.pets.model.game.entities.species;
 
-public class CyberneticCompanion extends Entity{
+import com.l13gr03.pets.model.game.entities.Entity;
+
+public class CyberneticCompanion extends Entity {
     private static final int id = 4;
     private static final String ability = "Metal Power"; //Boosts the physical attacks
 

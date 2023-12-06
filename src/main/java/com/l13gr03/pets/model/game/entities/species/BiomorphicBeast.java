@@ -1,6 +1,8 @@
-package com.l13gr03.pets.model.game.entities;
+package com.l13gr03.pets.model.game.entities.species;
 
-public class BiomorphicBeast extends Entity{
+import com.l13gr03.pets.model.game.entities.Entity;
+
+public class BiomorphicBeast extends Entity {
     private static final int id = 2;
     private static final String ability = "Nature's Gift"; //Regenerates a certain amount of health each round
 

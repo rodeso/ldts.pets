@@ -3,6 +3,9 @@ package com.l13gr03.pets.model.game.entities;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.l13gr03.pets.model.game.entities.Entity.Attack;
+import com.l13gr03.pets.model.game.entities.species.AquaticAlly;
+import com.l13gr03.pets.model.game.entities.species.BiomorphicBeast;
+import com.l13gr03.pets.model.game.entities.species.CelestialGuardian;
 import org.junit.jupiter.api.Test;
 
 public class EntityTest {
