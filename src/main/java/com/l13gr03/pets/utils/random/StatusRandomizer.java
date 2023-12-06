@@ -7,7 +7,10 @@ public class StatusRandomizer implements Randomizer{
     public StatusRandomizer() {
         this.random = new Random();
     }
-
+    @Override
+    public int[] generate3() {
+        return null;
+    }
     @Override
     public boolean decide() {
         return false;

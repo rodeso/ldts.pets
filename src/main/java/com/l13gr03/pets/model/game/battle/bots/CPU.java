@@ -2,6 +2,8 @@ package com.l13gr03.pets.model.game.battle.bots;
 
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.entities.*;
+import com.l13gr03.pets.utils.random.Randomizer;
+import com.l13gr03.pets.utils.random.ThreeRandomizer;
 
 import java.util.Random;
 
@@ -17,31 +19,32 @@ public abstract class CPU  {
     public abstract Entity.Attack choseAttack(Entity.Attack[] attacks,Entity e);
 
     public Party createParty(){
+        Randomizer r = new ThreeRandomizer();
+        int[] a = r.generate3();
         Entity p1,p2,p3;
-        int i = random.nextInt(1,8);
-        if (i == 1) {
+        if (a[0] == 1) {
              p1 = new AquaticAlly("");
         }
-        else if (n1 == 2) {
+        else if (a[0] == 2) {
              p1 = new BiomorphicBeast("");
         }
-        else if (n1 == 3) {
+        else if (a[0] == 3) {
              p1 = new CelestialGuardian("");
         }
-        else if (n1 == 4) {
+        else if (a[0] == 4) {
              p1 = new CyberneticCompanion("");
         }
-        else if (n1 == 5) {
+        else if (a[0] == 5) {
              p1 = new LavaLurker("");
         }
-        else if (n1 == 6) {
+        else if (a[0] == 6) {
              p1 = new ShadowSpecter("");
         }
         else {
              p1 = new StoneGolem("");
         }
 
-        int j = random.nextInt(1,8);
+        int j = a[1];
         if (j == 1) {
             p2 = new AquaticAlly("");
         }
@@ -63,7 +66,7 @@ public abstract class CPU  {
         else {
              p2 = new StoneGolem("");
         }
-        int d = random.nextInt(1,8);
+        int d = a[2];
         if (d == 1) {
              p3 = new AquaticAlly("");
         }

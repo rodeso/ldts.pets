@@ -14,7 +14,10 @@ public class TurnRandomizer implements Randomizer{
     public boolean oneInTen() {
         return false;
     }
-
+    @Override
+    public int[] generate3() {
+        return null;
+    }
     @Override
     public boolean oneInFifty() {
         return false;
