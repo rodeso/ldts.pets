@@ -18,4 +18,10 @@ public class CyberneticCompanion extends Entity {
     public String getAbility() {
         return ability;
     }
+    public void useAbility(){
+        double res = getAtk() * 1.1;
+        int r = (int) res;
+        setAtk(r);
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.l13gr03.pets.model.game.entities.species;
 
+import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.entities.Entity;
 
 public class AquaticAlly extends Entity {
@@ -19,4 +20,8 @@ public class AquaticAlly extends Entity {
         return ability;
     }
 
+    public void useAbility(){
+        if(Battlefield.getRoundCounter() == 0){ //depois de criar o battlefield ver se este problema continua
+
+    }
 }

@@ -21,9 +21,9 @@ public class EntityTest {
 
         reumatoide.setStats(new int[]{79, 83, 100, 85, 105, 78});
         reumatoide.setAttacks(new Attack[]{
-                new Attack("Special", "Aqua Jet", "Aquatic",30,1),
-                new Attack("Physical", "Hydro Pump","Aquatic", 90,1),
-                new Attack("Status", "Blizzard","", 80,1),
+                new Attack("Physical", "Aqua Jet", "Aquatic",40,1),
+                new Attack("Special", "Hydro Pump","Aquatic", 90,1),
+                new Attack("Status", "Blizzard","Atk", reumatoide.getAtk(), 1),
                 new Attack("Physical", "Tackle","Null", 40,0)});
         // Test stats getters
         assertEquals(79, reumatoide.getHP());

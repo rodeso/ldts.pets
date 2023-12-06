@@ -2,6 +2,8 @@ package com.l13gr03.pets.model.game.entities.species;
 
 import com.l13gr03.pets.model.game.entities.Entity;
 
+import static java.lang.Integer.MAX_VALUE;
+
 public class ShadowSpecter extends Entity {
     private static final int id = 6;
     private static final String ability = "Shadow Sneak"; //Always attacks first
@@ -17,5 +19,8 @@ public class ShadowSpecter extends Entity {
     }
     public String getAbility() {
         return ability;
+    }
+    public void useAbility(){
+        setSpd(MAX_VALUE);
     }
 }

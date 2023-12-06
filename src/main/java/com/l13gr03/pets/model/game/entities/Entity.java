@@ -8,6 +8,7 @@ public abstract class Entity {
     private String name;
     private final int id = 0;
     private static boolean shiny = false;
+    private boolean abilityState = false;
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
 
@@ -82,6 +83,28 @@ public abstract class Entity {
 
     public void setHP(int max) {
         stats[0] = max;
+    }
+    public void setAtk(int max) {
+        stats[1] = max;
+    }
+    public void setDef(int max) {
+        stats[2] = max;
+    }
+    public void setSAtk(int max) {
+        stats[3] = max;
+    }
+    public void setSDef(int max) {
+        stats[4] = max;
+    }
+    public void setSpd(int max) {
+        stats[5] = max;
+    }
+
+    public void turnAbilityOn(){
+        abilityState = true;
+    }
+    public boolean isAbilityOn(){
+        return abilityState;
     }
 
     //Attack Class

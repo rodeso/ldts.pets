@@ -1,5 +1,6 @@
 package com.l13gr03.pets.model.game.entities.species;
 
+import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.entities.Entity;
 
 public class BiomorphicBeast extends Entity {
@@ -17,5 +18,15 @@ public class BiomorphicBeast extends Entity {
     }
     public String getAbility() {
         return ability;
+    }
+
+    public void useAbility(){
+        if(this.getHP() > 0 && this.getHP() < 91){
+            if(this.getHP() < 81){
+                setHP(getHP() + 10);
+            }
+            int res = 90 - getHP();
+            setHP(getHP() + res);
+        }
     }
 }

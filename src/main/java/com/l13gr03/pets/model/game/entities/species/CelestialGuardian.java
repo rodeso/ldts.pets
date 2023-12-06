@@ -18,4 +18,10 @@ public class CelestialGuardian extends Entity {
     public String getAbility() {
         return ability;
     }
+    public void useAbility(){
+        double res = getSAtk() * 1.1;
+        int r = (int) res;
+        setSAtk(r);
+
+    }
 }
