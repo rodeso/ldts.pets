@@ -49,7 +49,7 @@ public class Battlefield {
             roundNumber = rn;
         }
 
-        public void playRound() {
+        public void playRound() { //TODO: Add isAbilityOn() to inflict burn or thorns on the opponent
             Randomizer random = new TurnRandomizer();
 
             // Determine which entity attacks first based on speed
@@ -87,6 +87,16 @@ public class Battlefield {
                 int newDefenderHP = defender.getHP() - (int) damage;
                 //set new hp to the defending entity
                 defender.setHP(Math.max(newDefenderHP, 0));
+            } else if (Objects.equals(attackerAttack.getType(), "Status")) {
+                int a = attackerAttack.getElementId();
+                switch (a) {
+                    case 0:
+                        attacker.setHP(attacker.getHP()+attackerAttack.getDamage());
+                        break;
+                    case 1:
+                        attacker.setAtk(attacker.getAtk());
+                }
+
             }
 
             // Check if the defender is still alive and let it attack
