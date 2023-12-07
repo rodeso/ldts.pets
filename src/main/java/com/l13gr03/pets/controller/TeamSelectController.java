@@ -6,15 +6,12 @@ import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
 import com.l13gr03.pets.states.SettingsState;
-import com.l13gr03.pets.states.TeamSelectState;
-//import com.l13gr03.pets.model.menu.Settings;
-//import com.l13gr03.pets.states.SettingsState;
 
 import java.io.IOException;
 
-public class MenuController extends Controller<Menu> {
-    public MenuController(Menu menu) {
-        super(menu);
+public class TeamSelectController extends Controller<TeamSelect> {
+    public TeamSelectController(TeamSelect teamSelect) {
+        super(teamSelect);
     }
 
     @Override
@@ -27,7 +24,7 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedPlay()){game.setState(new TeamSelectState(new TeamSelect()));}
+                if (getModel().isSelectedPlay()){int i=0;}
                 if (getModel().isSelectedMulti()){int i=0;}
                 if (getModel().isSelectedSett()) {game.setState(new SettingsState(new Settings()));}
                 if (getModel().isSelectedExit()) {game.setState(null);}
