@@ -65,17 +65,10 @@ public abstract class Entity {
         return stats[5];
     }
     //Attacks Getters
-    public Attack getFirst() {
-        return attacks[0];
-    }
-    public Attack getSecond() {
-        return attacks[1];
-    }
-    public Attack getThird() {
-        return attacks[2];
-    }
-    public Attack getFourth() {
-        return attacks[3];
+    public Attack getMove(int n) {
+        if (n<4 && n>=0)
+            return attacks[n];
+        else return null;
     }
     //Shiny Setter
     public void setShiny() {
