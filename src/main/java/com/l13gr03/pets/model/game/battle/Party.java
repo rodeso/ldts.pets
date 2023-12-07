@@ -11,13 +11,13 @@ public class Party {
         p2 = b;
         p3 = c;
     }
-    public Entity getP1() {
-        return p1;
-    }
-    public Entity getP2() {
-        return p2;
-    }
-    public Entity getP3() {
-        return p3;
+    public Entity getP(int n) {
+        Entity selected = switch (n) {
+            case 1 -> p1;
+            case 2 -> p2;
+            case 3 -> p3;
+            default -> null;
+        };
+        return selected;
     }
 }

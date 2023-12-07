@@ -19,6 +19,8 @@ public class Battlefield {
     private Stack<Round> history;
     private Position position1, position2;
     private Party player1, player2;
+    private Entity active1, active2;
+    private boolean change1, change2;
 
     public Battlefield(int h, int w, Party p1, Party p2) {
         height = h;
@@ -30,12 +32,22 @@ public class Battlefield {
     public int getRoundCounter() {
         return history.size();
     }
-
-    public void newRound(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, boolean change1, boolean change2) {
-        if (change1) {a1 = null;}
-        if (change2) {a2 = null;}
-        currentRound = new Round(p1, p2, a1, a2, history.size() + 1);
+    //during battle, both choose the pokemon they want to choose and the attack, if they want to change they wait a round
+    public void newRound(Entity active1, Entity active2, Entity.Attack a1, Entity.Attack a2) {
+        if (change1) {a1.miss();}
+        if (change2) {a2.miss();}
+        currentRound = new Round(active1, active2, a1, a2, history.size() + 1);
         history.push(currentRound);
+    }
+    public void change(int player, int entity) {
+        if (player == 1) {
+            active1 = player1.getP(entity);
+            change1 = true;
+        }
+        if (player == 2) {
+            active2 = player2.getP(entity);
+            change2 = true;
+        }
     }
 
     public class Round {
