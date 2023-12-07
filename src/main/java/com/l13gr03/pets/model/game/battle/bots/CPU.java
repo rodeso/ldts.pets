@@ -5,6 +5,9 @@ import com.l13gr03.pets.model.game.entities.*;
 import com.l13gr03.pets.model.game.entities.species.*;
 import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.ThreeRandomizer;
+import com.l13gr03.pets.utils.calculator.PhysicalDamageCalculator;
+import com.l13gr03.pets.utils.calculator.SpecialDamageCalculator;
+import com.l13gr03.pets.utils.calculator.Calculator;
 
 import java.util.Random;
 
@@ -15,9 +18,15 @@ public abstract class CPU  {
     private int n1;
     private Party party;
     Random random = new Random();
+    Calculator dmg = new Calculator() {
+        @Override
+        public double execute(Entity.Attack attackerAttack, Entity attacker, Entity defender) {
+            return 0;
+        }
+    };
     public String getName(){return name;}
     public CPU(String n) {name = n;}
-    public abstract Entity.Attack choseAttack(Entity.Attack[] attacks,Entity e);
+    public abstract Entity.Attack choseAttack(Entity.Attack[] attacks,Entity e1, Entity e2);
 
     public Party createParty(){
         Randomizer r = new ThreeRandomizer();

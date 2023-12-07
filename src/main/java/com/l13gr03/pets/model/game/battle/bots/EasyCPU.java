@@ -8,7 +8,7 @@ public class EasyCPU extends CPU {
         super("Easy Bot");
     }
 
-    public Entity.Attack choseAttack( Entity.Attack[] attacks,Entity e) {
+    public Entity.Attack choseAttack( Entity.Attack[] attacks,Entity e1,Entity e2) {
         int n1 = random.nextInt(4);
         if (n1 == 0) {
             return attacks[0];
