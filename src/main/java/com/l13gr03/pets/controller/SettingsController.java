@@ -28,15 +28,15 @@ public class SettingsController extends Controller<Settings> {
                 case SELECT:
                     if (getModel().isSelectedDefault()) {
                         game.getGui().close();
-                        new Game(150,50).start();
+                        new Game(70,30,20).start();
                     }
                     if (getModel().isSelectedSmall()) {
                         game.getGui().close();
-                        new Game(90,30).start();
+                        new Game(70,30,10).start();
                     }
                     if (getModel().isSelectedSquare()) {
                         game.getGui().close();
-                        new Game(100,50).start();
+                        new Game(50,35,20).start();
                     }
                     if (getModel().isSelectedReturn()) {
                         game.setState(new MenuState(new Menu()));

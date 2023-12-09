@@ -34,6 +34,7 @@ public class MenuController extends Controller<Menu> {
                 break;
             case QUIT:
                 game.setState(null);
+
                 break;
 
         }

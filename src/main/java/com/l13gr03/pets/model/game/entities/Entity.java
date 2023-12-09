@@ -46,6 +46,9 @@ public abstract class Entity {
         }
     }
     //Stats Getters
+    public int[]getStats(){
+        return stats;
+    }
     public int getHP() {
         return stats[0];
     }
