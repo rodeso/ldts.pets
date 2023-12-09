@@ -10,22 +10,30 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import com.l13gr03.pets.model.Position;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class LanternaGUI implements GUI {
     Screen screen;
+    private Font font;
     private int x;
     private int y;
 
-    public LanternaGUI(int width, int height) throws IOException/*,FontFormatException, URISyntaxException*/ {
+    public LanternaGUI(int width, int height, int font) throws IOException/*,FontFormatException, URISyntaxException*/ {
         x=width;y=height;
-        TerminalSize terminalSize = new TerminalSize(x, y);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Terminal terminal = terminalFactory.createTerminal();
+        setFont(changeFont("src/main/java/resources/fonts/square.ttf", font));
+        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true,
+                AWTTerminalFontConfiguration.BoldMode.NOTHING, getFont());
+        Terminal terminal = new DefaultTerminalFactory()
+                .setForceAWTOverSwing(true)
+                .setInitialTerminalSize(new TerminalSize(x, y))
+                .setTerminalEmulatorFontConfiguration(cfg)
+                .createTerminal();
         screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null); // we don't need a cursor
         screen.startScreen(); // screens must be started
@@ -66,4 +74,28 @@ public class LanternaGUI implements GUI {
     public void clear()throws IOException{screen.clear();}
     @Override
     public void close()throws IOException{screen.close();}
+    public Font getFont() {
+        return font;
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
+
+
+    public Font changeFont(String path, int size){
+        File fontFile = new File(path);
+        Font font;
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT,fontFile);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+        Font loaded = font.deriveFont(Font.PLAIN,size);
+        return loaded;
+    }
 }

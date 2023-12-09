@@ -18,21 +18,25 @@ public class TeamSelectController extends Controller<TeamSelect> {
     public void step(Game game, GUI.ACTION action, double time) throws IOException {
         switch (action){
             case UP:
-                getModel().previousEntry();
+                if (getModel().getCurrentColumn()==0){getModel().previousEntry();}
+                if (getModel().getCurrentColumn()==1){getModel().previousTeam();}
                 break;
             case DOWN:
-                getModel().nextEntry();
+                if (getModel().getCurrentColumn()==0){getModel().nextEntry();}
+                if (getModel().getCurrentColumn()==1){getModel().nextTeam();}
                 break;
             case SELECT:
-                if (getModel().isSelectedPlay()){int i=0;}
-                if (getModel().isSelectedMulti()){int i=0;}
-                if (getModel().isSelectedSett()) {game.setState(new SettingsState(new Settings()));}
-                if (getModel().isSelectedExit()) {game.setState(null);}
+                if (getModel().getCurrentColumn()==0){int i=0;}
+                if (getModel().getCurrentColumn()==1){int i=0;}
                 break;
             case QUIT:
                 game.setState(null);
                 break;
-
+            case LEFT:
+                getModel().previousColumn();
+                break;
+            case RIGHT:
+                getModel().nextColumn();
         }
     }
 }

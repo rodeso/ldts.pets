@@ -21,13 +21,13 @@ import com.l13gr03.pets.states.State;
 public class Game {
     private LanternaGUI gui;
     private State state;
-    public Game(int x, int y) throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(x, y);
+    public Game(int x, int y, int font) throws FontFormatException, IOException, URISyntaxException {
+        this.gui = new LanternaGUI(x, y, font);
         this.state = new MenuState(new Menu());
     }
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(150, 45);
+        this.gui = new LanternaGUI(70, 30, 20);
         this.state = new MenuState(new Menu());
     }
 
