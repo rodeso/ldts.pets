@@ -1,15 +1,14 @@
 package com.l13gr03.pets.model.menu;
 
 import com.l13gr03.pets.model.game.entities.Entity;
-import com.l13gr03.pets.model.game.entities.species.AquaticAlly;
-import com.l13gr03.pets.model.game.entities.species.LavaLurker;
+import com.l13gr03.pets.model.game.entities.species.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class TeamSelect {
-    private final List<String> entries;
-
+    private List<String> entries;
+    private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnex"), new StoneGolem("Big7")};
     private  int[] stats;
 
     private List<String> team;
@@ -18,12 +17,15 @@ public class TeamSelect {
     private int currentColumn=0;
     private int currentTeam=-1;
     private boolean backSelect=false;
+    private boolean nextSelect=false;
     private String back="Go Back";
+    private String next="Next";
 
     public TeamSelect() {
-        this.entries = Arrays.asList("Pikachu","Penis","Choura");
-        Entity entity=new LavaLurker(entries.get(0));
-        this.stats = entity.getStats();
+
+        this.entries= Arrays.asList(entities[0].getName(),entities[1].getName(),entities[2].getName(),entities[3].getName(),entities[4].getName(),entities[5].getName(),entities[6].getName());
+
+        this.stats = entities[0].getStats();
         this.team= Arrays.asList("None","None","None");
         this.statType= Arrays.asList("HP: ","Attack: ","Defence:","Special Attack: ","Special Defence: ", "Speed: ");
     }
@@ -32,14 +34,14 @@ public class TeamSelect {
         currentEntry++;
         if (currentEntry > this.entries.size() - 1)
             currentEntry = 0;
-        stats= new AquaticAlly(entries.get(currentEntry)).getStats();
+        stats= entities[currentEntry].getStats();
     }
 
     public void previousEntry() {
         currentEntry--;
         if (currentEntry < 0)
             currentEntry = this.entries.size() - 1;
-        stats= new AquaticAlly(entries.get(currentEntry)).getStats();
+        stats= entities[currentEntry].getStats();
     }
     public void nextTeam() {
         currentTeam++;
@@ -53,38 +55,80 @@ public class TeamSelect {
             currentTeam = this.team.size() - 1;
     }
     public void nextColumn(){
-        if (currentEntry>-1){
-            currentEntry=-1;
-            currentTeam=0;
-            currentColumn++;
+        if (TeamFull()) {
+            if (currentEntry > -1) {
+                currentEntry = -1;
+                currentTeam = 0;
+                currentColumn++;
 
-        }
-        else if (currentTeam>-1){
-            currentTeam=-1;
-            backSelect=true;
-            currentColumn++;
-        }
-        else if (backSelect){
-            backSelect=false;
-            currentEntry=0;
-            currentColumn=0;
+            } else if (currentTeam > -1) {
+                currentTeam = -1;
+                backSelect = true;
+                currentColumn++;
+            } else if (backSelect) {
+                backSelect = false;
+                nextSelect=true;
+                currentColumn++;
+            } else if (nextSelect) {
+                nextSelect=false;
+                currentEntry=0;
+                currentColumn= 0;
+            }
+        }else {
+            if (currentEntry > -1) {
+                currentEntry = -1;
+                currentTeam = 0;
+                currentColumn++;
+
+            } else if (currentTeam > -1) {
+                currentTeam = -1;
+                backSelect = true;
+                currentColumn++;
+            } else if (backSelect) {
+                backSelect = false;
+                currentEntry = 0;
+                currentColumn = 0;
+            }
         }
     }
     public void previousColumn(){
-        if (backSelect){
-            backSelect=false;
-            currentTeam=0;
-            currentColumn--;
+        if (TeamFull()){
+            if (backSelect){
+                backSelect=false;
+                currentTeam=0;
+                currentColumn--;
+            }
+            else if (currentTeam>-1){
+                currentTeam=-1;
+                currentEntry=0;
+                currentColumn--;
+            }
+            else if (currentEntry>-1){
+                currentEntry=-1;
+                nextSelect=true;
+                currentColumn=3;
+            } else if (nextSelect) {
+                nextSelect=false;
+                backSelect=true;
+                currentColumn--;
+            }
         }
-        else if (currentTeam>-1){
-            currentTeam=-1;
-            currentEntry=0;
-            currentColumn--;
-        }
-        else if (currentEntry>-1){
-            currentEntry=-1;
-            backSelect=true;
-            currentColumn=2;
+        else {
+            if (backSelect){
+                backSelect=false;
+                currentTeam=0;
+                currentColumn--;
+            }
+            else if (currentTeam>-1){
+                currentTeam=-1;
+                currentEntry=0;
+                currentColumn--;
+            }
+            else if (currentEntry>-1){
+                currentEntry=-1;
+                backSelect=true;
+                currentColumn=2;
+            }
         }
     }
 
@@ -101,6 +145,7 @@ public class TeamSelect {
         return statType.get(i);
     }
     public String getBack(){return back;}
+    public String getNext(){return next;}
 
 
     public boolean isSelected(int i) {
@@ -110,6 +155,7 @@ public class TeamSelect {
         return currentTeam == i;
     }
     public boolean isBackSelect(){return backSelect;}
+    public boolean isNextSelect(){return nextSelect;}
 
 
 
@@ -127,5 +173,75 @@ public class TeamSelect {
     }
     public int getCurrentColumn(){
         return currentColumn;
+    }
+    public boolean TeamFull(){
+        if (team.get(0)=="None"){
+            return false;
+        }
+        else if (team.get(1)=="None"){
+            return false;
+        }
+        else if (team.get(2)=="None"){
+            return false;
+        }
+        return true;
+    }
+    public void teamADD(){
+        if (team.get(0)=="None"){
+            team.set(0,entities[currentEntry].getName());
+        }
+        else if (team.get(1)=="None"){
+            team.set(1,entities[currentEntry].getName());
+        }
+        else if (team.get(2)=="None"){
+            team.set(2,entities[currentEntry].getName());
+        }
+    }
+    public boolean TeamEmpty(){
+        if (team.get(0)!="None"){
+            return false;
+        }
+        else if (team.get(1)!="None"){
+            return false;
+        }
+        else if (team.get(2)!="None"){
+            return false;
+        }
+        return true;
+    }
+    public void teamRM(){
+        if (team.get(0)!="None"){
+            team.set(0,"None");
+        }
+        else if (team.get(1)!="None"){
+            team.set(1,"None");
+        }
+        else if (team.get(2)!="None"){
+            team.set(2,"None");
+        }
+    }
+    public Entity getParty1(){
+        for (Entity entity:entities){
+            if (team.get(0)==entity.getName()){
+                return entity;
+            }
+        }
+        return null;
+    }
+    public Entity getParty2(){
+        for (Entity entity:entities){
+            if (team.get(1)==entity.getName()){
+                return entity;
+            }
+        }
+        return null;
+    }
+    public Entity getParty3(){
+        for (Entity entity:entities){
+            if (team.get(2)==entity.getName()){
+                return entity;
+            }
+        }
+        return null;
     }
 }

@@ -17,12 +17,12 @@ public class TeamSelectViewer extends Viewer<TeamSelect> {
         for (int i = 0; i < getModel().getNumberEntries(); i++) {
             if (getModel().isSelected(i)){
                 String text=">"+ getModel().getEntry(i);
-                gui.drawText(new Position(Xentities-1, Yentities+i),
+                gui.drawText(new Position(Xentities-1, Yentities+2*i),
                         text,"#FF0000");
             }
             else {
                 gui.drawText(
-                        new Position(Xentities, Yentities + i),
+                        new Position(Xentities, Yentities + 2*i),
                         getModel().getEntry(i),
                         "#FFFFFF");
             }
@@ -59,7 +59,7 @@ public class TeamSelectViewer extends Viewer<TeamSelect> {
                     getModel().getStatType(i),
                     "#FFFFFF");
         }
-        int backX=gui.getWidth()/2+17;
+        int backX=gui.getWidth()/2+7;
         int backY= gui.getHeight()-3;
         if (getModel().isBackSelect()){
             String text=">"+ getModel().getBack();
@@ -70,6 +70,20 @@ public class TeamSelectViewer extends Viewer<TeamSelect> {
                     new Position(backX, backY),
                     getModel().getBack(),
                     "#FFFFFF");
+        }
+        int nextX=gui.getWidth()/2+17;
+        int nextY= gui.getHeight()-3;
+        if (getModel().TeamFull()){
+            if (getModel().isNextSelect()){
+                String text=">"+ getModel().getNext();
+                gui.drawText(new Position(nextX-1, nextY),
+                        text,"#FF0000");
+            }else {
+                gui.drawText(
+                        new Position(nextX, nextY),
+                        getModel().getNext(),
+                        "#FFFFFF");
+            }
         }
     }
 }

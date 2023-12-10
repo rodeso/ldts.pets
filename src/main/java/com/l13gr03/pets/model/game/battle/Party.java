@@ -20,4 +20,7 @@ public class Party {
         };
         return selected;
     }
+    public int getp1(){
+        return p1.getHP();
+    }
 }

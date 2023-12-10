@@ -9,7 +9,7 @@ public class CyberneticCompanion extends Entity {
 
     public CyberneticCompanion(String n) {
         super(n);
-        super.setStats(new int[]{79, 83, 100, 85, 105, 78});
+        super.setStats(new int[]{/*79*/4, 83, 100, 85, 105, 78});
     }
     @Override
     public int getId() {
