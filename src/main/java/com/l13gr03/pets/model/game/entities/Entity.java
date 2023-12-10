@@ -14,7 +14,10 @@ public abstract class Entity {
     private Attack[] attacks = new Attack[4];
 
     //Methods
-    public Entity(String n) {name = n;}
+    public Entity(String n) {
+        name = n;
+        setStats(new int[]{0, 0, 0, 0, 0, 0, 0});
+    }
     public abstract int getId();
 
 
