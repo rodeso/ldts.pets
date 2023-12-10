@@ -47,12 +47,14 @@ public class TeamSelect {
         currentTeam++;
         if (currentTeam > this.team.size() - 1)
             currentTeam = 0;
+        stats= getParty(currentTeam).getStats();
     }
 
     public void previousTeam() {
         currentTeam--;
         if (currentTeam < 0)
             currentTeam = this.team.size() - 1;
+        stats= getParty(currentTeam).getStats();
     }
     public void nextColumn(){
         if (TeamFull()) {
@@ -243,5 +245,13 @@ public class TeamSelect {
             }
         }
         return null;
+    }
+    public Entity getParty(int i){
+        return switch (i) {
+            case 0 -> getParty1();
+            case 1 -> getParty2();
+            case 2 -> getParty3();
+            default -> null;
+        };
     }
 }
