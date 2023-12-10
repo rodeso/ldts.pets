@@ -19,7 +19,4 @@ public class Party {
             default -> null;
         };
     }
-    public int getp1(){
-        return p1.getHP();
-    }
 }
