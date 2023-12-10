@@ -212,13 +212,13 @@ public class TeamSelect {
         return true;
     }
     public void teamRM(){
-        if (team.get(0)!="None"){
+        if (team.get(0)!="None"&& currentTeam==0){
             team.set(0,"None");
         }
-        else if (team.get(1)!="None"){
+        else if (team.get(1)!="None"&& currentTeam==1){
             team.set(1,"None");
         }
-        else if (team.get(2)!="None"){
+        else if (team.get(2)!="None"&& currentTeam==2){
             team.set(2,"None");
         }
     }
