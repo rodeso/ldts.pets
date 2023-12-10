@@ -10,7 +10,7 @@ public class StoneGolem extends Entity {
 
     public StoneGolem(String n) {
         super(n);
-        super.setStats(new int[]{/*79*/7, 83, 100, 85, 105, 78});
+        super.setStats(new int[]{100, 100, 200, 50, 100, 50}); //Regirock +20
 
     }
     @Override

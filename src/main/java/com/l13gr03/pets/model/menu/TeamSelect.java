@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TeamSelect {
     private List<String> entries;
-    private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnex"), new StoneGolem("Big7"), new None("None")};
+    private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnyx"), new StoneGolem("Big7"), new None("None")};
     private  int[] stats;
 
     private List<String> team;

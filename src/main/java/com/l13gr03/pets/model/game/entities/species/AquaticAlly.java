@@ -10,7 +10,7 @@ public class AquaticAlly extends Entity {
 
     public AquaticAlly(String n) {
         super(n);
-        super.setStats(new int[]{/*79*/1, 83, 100, 85, 105, 78});
+        super.setStats(new int[]{79, 93, 120, 110, 110, 88}); //Mega Blastoise -30
     }
     @Override
     public int getId() {
