@@ -44,7 +44,6 @@ public class TeamSelectController extends Controller<TeamSelect> {
                 }
                 if (getModel().getCurrentColumn()==3){
                     Party party=new Party(getModel().getParty1(), getModel().getParty2(), getModel().getParty3());
-
                 }
                 break;
             case QUIT:
