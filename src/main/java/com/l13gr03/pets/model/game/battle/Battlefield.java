@@ -10,13 +10,14 @@ import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.StatusRandomizer;
 import com.l13gr03.pets.utils.random.TurnRandomizer;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Stack;
 
 public class Battlefield {
     private Round currentRound;
     private int height, width;
-    private Stack<Round> history;
+    private List<Round> history;
     private Position position1, position2;
     private Party player1, player2;
     private Entity active1, active2;
@@ -33,12 +34,12 @@ public class Battlefield {
     public int getRoundCounter() {
         return history.size();
     }
-    //during battle, both choose the pokemon they want to choose and the attack, if they want to change they wait a round
+    //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
     public void newRound() {
         if (change1) {attack1.miss();}
         if (change2) {attack2.miss();}
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
-        history.push(currentRound);
+        history.add(currentRound);
     }
     public void change(int player, int entity) {
         if (player == 1) {
@@ -60,11 +61,18 @@ public class Battlefield {
             change2 = false;
         }
     }
+    public void showHistory() throws InterruptedException {
+        System.out.println("Showing History:");
+        for (Round round : history) {
+            System.out.println(round.print());
+        }
+    }
 
 
     public class Round {
         private Entity e1, e2;
         private Entity.Attack c1, c2;
+        private double d1, d2;
         private int roundNumber;
         private Round(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int rn) {
             e1 = p1;
@@ -74,7 +82,7 @@ public class Battlefield {
             roundNumber = rn;
         }
 
-        public void playRound() {
+        public void playRound() throws InterruptedException {
             Randomizer random = new TurnRandomizer();
             Randomizer hit = new StatusRandomizer();
 
@@ -163,16 +171,16 @@ public class Battlefield {
                 if (Objects.equals(attackerAttack.getType(), "Physical")) {
                     //if physical
                     double d = phy.execute(attackerAttack, attacker, defender);
-                    double damage = d * adv.execute(attackerAttack, attacker, defender);
-                    int newDefenderHP = defender.getHP() - (int) damage;
+                    d1 = d * adv.execute(attackerAttack, attacker, defender);
+                    int newDefenderHP = defender.getHP() - (int) d1;
                     //set new hp to the defending entity
                     defender.setHP(Math.max(newDefenderHP, 0));
 
                 } else if (Objects.equals(attackerAttack.getType(), "Special")) {
                     //if special
                     double d = spe.execute(attackerAttack, attacker, defender);
-                    double damage = d * adv.execute(attackerAttack, attacker, defender);
-                    int newDefenderHP = defender.getHP() - (int) damage;
+                    d1 = d * adv.execute(attackerAttack, attacker, defender);
+                    int newDefenderHP = defender.getHP() - (int) d1;
                     //set new hp to the defending entity
                     defender.setHP(Math.max(newDefenderHP, 0));
                 } else if (Objects.equals(attackerAttack.getType(), "Status")) {
@@ -226,16 +234,16 @@ public class Battlefield {
                     if (Objects.equals(defenderAttack.getType(), "Physical")) {
                         //if physical
                         double d = phy.execute(defenderAttack, defender, attacker);
-                        double damage = d * adv.execute(defenderAttack, defender, attacker);
-                        int newDefenderHP = attacker.getHP() - (int) damage;
+                        d2 = d * adv.execute(defenderAttack, defender, attacker);
+                        int newDefenderHP = attacker.getHP() - (int) d2;
                         //set new hp to the attacking entity
                         attacker.setHP(Math.max(newDefenderHP, 0));
 
                     } else if (Objects.equals(defenderAttack.getType(), "Special")) {
                         //if special
                         double d = spe.execute(defenderAttack, defender, attacker);
-                        double damage = d * adv.execute(defenderAttack, defender, attacker);
-                        int newDefenderHP = attacker.getHP() - (int) damage;
+                        d2 = d * adv.execute(defenderAttack, defender, attacker);
+                        int newDefenderHP = attacker.getHP() - (int) d2;
                         //set new hp to the attacking entity
                         attacker.setHP(Math.max(newDefenderHP, 0));
                     } else if (Objects.equals(attackerAttack.getType(), "Status")) {
@@ -287,8 +295,31 @@ public class Battlefield {
             //status conditions
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
-
             //end round
+            print();
+        }
+        public boolean print() throws InterruptedException {
+            System.out.print(e1.getName());
+            System.out.print(" used ");
+            System.out.print(c1.getDescription());
+            Thread.sleep(1000);
+            if (!c1.missed()) {
+                System.out.print(" and dealt ");
+                System.out.print(d1);
+                System.out.print(" of damage!\n");
+            } else System.out.println(" but missed!");
+            Thread.sleep(2000);
+            System.out.print(e2.getName());
+            System.out.print(" used ");
+            System.out.print(c2.getDescription());
+            Thread.sleep(1000);
+            if (!c2.missed()) {
+            System.out.print(" and dealt ");
+            System.out.print(d2);
+            System.out.print(" of damage!\n");
+            } else System.out.println(" but missed!");
+
+            return false;
         }
     }
 }

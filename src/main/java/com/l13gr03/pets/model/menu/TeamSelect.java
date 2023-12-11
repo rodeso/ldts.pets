@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TeamSelect {
     private List<String> entries;
-    private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnex"), new StoneGolem("Big7"), new None("None")};
+    private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnyx"), new StoneGolem("Big7"), new None("None")};
     private  int[] stats;
 
     private List<String> team;
@@ -222,36 +222,25 @@ public class TeamSelect {
             team.set(2,"None");
         }
     }
-    public Entity getParty1(){
+
+    public Entity getParty(int n){
+        int i = 0;
+        String a = "";
         for (Entity entity:entities){
-            if (team.get(0)==entity.getName()){
-                return entity;
+            if (team.get(n)==entity.getName()){
+                i = entity.getId();
+                a = entity.getName();
             }
         }
-        return null;
-    }
-    public Entity getParty2(){
-        for (Entity entity:entities){
-            if (team.get(1)==entity.getName()){
-                return entity;
-            }
-        }
-        return null;
-    }
-    public Entity getParty3(){
-        for (Entity entity:entities){
-            if (team.get(2)==entity.getName()){
-                return entity;
-            }
-        }
-        return null;
-    }
-    public Entity getParty(int i){
         return switch (i) {
-            case 0 -> getParty1();
-            case 1 -> getParty2();
-            case 2 -> getParty3();
-            default -> null;
+            case 1 -> new AquaticAlly(a);
+            case 2 -> new BiomorphicBeast(a);
+            case 3 -> new CelestialGuardian(a);
+            case 4 -> new CyberneticCompanion(a);
+            case 5 -> new LavaLurker(a);
+            case 6 -> new ShadowSpecter(a);
+            case 7 -> new StoneGolem(a);
+            default -> new None(a);
         };
     }
 }

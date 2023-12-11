@@ -10,7 +10,7 @@ public class BiomorphicBeast extends Entity {
 
     public BiomorphicBeast(String n) {
         super(n);
-        super.setStats(new int[]{/*79*/2, 83, 100, 85, 105, 78});
+        super.setStats(new int[]{100, 80, 110, 110, 120, 80}); //Mega Venusaur -25
     }
     @Override
     public int getId() {
@@ -21,11 +21,11 @@ public class BiomorphicBeast extends Entity {
     }
 
     public void useAbility(int n){
-        if(this.getHP() > 0 && this.getHP() < 91){
-            if(this.getHP() < 81){
+        if(this.getHP() > 0 && this.getHP() < 101){
+            if(this.getHP() < 91){
                 setHP(getHP() + 10);
             }
-            int res = 90 - getHP();
+            int res = 100 - getHP();
             setHP(getHP() + res);
         }
     }

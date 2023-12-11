@@ -43,7 +43,22 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     game.setState(new MenuState(new Menu()));
                 }
                 if (getModel().getCurrentColumn()==3){
-                    Party party=new Party(getModel().getParty1(), getModel().getParty2(), getModel().getParty3());
+                    Party party=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
+
+
+                    System.out.println(party.getP(1).getMove(0).getDescription());
+                    System.out.println(party.getP(1).getMove(1).getDescription());
+                    System.out.println(party.getP(1).getMove(2).getDescription());
+                    System.out.println(party.getP(1).getMove(3).getDescription());
+                    System.out.println(party.getP(2).getMove(0).getDescription());
+                    System.out.println(party.getP(2).getMove(1).getDescription());
+                    System.out.println(party.getP(2).getMove(2).getDescription());
+                    System.out.println(party.getP(2).getMove(3).getDescription());
+                    System.out.println(party.getP(3).getMove(0).getDescription());
+                    System.out.println(party.getP(3).getMove(1).getDescription());
+                    System.out.println(party.getP(3).getMove(2).getDescription());
+                    System.out.println(party.getP(3).getMove(3).getDescription());
+
                 }
                 break;
             case QUIT:

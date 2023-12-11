@@ -12,15 +12,11 @@ public class Party {
         p3 = c;
     }
     public Entity getP(int n) {
-        Entity selected = switch (n) {
+        return switch (n) {
             case 1 -> p1;
             case 2 -> p2;
             case 3 -> p3;
             default -> null;
         };
-        return selected;
-    }
-    public int getp1(){
-        return p1.getHP();
     }
 }
