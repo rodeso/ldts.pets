@@ -59,9 +59,6 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     System.out.println(party.getP(3).getMove(2).getDescription());
                     System.out.println(party.getP(3).getMove(3).getDescription());
 
-
-
-
                 }
                 break;
             case QUIT:
