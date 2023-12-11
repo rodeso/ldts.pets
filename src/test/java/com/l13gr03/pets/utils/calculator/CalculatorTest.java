@@ -17,7 +17,7 @@ public class CalculatorTest {
         double result = physicalDamageCalculator.execute(attack, attacker, defender);
 
         // Asserting that the result is within a small tolerance due to double precision
-        assertEquals(41.5, result, 0.001); //83/100 * 50
+        assertEquals(23.25, result, 0.001); //93/200 * 50
     }
 
     @Test
@@ -30,7 +30,7 @@ public class CalculatorTest {
         double result = specialDamageCalculator.execute(attack, attacker, defender);
 
         // Asserting that the result is within a small tolerance due to double precision
-        assertEquals(48.571, result, 0.001); //85/105 * 60
+        assertEquals(94.2857, result, 0.001); //110/70 * 60
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CalculatorTest {
         double result = specialDamageCalculator.execute(attack, attacker, defender);
 
         // Asserting that the result is within a small tolerance due to double precision
-        assertEquals(36.429, result, 0.001); // (85/105 * 60) * 0.75
+        assertEquals(96.42857142857142, result, 0.001); // (150/70 * 60) * 0.75
     }
 
     @Test

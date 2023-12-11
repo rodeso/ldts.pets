@@ -33,7 +33,7 @@ public class Battlefield {
     public int getRoundCounter() {
         return history.size();
     }
-    //during battle, both choose the pokemon they want to choose and the attack, if they want to change they wait a round
+    //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
     public void newRound() {
         if (change1) {attack1.miss();}
         if (change2) {attack2.miss();}
