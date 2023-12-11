@@ -5,8 +5,8 @@ import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.StatusRandomizer;
 
 public class None extends Entity {
-    private static final int id = 5;
-    private static final String ability = "Flame Fists"; // Every time it lands a attack 10% chance it burns
+    private static final int id = 0;
+    private static final String ability = "";
 
 
     public None(String n) {
@@ -21,12 +21,6 @@ public class None extends Entity {
         return ability;
     }
     public void useAbility(int n){
-        Randomizer r = new StatusRandomizer();
-        boolean res = r.oneInTen();
-        if(res){
-            turnAbilityOn();
-        }
-
 
     }
 }

@@ -1,7 +1,7 @@
 package com.l13gr03.pets.model.game.entities;
 
 import com.l13gr03.pets.model.Position;
-import com.l13gr03.pets.model.game.entities.powers.AttackFactory;
+import com.l13gr03.pets.model.game.entities.moves.AttackFactory;
 
 public abstract class Entity {
     private Position position;
@@ -18,7 +18,6 @@ public abstract class Entity {
     public Entity(String n) {
         AttackFactory a = new AttackFactory();
         name = n;
-        setStats(new int[]{0, 0, 0, 0, 0, 0, 0});
         setAttacks(a.createAttack(this));
     }
     public abstract int getId();

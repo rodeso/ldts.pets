@@ -1,4 +1,4 @@
-package com.l13gr03.pets.model.game.entities.powers;
+package com.l13gr03.pets.model.game.entities.moves;
 
 import com.l13gr03.pets.model.game.entities.Entity;
 
