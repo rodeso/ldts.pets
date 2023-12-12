@@ -61,6 +61,7 @@ public class TeamSelect {
             if (currentEntry > -1) {
                 currentEntry = -1;
                 currentTeam = 0;
+                stats= getParty(currentTeam).getStats();
                 currentColumn++;
 
             } else if (currentTeam > -1) {
@@ -74,12 +75,14 @@ public class TeamSelect {
             } else if (nextSelect) {
                 nextSelect=false;
                 currentEntry=0;
+                stats= entities[currentEntry].getStats();
                 currentColumn= 0;
             }
         }else {
             if (currentEntry > -1) {
                 currentEntry = -1;
                 currentTeam = 0;
+                stats= getParty(currentTeam).getStats();
                 currentColumn++;
 
             } else if (currentTeam > -1) {
@@ -89,6 +92,7 @@ public class TeamSelect {
             } else if (backSelect) {
                 backSelect = false;
                 currentEntry = 0;
+                stats= entities[currentEntry].getStats();
                 currentColumn = 0;
             }
         }
@@ -98,11 +102,13 @@ public class TeamSelect {
             if (backSelect){
                 backSelect=false;
                 currentTeam=0;
+                stats= getParty(currentTeam).getStats();
                 currentColumn--;
             }
             else if (currentTeam>-1){
                 currentTeam=-1;
                 currentEntry=0;
+                stats= entities[currentEntry].getStats();
                 currentColumn--;
             }
             else if (currentEntry>-1){
@@ -119,11 +125,13 @@ public class TeamSelect {
             if (backSelect){
                 backSelect=false;
                 currentTeam=0;
+                stats= getParty(currentTeam).getStats();
                 currentColumn--;
             }
             else if (currentTeam>-1){
                 currentTeam=-1;
                 currentEntry=0;
+                stats= entities[currentEntry].getStats();
                 currentColumn--;
             }
             else if (currentEntry>-1){
