@@ -48,8 +48,15 @@ public class Battlefield {
     }
     //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
     public Round newRound() {
-        if (change1) {attack1.miss();}
-        if (change2) {attack2.miss();}
+        if (change1) {
+            if (getRoundCounter() > 0)
+                attack1.miss();
+            else attack1 = new Entity.Attack("Physical", "Tackle", "Null", 0, 0);
+        }
+        if (change2) {
+            if (getRoundCounter() > 0)
+                attack2.miss();
+        }else attack2 = new Entity.Attack("Physical", "Tackle", "Null", 0, 0);
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
@@ -83,7 +90,7 @@ public class Battlefield {
     public void showHistory() throws InterruptedException {
         System.out.println("Showing History:");
         for (Round round : history) {
-            System.out.println(round.print());
+            break;
         }
     }
     public List<String> getPokeHP(){return PokeHP;}
@@ -443,60 +450,50 @@ public class Battlefield {
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
             //end round
+
+            //Print
+
             System.out.print(attacker.getName());
             System.out.print(" used ");
             System.out.print(attackerAttack.getDescription());
             Thread.sleep(1000);
-            if (!attackerAttack.missed()){
-                System.out.print(" and dealt ");
-                System.out.print(d1);
-                System.out.print(" of damage!\n");
+            if (!attackerAttack.missed()) {
+                if(defenderAttack.getType() == "Status")
+                    System.out.println(" and improved itself!");
+                else {
+                    System.out.print(" and dealt ");
+                    System.out.print(d1);
+                    System.out.print(" of damage!\n");
+                }
                 if (defender.isKO()) {
-                    System.out.println(defender.getName());
-                    System.out.println(" is knocked out ");
+                    System.out.print(defender.getName());
+                    System.out.println(" is knocked out!");
                 } else System.out.println(defender.getHP());
-            } else System.out.println(" but missed!");
+            } else
+                System.out.println(" but missed!");
             Thread.sleep(2000);
             System.out.print(defender.getName());
             System.out.print(" used ");
             System.out.print(defenderAttack.getDescription());
             Thread.sleep(1000);
-            if (!defenderAttack.missed()) {
-                System.out.print(" and dealt ");
-                System.out.print(d2);
-                System.out.print(" of damage!\n");
-                if (attacker.isKO()) {
-                    System.out.println(attacker.getName());
-                    System.out.println(" is knocked out ");
-                } else System.out.println(attacker.getHP());
-            } else System.out.println(" but missed!");
+            if (!defender.isKO()) {
+                if (!defenderAttack.missed()) {
+                    if (defenderAttack.getType() == "Status")
+                        System.out.println(" and improved itself!");
+                    else {
+                        System.out.print(" and dealt ");
+                        System.out.print(d2);
+                        System.out.println(" of damage!");
+                    }
+                    if (attacker.isKO()) {
+                        System.out.print(attacker.getName());
+                        System.out.println(" is knocked out!");
+                    } else System.out.println(attacker.getHP());
+                } else System.out.println(" but missed!");
+            } else System.out.println(" but is knocked out!");
 
-            //listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
 
-        }
-        public boolean print() throws InterruptedException {
-            System.out.print(e1.getName());
-            System.out.print(" used ");
-            System.out.print(c1.getDescription());
-            Thread.sleep(1000);
-            if (!c1.missed()) {
-                System.out.print(" and dealt ");
-                System.out.print(d1);
-                System.out.print(" of damage!\n");
-            } else System.out.println(" but missed!");
-            Thread.sleep(2000);
-            System.out.print(e2.getName());
-            System.out.print(" used ");
-            System.out.print(c2.getDescription());
-            Thread.sleep(1000);
-            if (!c2.missed()) {
-            System.out.print(" and dealt ");
-            System.out.print(d2);
-            System.out.print(" of damage!\n");
-            } else System.out.println(" but missed!");
-
-            return false;
         }
     }
 }
