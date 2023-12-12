@@ -154,6 +154,9 @@ public class Battlefield {
         winner = i;
         makeGameOver();
     }
+    public int getWinner(){
+        return winner;
+    }
 
     public class Round {
         private Entity e1, e2;
@@ -389,10 +392,13 @@ public class Battlefield {
                     if (!player1.getP(2).isKO()) {
                         e1 = player1.getP(2);
                         active1 = player1.getP(2);
+                        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+
                     }
                     else if (!player1.getP(3).isKO()) {
                         e1 = player1.getP(3);
                         active1 = player1.getP(3);
+                        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
                     }
                         else GAMEOVER(2);
                 } else {
@@ -412,10 +418,12 @@ public class Battlefield {
                     if (!player1.getP(2).isKO()) {
                         e1 = player1.getP(2);
                         active1 = player1.getP(2);
+                        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
                     }
                     else if (!player1.getP(3).isKO()) {
                         e1 = player1.getP(3);
                         active1 = player1.getP(3);
+                        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
                     }
                     else GAMEOVER(2);
                 } else {

@@ -3,9 +3,11 @@ package com.l13gr03.pets.controller;
 import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.Battlefield;
+import com.l13gr03.pets.model.menu.GameOver;
 import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
+import com.l13gr03.pets.states.GameOverState;
 import com.l13gr03.pets.states.MenuState;
 import com.l13gr03.pets.states.SettingsState;
 import com.l13gr03.pets.states.TeamSelectState;
@@ -38,18 +40,27 @@ public class BattleController extends Controller<Battlefield> {
                 break;
             case SELECT:
                 if (getModel().getCurrentEntry()==0){
-                    getModel().attack(1, getModel().getCurrentEntry2());
-                    getModel().attack(2,0);
+                    if (getModel().getCurrentEntry2()>0) {
+                        getModel().attack(1, getModel().getCurrentEntry2());
+                        getModel().attack(2, 0);
+                    }
                 }else{
-
-                    getModel().change(1, getModel().getCurrentEntry2()+1);
-                    getModel().change(2,1);
+                    if (getModel().getCurrentEntry2()>0) {
+                        getModel().change(1, getModel().getCurrentEntry2() + 1);
+                        getModel().change(2, 1);
+                    }
                 }
-                Battlefield.Round round=getModel().newRound();
-                try {
-                    round.playRound();
-                }catch (InterruptedException e){
-                    System.out.println("Error");
+                if (getModel().getCurrentEntry2()>0) {
+                    Battlefield.Round round = getModel().newRound();
+                    try {
+                        round.playRound();
+                    }catch (InterruptedException e){
+                        System.out.println("Error");
+                    }
+                }
+                if (getModel().isGameOver()){
+
+                    game.setState(new GameOverState(new GameOver(getModel().getWinner())));
                 }
 
                 break;
