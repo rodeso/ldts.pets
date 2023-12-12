@@ -24,7 +24,7 @@ public class Battlefield {
     private List<Round> history;
     private Position position1, position2;
     private Party player1, player2;
-    private Entity active1, active2;
+    private Entity active1 = player1.getP(1), active2 = player2.getP(1);
     private boolean change1, change2;
     private Entity.Attack attack1, attack2;
 
