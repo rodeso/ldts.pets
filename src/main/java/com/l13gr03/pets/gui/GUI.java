@@ -13,5 +13,5 @@ public interface GUI {
     public void close() throws IOException;
     public int getWidth();
     public int getHeight();
-    enum ACTION{UP,DOWN,LEFT,RIGHT,SELECT,QUIT,NONE}
+    enum ACTION{UP,DOWN,LEFT,RIGHT,SELECT,QUIT,NONE,ESCAPE}
 }

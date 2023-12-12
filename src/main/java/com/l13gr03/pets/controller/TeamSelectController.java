@@ -3,6 +3,7 @@ package com.l13gr03.pets.controller;
 import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.Party;
+import com.l13gr03.pets.model.game.battle.bots.MediumCPU;
 import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
@@ -44,6 +45,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                 }
                 if (getModel().getCurrentColumn()==3){
                     Party party=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
+                    Party party1=new MediumCPU().createParty();
 
 
                     System.out.println(party.getP(1).getMove(0).getDescription());

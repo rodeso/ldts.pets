@@ -10,13 +10,15 @@ import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.StatusRandomizer;
 import com.l13gr03.pets.utils.random.TurnRandomizer;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
 
 public class Battlefield {
     private Round currentRound;
-    private int height, width;
+    private String Round;
+    private List<String> PokeHP;
+    private List<String> Option;
+    private String[] option2;
+
     private List<Round> history;
     private Position position1, position2;
     private Party player1, player2;
@@ -24,12 +26,13 @@ public class Battlefield {
     private boolean change1, change2;
     private Entity.Attack attack1, attack2;
 
-    public Battlefield(int h, int w, Party p1, Party p2) {
-        height = h;
-        width = w;
+    public Battlefield(Party p1, Party p2) {
         history = new Stack<>();
         player1 = p1;
         player2 = p2;
+        PokeHP= Arrays.asList(p1.getP(1).getName(),Integer.toString(p1.getP(1).getHP()),p2.getP(2).getName(),Integer.toString(p2.getP(2).getHP()));
+        Round="ROUND 0";
+        Option= Arrays.asList("Attack","Switch");
     }
     public int getRoundCounter() {
         return history.size();
@@ -39,12 +42,14 @@ public class Battlefield {
         if (change1) {attack1.miss();}
         if (change2) {attack2.miss();}
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
+        PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
+        Round="ROUND "+ Integer.toString(getRoundCounter());
     }
     public void change(int player, int entity) {
         if (player == 1) {
             active1 = player1.getP(entity);
-            change1 = false;
+            change1 = true;
         }
         if (player == 2) {
             active2 = player2.getP(entity);
