@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Battlefield {
     private Round currentRound;
-    private String Round;
+    private String round;
     private List<String> PokeHP;
     private List<String> Option;
     private String[] option2;
@@ -31,7 +31,7 @@ public class Battlefield {
         player1 = p1;
         player2 = p2;
         PokeHP= Arrays.asList(p1.getP(1).getName(),Integer.toString(p1.getP(1).getHP()),p2.getP(2).getName(),Integer.toString(p2.getP(2).getHP()));
-        Round="ROUND 0";
+        round="ROUND 0";
         Option= Arrays.asList("Attack","Switch");
     }
     public int getRoundCounter() {
@@ -44,7 +44,7 @@ public class Battlefield {
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
-        Round="ROUND "+ Integer.toString(getRoundCounter());
+        round="ROUND "+ Integer.toString(getRoundCounter());
     }
     public void change(int player, int entity) {
         if (player == 1) {
@@ -72,6 +72,9 @@ public class Battlefield {
             System.out.println(round.print());
         }
     }
+    public List<String> getPokeHP(){return PokeHP;}
+    public List<String> getOption(){return Option;}
+    public String getRound(){return round;}
 
 
     public class Round {
