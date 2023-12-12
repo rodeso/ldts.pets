@@ -40,17 +40,17 @@ public class BattleController extends Controller<Battlefield> {
                 break;
             case SELECT:
                 if (getModel().getCurrentEntry()==0){
-                    if (getModel().getCurrentEntry2()>0) {
+                    if (getModel().getCurrentEntry2()>=0) {
                         getModel().attack(1, getModel().getCurrentEntry2());
                         getModel().attack(2, 0);
                     }
                 }else{
-                    if (getModel().getCurrentEntry2()>0) {
+                    if (getModel().getCurrentEntry2()>=0) {
                         getModel().change(1, getModel().getCurrentEntry2() + 1);
                         getModel().change(2, 1);
                     }
                 }
-                if (getModel().getCurrentEntry2()>0) {
+                if (getModel().getCurrentEntry2()>=0) {
                     Battlefield.Round round = getModel().newRound();
                     try {
                         round.playRound();
@@ -59,7 +59,6 @@ public class BattleController extends Controller<Battlefield> {
                     }
                 }
                 if (getModel().isGameOver()){
-
                     game.setState(new GameOverState(new GameOver(getModel().getWinner())));
                 }
 
