@@ -19,6 +19,7 @@ public class Battlefield {
     private List<String> Option;
     private List<String> option2;
     private int currentEntry=0;
+    private int currentEntry2=-1;
     private int currentColumn=0;
 
     private List<Round> history;
@@ -34,7 +35,7 @@ public class Battlefield {
         player2 = p2;
         active1= player1.getP(1);
         active2 = player2.getP(1);
-        PokeHP= Arrays.asList(p1.getP(1).getName(),Integer.toString(p1.getP(1).getHP()),p2.getP(2).getName(),Integer.toString(p2.getP(2).getHP()));
+        PokeHP= Arrays.asList(p1.getP(1).getName(),Integer.toString(p1.getP(1).getHP()),p2.getP(1).getName(),Integer.toString(p2.getP(1).getHP()));
         round="ROUND 0";
         Option= Arrays.asList("Attack","Switch");
         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
@@ -104,10 +105,37 @@ public class Battlefield {
             option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
         }
     }
+    public void nextEntry2() {
+        currentEntry2++;
+        if (currentEntry2 > this.option2.size() - 1)
+            currentEntry2 = 0;
+    }
+
+    public void previousEntry2() {
+        currentEntry2--;
+        if (currentEntry2 < 0)
+            currentEntry2 = this.option2.size() - 1;
+    }
+    public void nextColumn(){
+        currentColumn++;
+        currentEntry2=0;
+    }
+    public void previousColumn(){
+        currentColumn--;
+        currentEntry2=-1;
+    }
     public String OptionSelected(){
         return Option.get(currentEntry);
     }
-
+    public String Option2Selected(){
+        return option2.get(currentEntry2);
+    }
+    public int getCurrentColumn(){return currentColumn;}
+    public int getCurrentEntry2(){return currentEntry2;}
+    public boolean isSelected(int i) {
+        return currentEntry2 == i;
+    }
+    public int getCurrentEntry(){return currentEntry;}
 
     public class Round {
         private Entity e1, e2;

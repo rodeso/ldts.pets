@@ -26,7 +26,7 @@ public class BattleViewer extends Viewer<Battlefield> {
             if (i==1){
                 gui.drawText(
                         new Position(Poke1X,Poke1Y+i), getModel().getPokeHP().get(i),
-                        "#FF0000");
+                        "#00FFFF");
             }
         }
         int Poke2x=gui.getWidth()-getModel().getPokeHP().get(2).length()-2;
@@ -38,7 +38,7 @@ public class BattleViewer extends Viewer<Battlefield> {
             if (i==1){
                 gui.drawText(
                         new Position(Poke2x,Poke2y+i), getModel().getPokeHP().get(2+i),
-                        "#FF0000");
+                        "#00FFFF");
             }
         }
         for (int i=0;i<gui.getWidth();i++ ){
@@ -63,9 +63,23 @@ public class BattleViewer extends Viewer<Battlefield> {
         int OP2X= gui.getWidth()/3;
         int OP2Y= gui.getHeight()*2/3+5;
         for (int i=0;i<getModel().getOption2().size();i++){
-            gui.drawText(
-                    new Position(OP2X, OP2Y + i), getModel().getOption2().get(i),
-                    "#FFFFFF");
+            if (getModel().getCurrentEntry2()>=0) {
+                if (getModel().isSelected(i)) {
+                    String text = ">" + getModel().getOption2().get(i);
+                    gui.drawText(
+                            new Position(OP2X - 1, OP2Y + i), text,
+                            "#FFD700");
+                } else {
+                    gui.drawText(
+                            new Position(OP2X, OP2Y + i), getModel().getOption2().get(i),
+                            "#FFFFFF");
+                }
+            }
+            else{
+                gui.drawText(
+                        new Position(OP2X, OP2Y + i), getModel().getOption2().get(i),
+                        "#FFFFFF");
+            }
         }
     }
 }

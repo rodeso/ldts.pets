@@ -21,17 +21,28 @@ public class BattleController extends Controller<Battlefield> {
     public void step(Game game, GUI.ACTION action, double time) throws IOException {
         switch (action){
             case UP:
-                getModel().previousEntry();
+                if (getModel().getCurrentColumn()==0) {
+                    getModel().previousEntry();
+                }
+                else{
+                    getModel().previousEntry2();
+                }
                 break;
             case DOWN:
-                getModel().nextEntry();
+                if (getModel().getCurrentColumn()==0) {
+                    getModel().nextEntry();
+                }
+                else {
+                    getModel().nextEntry2();
+                }
                 break;
             case SELECT:
-                if (getModel().OptionSelected()=="Attack"){
-                    getModel().attack(1,0);
+                if (getModel().getCurrentEntry()==0){
+                    getModel().attack(1, getModel().getCurrentEntry2());
                     getModel().attack(2,0);
                 }else{
-                    getModel().change(1,1);
+
+                    getModel().change(1, getModel().getCurrentEntry2()+1);
                     getModel().change(2,1);
                 }
                 Battlefield.Round round=getModel().newRound();
@@ -47,6 +58,15 @@ public class BattleController extends Controller<Battlefield> {
                 break;
             case ESCAPE:
                 game.setState(new MenuState(new Menu()));
+                break;
+            case RIGHT:
+                if (getModel().getCurrentColumn()==0)
+                    getModel().nextColumn();
+                break;
+            case LEFT:
+                if (getModel().getCurrentColumn()==1)
+                    getModel().previousColumn();
+                break;
         }
     }
 }

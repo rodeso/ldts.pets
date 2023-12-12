@@ -49,6 +49,9 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     Party party=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
                     Party party1=new MediumCPU().createParty();
                     game.setState(new BattleState(new Battlefield(party,party1)));
+                    System.out.println(party1.getP(1).getName());
+                    System.out.println(party1.getP(2).getName());
+                    System.out.println(party1.getP(3).getName());
 
 
                     /*System.out.println(party.getP(1).getMove(0).getDescription());
