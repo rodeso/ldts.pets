@@ -18,6 +18,8 @@ public class Battlefield {
     private List<String> PokeHP;
     private List<String> Option;
     private String[] option2;
+    private int currentEntry=0;
+    private int currentColumn=0;
 
     private List<Round> history;
     private Position position1, position2;
@@ -38,13 +40,14 @@ public class Battlefield {
         return history.size();
     }
     //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
-    public void newRound() {
+    public Round newRound() {
         if (change1) {attack1.miss();}
         if (change2) {attack2.miss();}
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
         round="ROUND "+ Integer.toString(getRoundCounter());
+        return currentRound;
     }
     public void change(int player, int entity) {
         if (player == 1) {
@@ -75,6 +78,19 @@ public class Battlefield {
     public List<String> getPokeHP(){return PokeHP;}
     public List<String> getOption(){return Option;}
     public String getRound(){return round;}
+    public void nextEntry() {
+        currentEntry++;
+        if (currentEntry > this.Option.size() - 1)
+            currentEntry = 0;
+    }
+    public void previousEntry() {
+        currentEntry--;
+        if (currentEntry < 0)
+            currentEntry = this.Option.size() - 1;
+    }
+    public String OptionSelected(){
+        return Option.get(currentEntry);
+    }
 
 
     public class Round {
