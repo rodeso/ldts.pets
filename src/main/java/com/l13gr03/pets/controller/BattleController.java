@@ -30,6 +30,9 @@ public class BattleController extends Controller<Battlefield> {
                 if (getModel().OptionSelected()=="Attack"){
                     getModel().attack(1,0);
                     getModel().attack(2,0);
+                }else{
+                    getModel().change(1,1);
+                    getModel().change(2,1);
                 }
                 Battlefield.Round round=getModel().newRound();
                 try {

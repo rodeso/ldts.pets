@@ -60,5 +60,12 @@ public class BattleViewer extends Viewer<Battlefield> {
                         "#FFFFFF");
             }
         }
+        int OP2X= gui.getWidth()/3;
+        int OP2Y= gui.getHeight()*2/3+5;
+        for (int i=0;i<getModel().getOption2().size();i++){
+            gui.drawText(
+                    new Position(OP2X, OP2Y + i), getModel().getOption2().get(i),
+                    "#FFFFFF");
+        }
     }
 }

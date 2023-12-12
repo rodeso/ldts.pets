@@ -17,14 +17,14 @@ public class Battlefield {
     private String round;
     private List<String> PokeHP;
     private List<String> Option;
-    private String[] option2;
+    private List<String> option2;
     private int currentEntry=0;
     private int currentColumn=0;
 
     private List<Round> history;
     private Position position1, position2;
     private Party player1, player2;
-    private Entity active1 = player1.getP(1), active2 = player2.getP(1);
+    private Entity active1, active2;
     private boolean change1, change2;
     private Entity.Attack attack1, attack2;
 
@@ -32,9 +32,12 @@ public class Battlefield {
         history = new Stack<>();
         player1 = p1;
         player2 = p2;
+        active1= player1.getP(1);
+        active2 = player2.getP(1);
         PokeHP= Arrays.asList(p1.getP(1).getName(),Integer.toString(p1.getP(1).getHP()),p2.getP(2).getName(),Integer.toString(p2.getP(2).getHP()));
         round="ROUND 0";
         Option= Arrays.asList("Attack","Switch");
+        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
     }
     public int getRoundCounter() {
         return history.size();
@@ -76,17 +79,30 @@ public class Battlefield {
         }
     }
     public List<String> getPokeHP(){return PokeHP;}
+    public void setPokeHP(List<String> list){
+        PokeHP=list;
+    }
     public List<String> getOption(){return Option;}
+    public List<String> getOption2(){return option2;}
     public String getRound(){return round;}
     public void nextEntry() {
         currentEntry++;
-        if (currentEntry > this.Option.size() - 1)
+        if (currentEntry > this.Option.size() - 1) {
             currentEntry = 0;
+            option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+        }else{
+            option2= Arrays.asList(player1.getP(1).getName(),player1.getP(2).getName(),player1.getP(3).getName());
+        }
     }
     public void previousEntry() {
         currentEntry--;
-        if (currentEntry < 0)
+        if (currentEntry < 0) {
             currentEntry = this.Option.size() - 1;
+            option2= Arrays.asList(player1.getP(1).getName(),player1.getP(2).getName(),player1.getP(3).getName());
+        }
+        else{
+            option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+        }
     }
     public String OptionSelected(){
         return Option.get(currentEntry);
@@ -251,6 +267,9 @@ public class Battlefield {
 
                 }
             }
+            List <String> listHP;
+            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
+            setPokeHP(listHP);
 
             // Check if the defender is still alive and let it attack
             if (!defenderAttack.missed()) {
@@ -321,6 +340,8 @@ public class Battlefield {
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
             //end round
             print();
+            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
+            setPokeHP(listHP);
         }
         public boolean print() throws InterruptedException {
             System.out.print(e1.getName());
