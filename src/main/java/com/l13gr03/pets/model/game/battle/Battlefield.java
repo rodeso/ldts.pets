@@ -26,7 +26,7 @@ public class Battlefield {
     private Position position1, position2;
     private Party player1, player2;
     private Entity active1, active2;
-    private boolean change1, change2;
+    private boolean change1 = false, change2 = false;
     private Entity.Attack attack1, attack2;
 
     private boolean isGameOver = false;
@@ -48,15 +48,6 @@ public class Battlefield {
     }
     //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
     public Round newRound() {
-        if (change1) {
-            if (getRoundCounter() > 0)
-                attack1.miss();
-            else attack1 = new Entity.Attack("Physical", "Tackle", "Null", 0, 0);
-        }
-        if (change2) {
-            if (getRoundCounter() > 0)
-                attack2.miss();
-        }else attack2 = new Entity.Attack("Physical", "Tackle", "Null", 0, 0);
         currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
@@ -67,13 +58,14 @@ public class Battlefield {
         if (player == 1) {
             if (!player1.getP(entity).isKO()) {
                 active1 = player1.getP(entity);
+                attack1 = new Entity.Attack("Physical", "Change", "Null", 0, 0);
                 change1 = true;
             }
         }
         if (player == 2) {
             if (!player1.getP(entity).isKO()) {
                 active2 = player2.getP(entity);
-                change2 = true;
+                attack2 = new Entity.Attack("Physical", "Change", "Null", 0, 0);
             }
         }
     }
@@ -189,13 +181,13 @@ public class Battlefield {
             if (e1.getSpd() > e2.getSpd() || (e1.getSpd() == e2.getSpd() && random.decide())) {
                 attacker = e1;
                 defender = e2;
-                attackerAttack = c1;
-                defenderAttack = c2;
+                attackerAttack = c1.copy();
+                defenderAttack = c2.copy();
             } else {
                 attacker = e2;
                 defender = e1;
-                attackerAttack = c2;
-                defenderAttack = c1;
+                attackerAttack = c2.copy();
+                defenderAttack = c1.copy();
             }
 
             //determine if attack hits
@@ -257,7 +249,10 @@ public class Battlefield {
                         break;
                 }
             }
-
+            if (Objects.equals(attackerAttack.getDescription(), "Change"))
+                attackerAttack.miss();
+            if (Objects.equals(defenderAttack.getDescription(), "Change"))
+                defenderAttack.miss();
 
             // Calculate and apply damage to the opposing entity
             Calculator adv = new AdvantageCalculator();
@@ -407,6 +402,11 @@ public class Battlefield {
                         active1 = player1.getP(3);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
                     }
+                    else if (!player1.getP(1).isKO()) {
+                        e1 = player1.getP(1);
+                        active1 = player1.getP(1);
+                        option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+                    }
                         else GAMEOVER(2);
                 } else {
                     if (!player2.getP(2).isKO()) {
@@ -417,10 +417,15 @@ public class Battlefield {
                         e2 = player2.getP(3);
                         active2 = player2.getP(3);
                     }
+                    else if (!player2.getP(1).isKO()) {
+                        e2 = player2.getP(1);
+                        active2 = player2.getP(1);
+                        option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
+                    }
                     else GAMEOVER(1);
                 }
             } else if (defender.isKO()) {
-                //force change attacker
+                //force change defender
                 if (defender == e1) {
                     if (!player1.getP(2).isKO()) {
                         e1 = player1.getP(2);
@@ -432,6 +437,11 @@ public class Battlefield {
                         active1 = player1.getP(3);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
                     }
+                    else if (!player1.getP(1).isKO()) {
+                        e1 = player1.getP(1);
+                        active1 = player1.getP(1);
+                        option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+                    }
                     else GAMEOVER(2);
                 } else {
                     if (!player2.getP(2).isKO()) {
@@ -441,6 +451,11 @@ public class Battlefield {
                     else if (!player2.getP(3).isKO()) {
                         e2 = player2.getP(3);
                         active2 = player2.getP(3);
+                    }
+                    else if (!player2.getP(1).isKO()) {
+                        e2 = player2.getP(1);
+                        active2 = player2.getP(1);
+                        option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
                     }
                     else GAMEOVER(1);
                 }
@@ -452,45 +467,53 @@ public class Battlefield {
             //end round
 
             //Print
-
-            System.out.print(attacker.getName());
-            System.out.print(" used ");
-            System.out.print(attackerAttack.getDescription());
-            Thread.sleep(1000);
-            if (!attackerAttack.missed()) {
-                if(defenderAttack.getType() == "Status")
-                    System.out.println(" and improved itself!");
-                else {
-                    System.out.print(" and dealt ");
-                    System.out.print(d1);
-                    System.out.print(" of damage!\n");
-                }
-                if (defender.isKO()) {
-                    System.out.print(defender.getName());
-                    System.out.println(" is knocked out!");
-                } else System.out.println(defender.getHP());
-            } else
-                System.out.println(" but missed!");
-            Thread.sleep(2000);
-            System.out.print(defender.getName());
-            System.out.print(" used ");
-            System.out.print(defenderAttack.getDescription());
-            Thread.sleep(1000);
-            if (!defender.isKO()) {
-                if (!defenderAttack.missed()) {
-                    if (defenderAttack.getType() == "Status")
+            if (Objects.equals(attackerAttack.getDescription(), "Change")) {
+                System.out.print(attacker.getName());
+                System.out.println(" switched in!");
+            } else {
+                System.out.print(attacker.getName());
+                System.out.print(" used ");
+                System.out.print(attackerAttack.getDescription());
+                Thread.sleep(1000);
+                if (!attackerAttack.missed()) {
+                    if (Objects.equals(attackerAttack.getType(), "Status"))
                         System.out.println(" and improved itself!");
                     else {
                         System.out.print(" and dealt ");
-                        System.out.print(d2);
-                        System.out.println(" of damage!");
+                        System.out.print(d1);
+                        System.out.print(" of damage!\n");
                     }
-                    if (attacker.isKO()) {
-                        System.out.print(attacker.getName());
+                    if (defender.isKO()) {
+                        System.out.print(defender.getName());
                         System.out.println(" is knocked out!");
-                    } else System.out.println(attacker.getHP());
+                    }
                 } else System.out.println(" but missed!");
-            } else System.out.println(" but is knocked out!");
+            }
+            Thread.sleep(2000);
+            if (Objects.equals(defenderAttack.getDescription(), "Change")) {
+                System.out.print(defender.getName());
+                System.out.println(" switched in!");
+            } else {
+                System.out.print(defender.getName());
+                System.out.print(" used ");
+                System.out.print(defenderAttack.getDescription());
+                Thread.sleep(1000);
+                if (!defender.isKO()) {
+                    if (!defenderAttack.missed()) {
+                        if (Objects.equals(defenderAttack.getType(), "Status"))
+                            System.out.println(" and improved itself!");
+                        else {
+                            System.out.print(" and dealt ");
+                            System.out.print(d2);
+                            System.out.println(" of damage!");
+                        }
+                        if (attacker.isKO()) {
+                            System.out.print(attacker.getName());
+                            System.out.println(" is knocked out!");
+                        }
+                    } else System.out.println(" but missed!");
+                } else System.out.println(" but is knocked out!");
+            }
 
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
 

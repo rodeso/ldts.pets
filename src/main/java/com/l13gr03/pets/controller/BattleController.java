@@ -14,7 +14,7 @@ import com.l13gr03.pets.states.TeamSelectState;
 
 import java.io.IOException;
 
-public class BattleController extends Controller<Battlefield> {
+public class    BattleController extends Controller<Battlefield> {
     public BattleController(Battlefield battlefield) {
         super(battlefield);
     }
@@ -47,7 +47,9 @@ public class BattleController extends Controller<Battlefield> {
                 }else{
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().change(1, getModel().getCurrentEntry2() + 1);
-                        getModel().change(2, 1);
+                        //getModel().change(2, 1);
+                        getModel().attack(2, 0);
+
                     }
                 }
                 if (getModel().getCurrentEntry2()>=0) {

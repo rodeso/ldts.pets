@@ -136,6 +136,9 @@ public abstract class Entity {
             elementId = eId;
 
         }
+        public Attack copy() {
+            return new Attack(this.type, this.description, this.attack_element, this.damage, this.elementId);
+        }
         public int getDamage() {
             return damage;
         }
