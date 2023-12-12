@@ -267,9 +267,10 @@ public class Battlefield {
 
                 }
             }
+            /*
             List <String> listHP;
-            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
-            setPokeHP(listHP);
+            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())); */
+            setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
 
             // Check if the defender is still alive and let it attack
             if (!defenderAttack.missed()) {
@@ -339,9 +340,28 @@ public class Battlefield {
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
             //end round
-            print();
-            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
-            setPokeHP(listHP);
+            System.out.print(attacker.getName());
+            System.out.print(" used ");
+            System.out.print(attackerAttack.getDescription());
+            Thread.sleep(1000);
+            if (!attackerAttack.missed()) {
+                System.out.print(" and dealt ");
+                System.out.print(d1);
+                System.out.print(" of damage!\n");
+            } else System.out.println(" but missed!");
+            Thread.sleep(2000);
+            System.out.print(defender.getName());
+            System.out.print(" used ");
+            System.out.print(defenderAttack.getDescription());
+            Thread.sleep(1000);
+            if (!defenderAttack.missed()) {
+                System.out.print(" and dealt ");
+                System.out.print(d2);
+                System.out.print(" of damage!\n");
+            } else System.out.println(" but missed!");
+
+            //listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
+            setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
         }
         public boolean print() throws InterruptedException {
             System.out.print(e1.getName());
