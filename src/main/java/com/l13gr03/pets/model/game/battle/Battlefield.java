@@ -58,12 +58,16 @@ public class Battlefield {
     }
     public void change(int player, int entity) {
         if (player == 1) {
-            active1 = player1.getP(entity);
-            change1 = true;
+            if (!player1.getP(entity).isKO()) {
+                active1 = player1.getP(entity);
+                change1 = true;
+            }
         }
         if (player == 2) {
-            active2 = player2.getP(entity);
-            change2 = true;
+            if (!player1.getP(entity).isKO()) {
+                active2 = player2.getP(entity);
+                change2 = true;
+            }
         }
     }
     public void attack(int player, int attack) {
@@ -382,31 +386,47 @@ public class Battlefield {
             if (attacker.isKO()) {
                 //force change attacker
                 if (attacker == e1) {
-                    if (!player1.getP(2).isKO())
-                        change(1, 2);
-                    else if (!player1.getP(3).isKO())
-                        change(1,3);
+                    if (!player1.getP(2).isKO()) {
+                        e1 = player1.getP(2);
+                        active1 = player1.getP(2);
+                    }
+                    else if (!player1.getP(3).isKO()) {
+                        e1 = player1.getP(3);
+                        active1 = player1.getP(3);
+                    }
                         else GAMEOVER(2);
                 } else {
-                    if (!player2.getP(2).isKO())
-                        change(2, 2);
-                    else if (!player2.getP(3).isKO())
-                        change(2, 3);
+                    if (!player2.getP(2).isKO()) {
+                        e2 = player2.getP(2);
+                        active2 = player2.getP(2);
+                    }
+                    else if (!player2.getP(3).isKO()) {
+                        e2 = player2.getP(3);
+                        active2 = player2.getP(3);
+                    }
                     else GAMEOVER(1);
                 }
             } else if (defender.isKO()) {
                 //force change attacker
                 if (defender == e1) {
-                    if (!player1.getP(2).isKO())
-                        change(1, 2);
-                    else if (!player1.getP(3).isKO())
-                        change(1, 3);
+                    if (!player1.getP(2).isKO()) {
+                        e1 = player1.getP(2);
+                        active1 = player1.getP(2);
+                    }
+                    else if (!player1.getP(3).isKO()) {
+                        e1 = player1.getP(3);
+                        active1 = player1.getP(3);
+                    }
                     else GAMEOVER(2);
                 } else {
-                    if (!player2.getP(2).isKO())
-                        change(2, 2);
-                    else if (!player2.getP(3).isKO())
-                        change(2, 3);
+                    if (!player2.getP(2).isKO()) {
+                        e2 = player2.getP(2);
+                        active2 = player2.getP(2);
+                    }
+                    else if (!player2.getP(3).isKO()) {
+                        e2 = player2.getP(3);
+                        active2 = player2.getP(3);
+                    }
                     else GAMEOVER(1);
                 }
             }
@@ -419,10 +439,14 @@ public class Battlefield {
             System.out.print(" used ");
             System.out.print(attackerAttack.getDescription());
             Thread.sleep(1000);
-            if (!attackerAttack.missed()) {
+            if (!attackerAttack.missed()){
                 System.out.print(" and dealt ");
                 System.out.print(d1);
                 System.out.print(" of damage!\n");
+                if (defender.isKO()) {
+                    System.out.println(defender.getName());
+                    System.out.println(" is knocked out ");
+                } else System.out.println(defender.getHP());
             } else System.out.println(" but missed!");
             Thread.sleep(2000);
             System.out.print(defender.getName());
@@ -433,6 +457,10 @@ public class Battlefield {
                 System.out.print(" and dealt ");
                 System.out.print(d2);
                 System.out.print(" of damage!\n");
+                if (attacker.isKO()) {
+                    System.out.println(attacker.getName());
+                    System.out.println(" is knocked out ");
+                } else System.out.println(attacker.getHP());
             } else System.out.println(" but missed!");
 
             //listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));

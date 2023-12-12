@@ -24,9 +24,10 @@ public class BiomorphicBeast extends Entity {
         if(this.getHP() > 0 && this.getHP() < 101){
             if(this.getHP() < 91){
                 setHP(getHP() + 10);
+            } else {
+                int res = 100 - getHP();
+                setHP(getHP() + res);
             }
-            int res = 100 - getHP();
-            setHP(getHP() + res);
         }
     }
 }
