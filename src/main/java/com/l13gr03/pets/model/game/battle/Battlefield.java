@@ -29,6 +29,9 @@ public class Battlefield {
     private boolean change1, change2;
     private Entity.Attack attack1, attack2;
 
+    private boolean isGameOver = false;
+    private int winner;
+
     public Battlefield(Party p1, Party p2) {
         history = new Stack<>();
         player1 = p1;
@@ -136,6 +139,17 @@ public class Battlefield {
         return currentEntry2 == i;
     }
     public int getCurrentEntry(){return currentEntry;}
+
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+    public void makeGameOver() {
+        isGameOver = true;
+    }
+    public void GAMEOVER(int i) {
+        winner = i;
+        makeGameOver();
+    }
 
     public class Round {
         private Entity e1, e2;
@@ -295,14 +309,12 @@ public class Battlefield {
 
                 }
             }
-            /*
-            List <String> listHP;
-            listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())); */
+            if (defender.getHP()==0) defender.makeKO();
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
 
             // Check if the defender is still alive and let it attack
             if (!defenderAttack.missed()) {
-                if (defender.getHP() > 0) {
+                if (!defender.isKO()) {
                     if (Objects.equals(defenderAttack.getType(), "Physical")) {
                         //if physical
                         double d = phy.execute(defenderAttack, defender, attacker);
@@ -364,6 +376,41 @@ public class Battlefield {
 
                 }
             }
+            if (attacker.getHP()==0) attacker.makeKO();
+            setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
+            //Force Changes
+            if (attacker.isKO()) {
+                //force change attacker
+                if (attacker == e1) {
+                    if (!player1.getP(2).isKO())
+                        change(1, 2);
+                    else if (!player1.getP(3).isKO())
+                        change(1,3);
+                        else GAMEOVER(2);
+                } else {
+                    if (!player2.getP(2).isKO())
+                        change(2, 2);
+                    else if (!player2.getP(3).isKO())
+                        change(2, 3);
+                    else GAMEOVER(1);
+                }
+            } else if (defender.isKO()) {
+                //force change attacker
+                if (defender == e1) {
+                    if (!player1.getP(2).isKO())
+                        change(1, 2);
+                    else if (!player1.getP(3).isKO())
+                        change(1, 3);
+                    else GAMEOVER(2);
+                } else {
+                    if (!player2.getP(2).isKO())
+                        change(2, 2);
+                    else if (!player2.getP(3).isKO())
+                        change(2, 3);
+                    else GAMEOVER(1);
+                }
+            }
+            setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
             //status conditions
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
@@ -390,6 +437,7 @@ public class Battlefield {
 
             //listHP=Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP()));
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
+
         }
         public boolean print() throws InterruptedException {
             System.out.print(e1.getName());

@@ -11,6 +11,7 @@ public abstract class Entity {
     private static boolean shiny = false;
     private boolean abilityState = false;
     private boolean condition = false; //false is no condition, true is either burn or poison
+    private boolean KO = false;
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
 
@@ -114,6 +115,8 @@ public abstract class Entity {
 
     public void setCondition() {condition = true;}
     public boolean hasCondition() {return condition;}
+    public boolean isKO() {return KO;}
+    public void makeKO() {KO = true;}
 
     public abstract void useAbility(int n);
 
