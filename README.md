@@ -23,7 +23,7 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 
 ### CONTROLS
 
-    The game is played using the `arrow keys` to move the cursor to the intended action.
+- The game is played using the `arrow keys` to move the cursor to the intended action.
 
 
 ### MEDIA
