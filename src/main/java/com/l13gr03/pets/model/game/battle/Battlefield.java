@@ -61,17 +61,19 @@ public class Battlefield {
         return currentRound;
     }
     public void change(int player, int entity) {
+        Entity.Attack c = new Entity.Attack("Physical", "Change", "Null", 0, 0);
         if (player == 1) {
             if (!player1.getP(entity).isKO()) {
                 active1 = player1.getP(entity);
-                attack1 = new Entity.Attack("Physical", "Change", "Null", 0, 0);
+                attack1 = c;
                 change1 = true;
             }
         }
         if (player == 2) {
             if (!player1.getP(entity).isKO()) {
                 active2 = player2.getP(entity);
-                attack2 = new Entity.Attack("Physical", "Change", "Null", 0, 0);
+                attack2 = c;
+                change2 = true;
             }
         }
     }
@@ -90,6 +92,20 @@ public class Battlefield {
         for (Round round : history) {
             break;
         }
+    }
+    public Entity getActive(int n) {
+        return switch (n) {
+            case 1 -> active1;
+            case 2 -> active2;
+            default -> throw new IllegalStateException("Unexpected value: " + n);
+        };
+    }
+    public Party getPlayer(int n) {
+        return switch (n) {
+            case 1 -> player1;
+            case 2 -> player2;
+            default -> throw new IllegalStateException("Unexpected value: " + n);
+        };
     }
     public List<String> getPokeHP(){return PokeHP;}
     public void setPokeHP(List<String> list){

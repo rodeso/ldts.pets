@@ -17,21 +17,19 @@ public class HardCPU extends CPU{
         super.createParty();
     }
 
-    public void change(Entity p1, Entity p2, Entity p3, Entity e) {
-        if (CHEAT_SHEET.get(p1.getId()) == e.getId()) {
-            Entity active1 = p1;
-            boolean change1 = true;
+    public int change(Party party, Entity e) {
+        if (CHEAT_SHEET.get(party.getP(1).getId()) == e.getId()) {
+            return 1;
         }
-        else if (CHEAT_SHEET.get(p2.getId()) == e.getId()) {
-            Entity active2 = p2;
-            boolean change2 = true;
+        else if (CHEAT_SHEET.get(party.getP(2).getId()) == e.getId()) {
+            return 2;
         }
-        else if (CHEAT_SHEET.get(p3.getId()) == e.getId()) {
-            Entity active3 = p3;
-            boolean change3 = true;
+        else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId()) {
+            return 3;
         }
+        else return 0;
     }
-    public boolean isDisavantaged(Entity e1, Entity e2){
+    public boolean isDisadvantaged(Entity e1, Entity e2){
         if (CHEAT_SHEET.get(e2.getId()) == e1.getId()){
             return true;
         }
@@ -57,24 +55,11 @@ public class HardCPU extends CPU{
         }
         return position;
     }
-    public Entity.Attack choseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
+    public int choseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
         if (whatIsBestAttack(attacks,e1,e2) < 4){
-            return attacks[whatIsBestAttack(attacks,e1,e2)];
+            return whatIsBestAttack(attacks,e1,e2);
         }
-        int n1 = random.nextInt(4);
-        if (n1 == 0) {
-            return attacks[0];
-        }
-        else if (n1 == 1) {
-            return attacks[1];
-        }
-        else if (n1 == 2) {
-            return attacks[2];
-        }
-        else if (n1 == 3) {
-            return attacks[3];
-        }
-        return null;
+        return random.nextInt(4);
     }
 }
 

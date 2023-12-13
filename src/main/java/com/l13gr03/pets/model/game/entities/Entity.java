@@ -83,6 +83,9 @@ public abstract class Entity {
             return attacks[n];
         else return null;
     }
+    public Entity.Attack[] getAttacks() {
+        return attacks;
+    }
     //Shiny Setter
     public void setShiny() {
         shiny = true;
