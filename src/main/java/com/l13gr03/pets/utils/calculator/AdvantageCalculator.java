@@ -16,6 +16,11 @@ public class AdvantageCalculator implements Calculator {
         put(6, 3);
         put(3, 4);
         put(4, 1);
+        put(8, 0);
+        put(9, 0);
+        put(10, 0);
+        put(11, 0);
+        put(12, 0);
     }};
 
     public double execute(Entity.Attack attackerAttack,Entity attacker, Entity defender) {
