@@ -8,7 +8,7 @@ import java.util.List;
 public class CyberneticCompanion extends Entity {
     private static final int id = 4;
     private static final String ability = "Metal Power"; //Boosts the physical attacks
-    private List<String> arte= Arrays.asList("M(>->)M");
+    private List<String> arte= Arrays.asList("","M(>->)M");
     private String color="#FFFF00";
 
     public CyberneticCompanion(String n) {
