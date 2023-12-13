@@ -88,5 +88,12 @@ public class BattleViewer extends Viewer<Battlefield> {
                     new Position(poke1X, poke1Y + i), getModel().getPoke1Arte().get(i),
                     getModel().getPoke1Color());
         }
+        int poke2X= gui.getWidth()- getModel().getPokeHP().get(2).length()-2-getModel().getPoke2Arte().get(1).length();
+        int poke2Y=5;
+        for (int i=0;i<getModel().getPoke2Arte().size();i++){
+            gui.drawText(
+                    new Position(poke2X, poke2Y + i), getModel().getPoke2Arte().get(i),
+                    getModel().getPoke2Color());
+        }
     }
 }
