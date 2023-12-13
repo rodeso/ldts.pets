@@ -2,11 +2,16 @@ package com.l13gr03.pets.model.game.entities.species;
 
 import com.l13gr03.pets.model.game.entities.Entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static java.lang.Integer.MAX_VALUE;
 
 public class ShadowSpecter extends Entity {
     private static final int id = 6;
     private static final String ability = "Shadow Sneak"; //Always attacks first
+    private List<String> arte= Arrays.asList(" ,_,","(º-º)");
+    private String color="#800080";
 
 
     public ShadowSpecter(String n) {
@@ -23,4 +28,8 @@ public class ShadowSpecter extends Entity {
     public void useAbility(int n){
         setSpd(MAX_VALUE);
     }
+    @Override
+    public List<String> getArte(){return arte;}
+    @Override
+    public String getColor(){return color;}
 }

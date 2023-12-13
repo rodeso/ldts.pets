@@ -2,10 +2,14 @@ package com.l13gr03.pets.model.game.entities.species;
 
 import com.l13gr03.pets.model.game.entities.Entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CelestialGuardian extends Entity {
     private static final int id = 3;
     private static final String ability = "Cosmic Mind"; //Boosts all special attacks
-
+    private List<String> arte= Arrays.asList(" \\_/","(^w^)" );
+    private String color="#00FF00";
 
     public CelestialGuardian(String n) {
         super(n);
@@ -24,4 +28,8 @@ public class CelestialGuardian extends Entity {
         setSAtk(r);
 
     }
+    @Override
+    public List<String> getArte(){return arte;}
+    @Override
+    public String getColor(){return color;}
 }

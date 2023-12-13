@@ -3,6 +3,8 @@ package com.l13gr03.pets.model.game.entities;
 import com.l13gr03.pets.model.Position;
 import com.l13gr03.pets.model.game.entities.moves.AttackFactory;
 
+import java.util.List;
+
 public abstract class Entity {
     private Position position;
     //Attributes
@@ -14,6 +16,8 @@ public abstract class Entity {
     private boolean KO = false;
     private int[] stats = new int[6];
     private Attack[] attacks = new Attack[4];
+    private List<String> arte;
+    private String color;
 
     //Methods
     public Entity(String n) {
@@ -164,5 +168,7 @@ public abstract class Entity {
             return miss;
         }
     }
+    public List<String> getArte(){return arte;}
+    public String getColor(){return color;}
 
 }

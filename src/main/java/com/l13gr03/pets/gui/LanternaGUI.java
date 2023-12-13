@@ -26,7 +26,7 @@ public class LanternaGUI implements GUI {
 
     public LanternaGUI(int width, int height, int font) throws IOException/*,FontFormatException, URISyntaxException*/ {
         x=width;y=height;
-        setFont(changeFont("src/main/java/resources/fonts/square.ttf", font));
+        setFont(changeFont("src/main/java/resources/fonts/regular.ttf", font));
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true,
                 AWTTerminalFontConfiguration.BoldMode.NOTHING, getFont());
         Terminal terminal = new DefaultTerminalFactory()

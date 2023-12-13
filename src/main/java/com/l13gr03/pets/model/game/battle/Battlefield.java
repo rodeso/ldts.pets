@@ -31,6 +31,10 @@ public class Battlefield {
 
     private boolean isGameOver = false;
     private int winner;
+    private List<String> poke1Arte;
+    private List<String> poke2Arte;
+    private String poke1Color;
+    private String poke2Color;
 
     public Battlefield(Party p1, Party p2) {
         history = new Stack<>();
@@ -42,6 +46,8 @@ public class Battlefield {
         round="ROUND 0";
         Option= Arrays.asList("Attack","Switch");
         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+        poke1Arte=active1.getArte();poke1Color=active1.getColor();
+        poke2Arte=active2.getArte();poke2Color=active2.getColor();
     }
     public int getRoundCounter() {
         return history.size();
@@ -88,6 +94,12 @@ public class Battlefield {
     public List<String> getPokeHP(){return PokeHP;}
     public void setPokeHP(List<String> list){
         PokeHP=list;
+    }
+    public void setPoke(List<String> poke1,List<String> poke2,String color1,String color2){
+        poke1Arte=poke1;
+        poke2Arte=poke2;
+        poke1Color=color1;
+        poke2Color=color2;
     }
     public List<String> getOption(){return Option;}
     public List<String> getOption2(){return option2;}
@@ -142,6 +154,10 @@ public class Battlefield {
         return currentEntry2 == i;
     }
     public int getCurrentEntry(){return currentEntry;}
+    public List<String> getPoke1Arte(){return poke1Arte;}
+    public List<String> getPoke2Arte(){return poke2Arte;}
+    public String getPoke1Color(){return poke1Color;}
+    public String getPoke2Color(){return poke2Color;}
 
     public boolean isGameOver() {
         return isGameOver;
@@ -320,7 +336,7 @@ public class Battlefield {
             }
             if (defender.getHP()==0) defender.makeKO();
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
-
+            setPoke(e1.getArte(),e2.getArte(),e1.getColor(),e2.getColor());
             // Check if the defender is still alive and let it attack
             if (!defenderAttack.missed()) {
                 if (!defender.isKO()) {
@@ -387,6 +403,7 @@ public class Battlefield {
             }
             if (attacker.getHP()==0) attacker.makeKO();
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
+            setPoke(e1.getArte(),e2.getArte(),e1.getColor(),e2.getColor());
             //Force Changes
             if (attacker.isKO()) {
                 //force change attacker
@@ -461,6 +478,7 @@ public class Battlefield {
                 }
             }
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
+            setPoke(e1.getArte(),e2.getArte(),e1.getColor(),e2.getColor());
             //status conditions
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
@@ -516,7 +534,7 @@ public class Battlefield {
             }
 
             setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
-
+            setPoke(e1.getArte(),e2.getArte(),e1.getColor(),e2.getColor());
         }
     }
 }

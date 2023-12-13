@@ -3,10 +3,14 @@ package com.l13gr03.pets.model.game.entities.species;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.entities.Entity;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class BiomorphicBeast extends Entity {
     private static final int id = 2;
     private static final String ability = "Nature's Gift"; //Regenerates a certain amount of health each round
-
+    private List<String> arte= Arrays.asList(".,.,.",")¥o´(" );
+    private String color="#A0522D";
 
     public BiomorphicBeast(String n) {
         super(n);
@@ -30,4 +34,7 @@ public class BiomorphicBeast extends Entity {
             }
         }
     }
+    @Override
+    public List<String> getArte(){return arte;}
+    public String getColor(){return color;}
 }
