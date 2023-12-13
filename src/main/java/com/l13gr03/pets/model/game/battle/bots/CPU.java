@@ -26,7 +26,7 @@ public abstract class CPU  {
     };
     public String getName(){return name;}
     public CPU(String n) {name = n;}
-    public abstract int choseAttack(Entity.Attack[] attacks,Entity e1, Entity e2);
+    public abstract int chooseAttack(Entity.Attack[] attacks,Entity e1, Entity e2);
 
     public Party createParty(){
         Randomizer r = new ThreeRandomizer();
@@ -105,7 +105,7 @@ public abstract class CPU  {
     public boolean isDisadvantaged(Entity e1, Entity e2) {
         return false;
     }
-    public int change(Party party, Entity e) {
+    public int change(Party party, Entity current, Entity e) {
         return 0;
     }
 }

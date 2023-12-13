@@ -26,7 +26,7 @@ public class MediumCPU extends CPU {
                 }
             return 4;
         }
-        public int choseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
+        public int chooseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
             if (isAttackSuperEffective(attacks,e2) < 4){
                 return isAttackSuperEffective(attacks,e2);
             } else {

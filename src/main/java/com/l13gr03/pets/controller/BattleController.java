@@ -42,22 +42,27 @@ public class    BattleController extends Controller<Battlefield> {
                 }
                 break;
             case SELECT:
-                CPU Robert = new MediumCPU();
+                CPU Robert = new HardCPU();
                 if (getModel().getCurrentEntry()==0){
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().attack(1, getModel().getCurrentEntry2());
-                        getModel().attack(2, Robert.choseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                        if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
+                            int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
+                            if (n>0) getModel().change(2, n);
+                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                        }
+                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
                     }
                 }
                 else{
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().change(1, getModel().getCurrentEntry2() + 1);
-                        if (Robert.isDisadvantaged(getModel().getActive(1), getModel().getActive(2))) {
-                            int n = Robert.change(getModel().getPlayer(2), getModel().getActive(1));
+                        if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
+                            int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
                             if (n>0) getModel().change(2, n);
-                            else getModel().attack(2, Robert.choseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
                         }
-                        else getModel().attack(2, Robert.choseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
                     }
                 }
                 if (getModel().getCurrentEntry2()>=0) {

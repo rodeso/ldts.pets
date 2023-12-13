@@ -192,7 +192,7 @@ public class Battlefield {
     public class Round {
         private Entity e1, e2;
         private Entity.Attack c1, c2;
-        private double d1, d2;
+        private int d1, d2;
         private int roundNumber;
         private Round(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int rn) {
             e1 = p1;
@@ -294,16 +294,16 @@ public class Battlefield {
                 if (Objects.equals(attackerAttack.getType(), "Physical")) {
                     //if physical
                     double d = phy.execute(attackerAttack, attacker, defender);
-                    d1 = d * adv.execute(attackerAttack, attacker, defender);
-                    int newDefenderHP = defender.getHP() - (int) d1;
+                    d1 = (int) (d * adv.execute(attackerAttack, attacker, defender));
+                    int newDefenderHP = defender.getHP() - d1;
                     //set new hp to the defending entity
                     defender.setHP(Math.max(newDefenderHP, 0));
 
                 } else if (Objects.equals(attackerAttack.getType(), "Special")) {
                     //if special
                     double d = spe.execute(attackerAttack, attacker, defender);
-                    d1 = d * adv.execute(attackerAttack, attacker, defender);
-                    int newDefenderHP = defender.getHP() - (int) d1;
+                    d1 = (int) (d * adv.execute(attackerAttack, attacker, defender));
+                    int newDefenderHP = defender.getHP() - d1;
                     //set new hp to the defending entity
                     defender.setHP(Math.max(newDefenderHP, 0));
                 } else if (Objects.equals(attackerAttack.getType(), "Status")) {
@@ -359,16 +359,16 @@ public class Battlefield {
                     if (Objects.equals(defenderAttack.getType(), "Physical")) {
                         //if physical
                         double d = phy.execute(defenderAttack, defender, attacker);
-                        d2 = d * adv.execute(defenderAttack, defender, attacker);
-                        int newDefenderHP = attacker.getHP() - (int) d2;
+                        d2 = (int) (d * adv.execute(defenderAttack, defender, attacker));
+                        int newDefenderHP = attacker.getHP() - d2;
                         //set new hp to the attacking entity
                         attacker.setHP(Math.max(newDefenderHP, 0));
 
                     } else if (Objects.equals(defenderAttack.getType(), "Special")) {
                         //if special
                         double d = spe.execute(defenderAttack, defender, attacker);
-                        d2 = d * adv.execute(defenderAttack, defender, attacker);
-                        int newDefenderHP = attacker.getHP() - (int) d2;
+                        d2 = (int) (d * adv.execute(defenderAttack, defender, attacker));
+                        int newDefenderHP = attacker.getHP() - d2;
                         //set new hp to the attacking entity
                         attacker.setHP(Math.max(newDefenderHP, 0));
                     } else if (Objects.equals(attackerAttack.getType(), "Status")) {

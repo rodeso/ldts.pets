@@ -17,14 +17,14 @@ public class HardCPU extends CPU{
         super.createParty();
     }
 
-    public int change(Party party, Entity e) {
-        if (CHEAT_SHEET.get(party.getP(1).getId()) == e.getId()) {
+    public int change(Party party, Entity current, Entity e) {
+        if (CHEAT_SHEET.get(party.getP(1).getId()) == e.getId() && party.getP(1) != current) {
             return 1;
         }
-        else if (CHEAT_SHEET.get(party.getP(2).getId()) == e.getId()) {
+        else if (CHEAT_SHEET.get(party.getP(2).getId()) == e.getId() && party.getP(2) != current) {
             return 2;
         }
-        else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId()) {
+        else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId() && party.getP(3) != current) {
             return 3;
         }
         else return 0;
@@ -55,7 +55,7 @@ public class HardCPU extends CPU{
         }
         return position;
     }
-    public int choseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
+    public int chooseAttack(Entity.Attack[] attacks,Entity e1,Entity e2){
         if (whatIsBestAttack(attacks,e1,e2) < 4){
             return whatIsBestAttack(attacks,e1,e2);
         }
