@@ -23,7 +23,7 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 
 ### CONTROLS
 
-    The game is played using the `arrow keys` to move the cursor to the intended action.
+- The game is played using the `arrow keys` to move the cursor to the intended action.
 
 
 ### MEDIA
@@ -43,7 +43,7 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 | ![blastem](docs/screenshots/blastem.png) | ![angree](docs/screenshots/angree.png) | ![metagrosso](docs/screenshots/metagrosso.png) | ![doxxis](docs/screenshots/doxxis.png) | ![nekizal](docs/screenshots/nekizal.png) | ![nocturnyx](docs/screenshots/nocturnyx.png) | ![big7](docs/screenshots/big7.png) |
 
 
-## IMPLEMENTED FEATURES
+## Implemented Features
 
 - **Choose Your Own Team** - Each Player can create their dream Team by picking their favourites from the great Pet selection.
 - **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
