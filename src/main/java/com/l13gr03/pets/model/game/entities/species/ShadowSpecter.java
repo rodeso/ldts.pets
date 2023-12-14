@@ -16,7 +16,7 @@ public class ShadowSpecter extends Entity {
 
     public ShadowSpecter(String n) {
         super(n);
-        super.setStats(new int[]{69, 150, 70, 121, 70, 120}); //Mega Absol +35
+        super.setStats(new int[]{69, 150, 70, 90, 70, 120}); //Mega Absol +35
     }
     @Override
     public int getId() {

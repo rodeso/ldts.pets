@@ -13,7 +13,7 @@ public class CelestialGuardian extends Entity {
 
     public CelestialGuardian(String n) {
         super(n);
-        super.setStats(new int[]{50, 150, 50, 150, 50, 150}); //Deoxys
+        super.setStats(new int[]{50, 80, 50, 150, 50, 100}); //Deoxys
     }
     @Override
     public int getId() {

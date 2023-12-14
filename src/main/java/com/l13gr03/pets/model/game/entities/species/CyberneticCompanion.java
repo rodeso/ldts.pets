@@ -13,7 +13,7 @@ public class CyberneticCompanion extends Entity {
 
     public CyberneticCompanion(String n) {
         super(n);
-        super.setStats(new int[]{80, 135, 130, 95, 90, 70}); //Metagross
+        super.setStats(new int[]{130, 110, 130, 70, 90, 70}); //Metagross
     }
     @Override
     public int getId() {

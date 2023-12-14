@@ -14,7 +14,7 @@ public class BiomorphicBeast extends Entity {
 
     public BiomorphicBeast(String n) {
         super(n);
-        super.setStats(new int[]{100, 80, 110, 110, 120, 80}); //Mega Venusaur -25
+        super.setStats(new int[]{100, 70, 110, 100, 120, 80}); //Mega Venusaur -25
     }
     @Override
     public int getId() {

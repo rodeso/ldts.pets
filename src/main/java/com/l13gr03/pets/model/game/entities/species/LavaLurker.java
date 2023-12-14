@@ -15,7 +15,7 @@ public class LavaLurker extends Entity {
 
     public LavaLurker(String n) {
         super(n);
-        super.setStats(new int[]{80, 145, 80, 125, 70, 100}); //Mega Blaziken -30
+        super.setStats(new int[]{70, 145, 80, 100, 70, 100}); //Mega Blaziken -30
     }
     @Override
     public int getId() {
