@@ -6,11 +6,9 @@ import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.battle.bots.MediumCPU;
 import com.l13gr03.pets.model.menu.Menu;
-import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
 import com.l13gr03.pets.states.BattleState;
 import com.l13gr03.pets.states.MenuState;
-import com.l13gr03.pets.states.SettingsState;
 
 import java.io.IOException;
 
@@ -50,7 +48,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     Party party1=new MediumCPU().createParty();
                     game.setState(new BattleState(new Battlefield(party,party1)));
 
-                    /*
+
 
                     System.out.println(party1.getP(1).getName());
                     System.out.println(party1.getP(2).getName());
@@ -68,7 +66,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     System.out.println(party.getP(3).getMove(0).getDescription());
                     System.out.println(party.getP(3).getMove(1).getDescription());
                     System.out.println(party.getP(3).getMove(2).getDescription());
-                    System.out.println(party.getP(3).getMove(3).getDescription());*/
+                    System.out.println(party.getP(3).getMove(3).getDescription());
 
                 }
                 break;

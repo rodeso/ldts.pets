@@ -499,7 +499,10 @@ public class Battlefield {
             if (attacker.hasCondition()) attacker.setHP(attacker.getHP() - 5);
             if (defender.hasCondition()) defender.setHP(defender.getHP() - 5);
             //end round
-
+            if (defender.getHP()==0) defender.makeKO();
+            if (attacker.getHP()==0) attacker.makeKO();
+            setPokeHP(Arrays.asList(e1.getName(),Integer.toString(e1.getHP()),e2.getName(),Integer.toString(e2.getHP())));
+            setPoke(e1.getArte(),e2.getArte(),e1.getColor(),e2.getColor());
             //Print
             if (Objects.equals(attackerAttack.getDescription(), "Change")) {
                 System.out.print(attacker.getName());

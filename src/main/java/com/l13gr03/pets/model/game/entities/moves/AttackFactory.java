@@ -39,7 +39,7 @@ public class AttackFactory {
             attack[0] = new Entity.Attack("Special", "Flamethrower", "Lava", 13,5);
             attack[1] = new Entity.Attack("Physical", "Flame Fist", "Lava", 15,5);
             attack[2] = new Entity.Attack("Status", "Swords Dance", "Null", n.getAtk(),1);
-            attack[3] = new Entity.Attack("Special", "Solar Ray", "Bio",16,2);
+            attack[3] = new Entity.Attack("Special", "Solar Ray", "Bio",16,4);
             break;
 
             case 6:

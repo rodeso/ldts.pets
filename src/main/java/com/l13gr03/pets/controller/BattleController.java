@@ -5,15 +5,10 @@ import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.bots.CPU;
 import com.l13gr03.pets.model.game.battle.bots.HardCPU;
-import com.l13gr03.pets.model.game.battle.bots.MediumCPU;
 import com.l13gr03.pets.model.menu.GameOver;
 import com.l13gr03.pets.model.menu.Menu;
-import com.l13gr03.pets.model.menu.Settings;
-import com.l13gr03.pets.model.menu.TeamSelect;
 import com.l13gr03.pets.states.GameOverState;
 import com.l13gr03.pets.states.MenuState;
-import com.l13gr03.pets.states.SettingsState;
-import com.l13gr03.pets.states.TeamSelectState;
 
 import java.io.IOException;
 
@@ -49,9 +44,9 @@ public class    BattleController extends Controller<Battlefield> {
                         if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
                             int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
                             if (n>0) getModel().change(2, n);
-                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                         }
-                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                     }
                 }
                 else{
@@ -60,9 +55,9 @@ public class    BattleController extends Controller<Battlefield> {
                         if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
                             int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
                             if (n>0) getModel().change(2, n);
-                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                         }
-                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(1), getModel().getActive(2)));
+                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                     }
                 }
                 if (getModel().getCurrentEntry2()>=0) {
