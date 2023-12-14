@@ -16,7 +16,7 @@ public class Party {
             case 1 -> p1;
             case 2 -> p2;
             case 3 -> p3;
-            default -> null;
+            default -> p1;
         };
     }
 }
