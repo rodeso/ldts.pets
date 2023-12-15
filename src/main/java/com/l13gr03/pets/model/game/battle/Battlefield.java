@@ -428,17 +428,19 @@ public class Battlefield {
                         e1 = player1.getP(2);
                         active1 = player1.getP(2);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
-
+                        currentEntry=0;
                     }
                     else if (!player1.getP(3).isKO()) {
                         e1 = player1.getP(3);
                         active1 = player1.getP(3);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+                        currentEntry=0;
                     }
                     else if (!player1.getP(1).isKO()) {
                         e1 = player1.getP(1);
                         active1 = player1.getP(1);
                         option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+                        currentEntry=0;
                     }
                         else GAMEOVER(2);
                 } else {
@@ -464,16 +466,19 @@ public class Battlefield {
                         e1 = player1.getP(2);
                         active1 = player1.getP(2);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+                        currentEntry=0;
                     }
                     else if (!player1.getP(3).isKO()) {
                         e1 = player1.getP(3);
                         active1 = player1.getP(3);
                         option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+                        currentEntry=0;
                     }
                     else if (!player1.getP(1).isKO()) {
                         e1 = player1.getP(1);
                         active1 = player1.getP(1);
                         option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+                        currentEntry=0;
                     }
                     else GAMEOVER(2);
                 } else {
