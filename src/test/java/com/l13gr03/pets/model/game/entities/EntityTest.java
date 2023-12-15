@@ -129,7 +129,7 @@ public class EntityTest {
         assertEquals(50, d.getSDef());
         assertEquals(100, d.getSpd());
 
-        assertEquals("#A0522D", d.getColor());
+        assertEquals("#00FF00", d.getColor());
 
         // Test attacks getters
         assertEquals("Cosmic Mind", d.getAbility());
@@ -138,7 +138,6 @@ public class EntityTest {
         assertNotNull(d.getMove(2));
         assertNotNull(d.getMove(3));
 
-        assertEquals("#A0522D", d.getColor());
     }
     @Test
     public void testCyberneticCompanion() {
