@@ -49,7 +49,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     Party party1=new HardCPU().createParty();
                     game.setState(new BattleState(new Battlefield(party,party1)));
 
-
+/*
 
                     System.out.println(party1.getP(1).getName());
                     System.out.println(party1.getP(2).getName());
@@ -68,7 +68,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     System.out.println(party.getP(3).getMove(1).getDescription());
                     System.out.println(party.getP(3).getMove(2).getDescription());
                     System.out.println(party.getP(3).getMove(3).getDescription());
-
+*/
                 }
                 break;
             case QUIT:
