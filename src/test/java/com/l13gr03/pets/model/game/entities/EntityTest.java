@@ -2,9 +2,12 @@ package com.l13gr03.pets.model.game.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.l13gr03.pets.model.game.entities.Entity.Attack;
+import com.l13gr03.pets.model.game.entities.Entity.*;
 import com.l13gr03.pets.model.game.entities.species.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class EntityTest {
 
@@ -13,6 +16,21 @@ public class EntityTest {
     public void testEntityAttack() {
         Attack attack = new Attack("Special", "Seed Bullet","Bio",6,2);
         AquaticAlly aq = new AquaticAlly("Aqua");
+        int[] stats = new int[6];
+        stats[0] = 10;
+        stats[1] = 20;
+        stats[2] = 25;
+        stats[3] = 30;
+        stats[4] = 35;
+        stats[5] = 40;
+
+        Entity.Attack[] at = new Entity.Attack[4];
+        at[0] = new Entity.Attack("Physical", "Aqua Jet", "Aquatic", 8, 1);
+        at[1] = new Entity.Attack("Special", "Hydro Pump", "Aquatic", 18, 1);
+        at[2] = new Entity.Attack("Status", "Turtle Shell", "Aquatic", aq.getDef(), 3);
+        at[3] = new Entity.Attack("Physical", "Tackle", "Null", 8, 0);
+
+        List<String> arte = Arrays.asList("  __"," (..)","_(><)" );
 
         aq.setHP(10);
         aq.setAtk(20);
@@ -20,6 +38,7 @@ public class EntityTest {
         aq.setSAtk(30);
         aq.setSDef(35);
         aq.setSpd(40);
+        aq.setShiny();
 
         assertEquals(10,aq.getHP());
         assertEquals(20,aq.getAtk());
@@ -27,6 +46,12 @@ public class EntityTest {
         assertEquals(30,aq.getSAtk());
         assertEquals(35,aq.getSDef());
         assertEquals(40,aq.getSpd());
+        assertArrayEquals(stats,aq.getStats());
+
+
+        assertEquals("#87CEFA", aq.getColor());
+        assertEquals(arte,aq.getArte());
+
 
         assertEquals("Special", attack.getType());
 
@@ -62,11 +87,13 @@ public class EntityTest {
     @Test
     public void testAquaticAlly() {
         AquaticAlly b = new AquaticAlly("Blastem");
+        List<String> arte = Arrays.asList("  __"," (..)","_(><)" );
         // Test entity creation
         assertNotNull(b);
         assertEquals("Blastem", b.getName());
         //assertNotNull(b.getPosition()); // Assuming position is set elsewhere
         assertEquals(1, b.getId());
+
 
         
         // Test stats getters 79, 93, 120, 110, 110, 88
@@ -84,11 +111,14 @@ public class EntityTest {
         assertNotNull(b.getMove(2));
         assertNotNull(b.getMove(3));
 
+        //Test Art
         assertEquals("#87CEFA", b.getColor());
+        assertEquals(arte,b.getArte());
     }
     @Test
     public void testBiomorphicBeast() {
         BiomorphicBeast a = new BiomorphicBeast("Angree");
+        List<String> arte= Arrays.asList(".,.,.",")¥o´(" );
         // Test entity creation
         assertNotNull(a);
         assertEquals("Angree", a.getName());
@@ -110,11 +140,14 @@ public class EntityTest {
         assertNotNull(a.getMove(2));
         assertNotNull(a.getMove(3));
 
+        //Test Art
         assertEquals("#A0522D", a.getColor());
+        assertEquals(arte,a.getArte());
     }
     @Test
     public void testCelestialGuardian() {
         CelestialGuardian d = new CelestialGuardian("Doxxis");
+        List<String> arte= Arrays.asList(" \\_/","(^w^)" );
         // Test entity creation
         assertNotNull(d);
         assertEquals("Doxxis", d.getName());
@@ -129,6 +162,7 @@ public class EntityTest {
         assertEquals(50, d.getSDef());
         assertEquals(100, d.getSpd());
 
+
         assertEquals("#00FF00", d.getColor());
 
         // Test attacks getters
@@ -138,10 +172,16 @@ public class EntityTest {
         assertNotNull(d.getMove(2));
         assertNotNull(d.getMove(3));
 
+
+        //Test Art
+        assertEquals("#A0522D", d.getColor());
+        assertEquals(arte,d.getArte());
+
     }
     @Test
     public void testCyberneticCompanion() {
         CyberneticCompanion m = new CyberneticCompanion("Metagrosso");
+        List<String> arte = Arrays.asList("","M(>->)M");
         // Test entity creation
         assertNotNull(m);
         assertEquals("Metagrosso", m.getName());
@@ -163,11 +203,14 @@ public class EntityTest {
         assertNotNull(m.getMove(2));
         assertNotNull(m.getMove(3));
 
+        //Test Art
         assertEquals("#FFFF00", m.getColor());
+        assertEquals(arte,m.getArte());
     }
     @Test
     public void testLavaLurker() {
         LavaLurker k = new LavaLurker("Nekizal");
+        List<String> arte= Arrays.asList(" _","(º)>");
         // Test entity creation
         assertNotNull(k);
         assertEquals("Nekizal", k.getName());
@@ -189,13 +232,16 @@ public class EntityTest {
         assertNotNull(k.getMove(2));
         assertNotNull(k.getMove(3));
 
+        //Test Art
         assertEquals("#D0312D", k.getColor());
+        assertEquals(arte,k.getArte());
 
 
     }
     @Test
     public void testShadowSpecter() {
         ShadowSpecter n = new ShadowSpecter("Nocturnyx");
+        List<String> arte = Arrays.asList(" ,_,","(º-º)");
         // Test entity creation
         assertNotNull(n);
         assertEquals("Nocturnyx", n.getName());
@@ -217,12 +263,15 @@ public class EntityTest {
         assertNotNull(n.getMove(2));
         assertNotNull(n.getMove(3));
 
+        //Test Art
         assertEquals("#800080", n.getColor());
+        assertEquals(arte,n.getArte());
 
     }
     @Test
     public void testStoneGolem() {
         StoneGolem g = new StoneGolem("Big7");
+        List<String> arte = Arrays.asList("","8[o _ o]8");
         // Test entity creation
         assertNotNull(g);
         assertEquals("Big7", g.getName());
@@ -246,6 +295,7 @@ public class EntityTest {
 
         //Test Art
         assertEquals("#FFA500", g.getColor());
+        assertEquals(arte,g.getArte());
 
     }
 }
