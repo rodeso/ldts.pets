@@ -1,5 +1,6 @@
 package com.l13gr03.pets.model.game.entities;
 
+import static java.lang.Integer.MAX_VALUE;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.l13gr03.pets.model.game.entities.Entity.*;
@@ -38,7 +39,7 @@ public class EntityTest {
         aq.setSAtk(30);
         aq.setSDef(35);
         aq.setSpd(40);
-        aq.setShiny();
+
 
         assertEquals(10,aq.getHP());
         assertEquals(20,aq.getAtk());
@@ -51,6 +52,8 @@ public class EntityTest {
 
         assertEquals("#87CEFA", aq.getColor());
         assertEquals(arte,aq.getArte());
+        aq.setShiny();
+        assertTrue(aq.isShiny());
 
 
         assertEquals("Special", attack.getType());
@@ -82,6 +85,9 @@ public class EntityTest {
 
         assertEquals("", p.getAbility());
 
+        //Test Ability
+        p.useAbility(0);
+        assertTrue(p.isAbilityOn());
     }
 
     @Test
@@ -91,11 +97,9 @@ public class EntityTest {
         // Test entity creation
         assertNotNull(b);
         assertEquals("Blastem", b.getName());
-        //assertNotNull(b.getPosition()); // Assuming position is set elsewhere
         assertEquals(1, b.getId());
 
 
-        
         // Test stats getters 79, 93, 120, 110, 110, 88
         assertEquals(130, b.getHP());
         assertEquals(93, b.getAtk());
@@ -114,6 +118,13 @@ public class EntityTest {
         //Test Art
         assertEquals("#87CEFA", b.getColor());
         assertEquals(arte,b.getArte());
+        assertEquals("#783105",b.getShcolor());
+
+        //Test Ability
+        b.useAbility(0);
+        assertTrue(b.isAbilityOn());
+        b.useAbility(5);
+        assertFalse(b.isAbilityOn());
     }
     @Test
     public void testBiomorphicBeast() {
@@ -143,6 +154,14 @@ public class EntityTest {
         //Test Art
         assertEquals("#A0522D", a.getColor());
         assertEquals(arte,a.getArte());
+        assertEquals("#5fadd2",a.getShcolor());
+
+        //Test Ability
+        a.setHP(70);
+        int val1 = a.getHP();
+        a.useAbility(val1);
+        int val2 = a.getHP();
+        assertTrue(val2 > val1);
     }
     @Test
     public void testCelestialGuardian() {
@@ -163,8 +182,6 @@ public class EntityTest {
         assertEquals(100, d.getSpd());
 
 
-        assertEquals("#00FF00", d.getColor());
-
         // Test attacks getters
         assertEquals("Cosmic Mind", d.getAbility());
         assertNotNull(d.getMove(0));
@@ -174,8 +191,13 @@ public class EntityTest {
 
 
         //Test Art
-        assertEquals("#A0522D", d.getColor());
+        assertEquals("#00FF00", d.getColor());
         assertEquals(arte,d.getArte());
+        assertEquals("#ff00ff",d.getShcolor());
+
+        //Test Ability
+        d.useAbility(5);
+        assertEquals(d.getSAtk(), 240);
 
     }
     @Test
@@ -206,6 +228,11 @@ public class EntityTest {
         //Test Art
         assertEquals("#FFFF00", m.getColor());
         assertEquals(arte,m.getArte());
+        assertEquals("#0000ff",m.getShcolor());
+
+        //Test Ability
+        m.useAbility(5);
+        assertEquals(m.getAtk(), 176);
     }
     @Test
     public void testLavaLurker() {
@@ -235,6 +262,8 @@ public class EntityTest {
         //Test Art
         assertEquals("#D0312D", k.getColor());
         assertEquals(arte,k.getArte());
+        assertEquals("#2fced2",k.getShcolor());
+
 
 
     }
@@ -266,6 +295,11 @@ public class EntityTest {
         //Test Art
         assertEquals("#800080", n.getColor());
         assertEquals(arte,n.getArte());
+        assertEquals("#7fff7f",n.getShcolor());
+
+        //Test Ability
+        n.useAbility(0);
+        assertEquals(n.getSpd(),MAX_VALUE);
 
     }
     @Test
@@ -296,6 +330,11 @@ public class EntityTest {
         //Test Art
         assertEquals("#FFA500", g.getColor());
         assertEquals(arte,g.getArte());
+        assertEquals("#005aff",g.getShcolor());
+
+        //Test Ability
+        g.useAbility(0);
+        assertTrue(g.isAbilityOn());
 
     }
 }

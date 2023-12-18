@@ -24,6 +24,7 @@ public class BiomorphicBeast extends Entity {
     public String getAbility() {
         return ability;
     }
+    public String getShcolor(){return shcolor;}
 
     public void useAbility(int n){
         if(this.getHP() > 0 && this.getHP() < 101){

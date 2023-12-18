@@ -23,6 +23,7 @@ public class CelestialGuardian extends Entity {
     public String getAbility() {
         return ability;
     }
+    public String getShcolor(){return shcolor;}
     public void useAbility(int n){
         double res = getSAtk() * (1.1+ n*0.1);
         int r = (int) res;

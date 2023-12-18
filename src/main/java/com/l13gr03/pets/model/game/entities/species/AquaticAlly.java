@@ -24,6 +24,7 @@ public class AquaticAlly extends Entity {
     public String getAbility() {
         return ability;
     }
+    public String getShcolor(){return shcolor;}
 
     public void useAbility(int n){
         if (n == 0) {

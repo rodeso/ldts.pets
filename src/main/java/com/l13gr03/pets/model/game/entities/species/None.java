@@ -21,6 +21,6 @@ public class None extends Entity {
         return ability;
     }
     public void useAbility(int n){
-
+        turnAbilityOn();
     }
 }

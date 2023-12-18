@@ -26,6 +26,7 @@ public class ShadowSpecter extends Entity {
     public String getAbility() {
         return ability;
     }
+    public String getShcolor(){return shcolor;}
     public void useAbility(int n){
         setSpd(MAX_VALUE);
     }
