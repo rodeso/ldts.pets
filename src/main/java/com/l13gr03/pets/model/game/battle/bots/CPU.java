@@ -14,8 +14,7 @@ import java.util.Random;
 
 public abstract class CPU  {
 
-    private String name;
-    private int n1;
+    private final String name;
     private Party party;
     Random random = new Random();
     Calculator dmg = new Calculator() {

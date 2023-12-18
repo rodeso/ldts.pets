@@ -37,27 +37,27 @@ public class    BattleController extends Controller<Battlefield> {
                 }
                 break;
             case SELECT:
-                CPU Robert = new HardCPU();
+                CPU Macho = new HardCPU();
                 if (getModel().getCurrentEntry()==0){
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().attack(1, getModel().getCurrentEntry2());
-                        if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
-                            int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
+                        if (Macho.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
+                            int n = Macho.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
                             if (n>0) getModel().change(2, n);
-                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
+                            else getModel().attack(2, Macho.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                         }
-                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
+                        else getModel().attack(2, Macho.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                     }
                 }
                 else{
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().change(1, getModel().getCurrentEntry2() + 1);
-                        if (Robert.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
-                            int n = Robert.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
+                        if (Macho.isDisadvantaged(getModel().getActive(2), getModel().getActive(1))) {
+                            int n = Macho.change(getModel().getPlayer(2), getModel().getActive(2), getModel().getActive(1));
                             if (n>0) getModel().change(2, n);
-                            else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
+                            else getModel().attack(2, Macho.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                         }
-                        else getModel().attack(2, Robert.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
+                        else getModel().attack(2, Macho.chooseAttack(getModel().getActive(2).getAttacks(), getModel().getActive(2), getModel().getActive(1)));
                     }
                 }
                 if (getModel().getCurrentEntry2()>=0) {

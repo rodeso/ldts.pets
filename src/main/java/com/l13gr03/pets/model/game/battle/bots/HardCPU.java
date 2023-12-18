@@ -27,13 +27,13 @@ public class HardCPU extends CPU{
         else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId() && party.getP(3) != current) {
             return 3;
         }
-        else if (party.getP(1) != current) {
+        else if (party.getP(1) != current && (!party.getP(1).isKO())) {
             return 1;
         }
-        else if (party.getP(2) != current) {
+        else if (party.getP(2) != current && (!party.getP(2).isKO())) {
             return 2;
         }
-        else if (party.getP(3) != current) {
+        else if (party.getP(3) != current && (!party.getP(3).isKO())) {
             return 3;
         }
         else return 0;

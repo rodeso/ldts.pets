@@ -90,6 +90,9 @@ public abstract class Entity {
     public void setShiny() {
         shiny = true;
     }
+    public boolean isShiny() {
+        return shiny;
+    }
 
     public void setHP(int max) {
         stats[0] = max;
