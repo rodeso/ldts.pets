@@ -12,6 +12,7 @@ public class ShadowSpecter extends Entity {
     private static final String ability = "Shadow Sneak"; //Always attacks first
     private List<String> arte= Arrays.asList(" ,_,","(º-º)");
     private String color="#800080";
+    private String shcolor="#7fff7f";
 
 
     public ShadowSpecter(String n) {

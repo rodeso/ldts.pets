@@ -10,6 +10,7 @@ public class CelestialGuardian extends Entity {
     private static final String ability = "Cosmic Mind"; //Boosts all special attacks
     private List<String> arte= Arrays.asList(" \\_/","(^w^)" );
     private String color= "#00FF00";
+    private String shcolor="#ff00ff";
 
     public CelestialGuardian(String n) {
         super(n);

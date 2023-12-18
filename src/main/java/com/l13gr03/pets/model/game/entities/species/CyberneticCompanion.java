@@ -10,6 +10,7 @@ public class CyberneticCompanion extends Entity {
     private static final String ability = "Metal Power"; //Boosts the physical attacks
     private List<String> arte= Arrays.asList("","M(>->)M");
     private String color="#FFFF00";
+    private String shcolor="#0000ff";
 
     public CyberneticCompanion(String n) {
         super(n);

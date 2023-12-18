@@ -12,6 +12,8 @@ public class LavaLurker extends Entity {
     private static final String ability = "Flame Fists"; // Every time it lands a attack 10% chance it burns
     private List<String> arte= Arrays.asList(" _","(º)>");
     private String color="#D0312D";
+    private String shcolor="#2fced2";
+
 
     public LavaLurker(String n) {
         super(n);

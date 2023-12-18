@@ -11,6 +11,7 @@ public class StoneGolem extends Entity {
     private static final String name = "";
     private List<String> arte= Arrays.asList("","8[o _ o]8");
     private String color="#FFA500";
+    private String shcolor="#005aff";
 
 
     public StoneGolem(String n) {

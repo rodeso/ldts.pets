@@ -11,6 +11,7 @@ public class BiomorphicBeast extends Entity {
     private static final String ability = "Nature's Gift"; //Regenerates a certain amount of health each round
     private List<String> arte= Arrays.asList(".,.,.",")¥o´(" );
     private String color="#A0522D";
+    private String shcolor="#5fadd2";
 
     public BiomorphicBeast(String n) {
         super(n);

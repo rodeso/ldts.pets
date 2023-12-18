@@ -11,6 +11,7 @@ public class AquaticAlly extends Entity {
     private static final String ability = "Bubble Shield"; //It defends the first attack
     private List<String> arte= Arrays.asList("  __"," (..)","_(><)" );
     private String color="#87CEFA";
+    private String shcolor="#783105";
 
     public AquaticAlly(String n) {
         super(n);
