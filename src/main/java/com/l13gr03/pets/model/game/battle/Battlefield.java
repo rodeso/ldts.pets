@@ -223,10 +223,9 @@ public class Battlefield {
             }
 
             //determine if attack hits
-            Random randomly = new Random();
-            int n = randomly.nextInt(50);
-            if (hit.oneInFifty(n)) {attackerAttack.miss();}
-            if (hit.oneInFifty(n)) {defenderAttack.miss();}
+
+            if (hit.oneInFifty(roundNumber)) {attackerAttack.miss();}
+            if (hit.oneInFifty(roundNumber)) {defenderAttack.miss();}
 
 
             //start ability

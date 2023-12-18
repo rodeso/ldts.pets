@@ -17,9 +17,15 @@ public class StatusRandomizer implements Randomizer{
     }
 
     public boolean oneInTen(int n) {
-        return n == 0;
+        if (n == -1) return true;
+        else {
+            return (random.nextInt(10) == 0);
+        }
     }
     public boolean oneInFifty(int n) {
-        return n == 0;
+        if (n == -1) return true;
+        else {
+            return (random.nextInt(50) == 0);
+        }
     }
 }

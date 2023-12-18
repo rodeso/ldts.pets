@@ -30,9 +30,7 @@ public class LavaLurker extends Entity {
     public String getShcolor(){return shcolor;}
     public void useAbility(int n){
         Randomizer r = new StatusRandomizer();
-        Random randomly = new Random();
-        int l = randomly.nextInt(50);
-        boolean res = r.oneInTen(l);
+        boolean res = r.oneInTen(n);
         if(res){
             turnAbilityOn();
         }
