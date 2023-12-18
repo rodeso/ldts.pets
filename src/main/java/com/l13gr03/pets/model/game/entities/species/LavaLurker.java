@@ -6,6 +6,7 @@ import com.l13gr03.pets.utils.random.StatusRandomizer;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class LavaLurker extends Entity {
     private static final int id = 5;
@@ -29,7 +30,9 @@ public class LavaLurker extends Entity {
     public String getShcolor(){return shcolor;}
     public void useAbility(int n){
         Randomizer r = new StatusRandomizer();
-        boolean res = r.oneInTen();
+        Random randomly = new Random();
+        int l = randomly.nextInt(50);
+        boolean res = r.oneInTen(l);
         if(res){
             turnAbilityOn();
         }

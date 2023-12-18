@@ -16,10 +16,10 @@ public class StatusRandomizer implements Randomizer{
         return false;
     }
 
-    public boolean oneInTen() {
-        return (random.nextInt(10) == 0);
+    public boolean oneInTen(int n) {
+        return n == 0;
     }
-    public boolean oneInFifty() {
-        return (random.nextInt(50) == 0);
+    public boolean oneInFifty(int n) {
+        return n == 0;
     }
 }

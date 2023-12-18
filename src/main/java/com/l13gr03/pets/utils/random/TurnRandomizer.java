@@ -11,7 +11,7 @@ public class TurnRandomizer implements Randomizer{
         return (random.nextInt(2) == 0);
     }
     @Override
-    public boolean oneInTen() {
+    public boolean oneInTen(int n) {
         return false;
     }
     @Override
@@ -19,7 +19,7 @@ public class TurnRandomizer implements Randomizer{
         return null;
     }
     @Override
-    public boolean oneInFifty() {
+    public boolean oneInFifty(int n) {
         return false;
     }
 

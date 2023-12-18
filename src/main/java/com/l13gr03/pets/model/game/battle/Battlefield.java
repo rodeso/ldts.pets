@@ -54,7 +54,7 @@ public class Battlefield {
     }
     //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
     public Round newRound() {
-        currentRound = new Round(active1, active2, attack1, attack2, history.size() + 1);
+        currentRound = new Round(active1, active2, attack1, attack2, history.size());
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
         round="ROUND "+ Integer.toString(getRoundCounter());
@@ -223,8 +223,10 @@ public class Battlefield {
             }
 
             //determine if attack hits
-            if (hit.oneInFifty()) {attackerAttack.miss();}
-            if (hit.oneInFifty()) {defenderAttack.miss();}
+            Random randomly = new Random();
+            int n = randomly.nextInt(50);
+            if (hit.oneInFifty(n)) {attackerAttack.miss();}
+            if (hit.oneInFifty(n)) {defenderAttack.miss();}
 
 
             //start ability

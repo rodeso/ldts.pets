@@ -29,12 +29,12 @@ public class ThreeRandomizer implements Randomizer{
     }
 
     @Override
-    public boolean oneInTen() {
+    public boolean oneInTen(int n) {
         return false;
     }
 
     @Override
-    public boolean oneInFifty() {
+    public boolean oneInFifty(int n) {
         return false;
     }
 }
