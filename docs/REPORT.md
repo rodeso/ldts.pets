@@ -65,11 +65,12 @@ The game is played using the `arrow keys` to move the cursor to the intended act
 - **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
 - **Single-Player Friendly** - The Battles can be fought agaisnt a CPU
 
-## FUTURE FEATURES
+## PLANNED FEATURES
 
 - **Multiplayer**
 
-### DESIGN
+## DESIGN
+
 
 ### UML Class Diagram
 
@@ -83,10 +84,14 @@ A UML class diagram showcasing used Design Patterns:
 
 ### TESTING
 
-Only Unit Testing for Enitity creation and Damage calculation.
+
 
 ### SELF-EVALUATION
+Everyone invested their time and skill making this project, and seeing it run made it all worth it.
+Each of us worked on different parts of the project independently, as well as together giving each 
+other important insight. We consider it a valuable experience, as it improved our java and 
+principle/pattern skills, as well as our team work
 
-- Afonso Mansilha =
-- Eduardo Cruz = 
-- Rodrigo de Sousa =
+- Afonso Mansilha = 1/3
+- Eduardo Cruz = 1/3
+- Rodrigo de Sousa = 1/3
