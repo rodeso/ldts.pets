@@ -6,22 +6,21 @@ import com.l13gr03.pets.model.menu.Difficulty;
 import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
-import com.l13gr03.pets.states.DifficultyState;
+import com.l13gr03.pets.states.MenuState;
 import com.l13gr03.pets.states.SettingsState;
 import com.l13gr03.pets.states.TeamSelectState;
-//import com.l13gr03.pets.model.menu.Settings;
-//import com.l13gr03.pets.states.SettingsState;
 
 import java.io.IOException;
 
-public class MenuController extends Controller<Menu> {
-    public MenuController(Menu menu) {
-        super(menu);
+public class DifficultyController extends Controller<Difficulty> {
+
+    public DifficultyController(Difficulty difficulty) {
+        super(difficulty);
     }
 
     @Override
     public void step(Game game, GUI.ACTION action, double time) throws IOException {
-        switch (action){
+        switch (action) {
             case UP:
                 getModel().previousEntry();
                 break;
@@ -29,10 +28,20 @@ public class MenuController extends Controller<Menu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedPlay()){game.setState(new DifficultyState(new Difficulty()));}
-                if (getModel().isSelectedMulti()){int i=0;}
-                if (getModel().isSelectedSett()) {game.setState(new SettingsState(new Settings()));}
-                if (getModel().isSelectedExit()) {game.setState(null);}
+                switch (getModel().getCurrentEntry()){
+                    case 0:{game.setState(new TeamSelectState(new TeamSelect(1)));
+                            break;
+                    }
+                    case 1:{game.setState(new TeamSelectState(new TeamSelect(2)));
+                            break;
+                    }
+                    case 2:{game.setState(new TeamSelectState(new TeamSelect(3)));
+                            break;
+                    }
+                    case 3:{game.setState(new MenuState(new Menu()));
+                        break;
+                    }
+                }
                 break;
             case QUIT:
                 game.setState(null);

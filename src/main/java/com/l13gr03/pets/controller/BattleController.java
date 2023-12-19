@@ -4,7 +4,9 @@ import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.bots.CPU;
+import com.l13gr03.pets.model.game.battle.bots.EasyCPU;
 import com.l13gr03.pets.model.game.battle.bots.HardCPU;
+import com.l13gr03.pets.model.game.battle.bots.MediumCPU;
 import com.l13gr03.pets.model.menu.GameOver;
 import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.states.GameOverState;
@@ -13,8 +15,23 @@ import com.l13gr03.pets.states.MenuState;
 import java.io.IOException;
 
 public class    BattleController extends Controller<Battlefield> {
+    CPU Macho;
     public BattleController(Battlefield battlefield) {
         super(battlefield);
+        switch (getModel().getDiff()){
+            case 1:{
+                Macho= new EasyCPU();
+                break;
+            }
+            case 2:{
+                Macho= new MediumCPU();
+                break;
+            }
+            case 3:{
+                Macho= new HardCPU();
+                break;
+            }
+        }
     }
 
     @Override
@@ -37,7 +54,7 @@ public class    BattleController extends Controller<Battlefield> {
                 }
                 break;
             case SELECT:
-                CPU Macho = new HardCPU();
+                Macho = new HardCPU();
                 if (getModel().getCurrentEntry()==0){
                     if (getModel().getCurrentEntry2()>=0) {
                         getModel().attack(1, getModel().getCurrentEntry2());

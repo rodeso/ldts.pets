@@ -35,8 +35,9 @@ public class Battlefield {
     private List<String> poke2Arte;
     private String poke1Color;
     private String poke2Color;
-
-    public Battlefield(Party p1, Party p2) {
+    private int diff;
+    public Battlefield(Party p1, Party p2,int diff_) {
+        diff=diff_;
         history = new Stack<>();
         player1 = p1;
         player2 = p2;
@@ -188,7 +189,7 @@ public class Battlefield {
     public int getWinner(){
         return winner;
     }
-
+    public int getDiff(){return diff;}
     public class Round {
         private Entity e1, e2;
         private Entity.Attack c1, c2;

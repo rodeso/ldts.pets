@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TeamSelect {
+    int diff;
     private List<String> entries;
     private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnyx"), new StoneGolem("Big7"), new None("None")};
     private  int[] stats;
@@ -21,8 +22,8 @@ public class TeamSelect {
     private String back="Go Back";
     private String next="Next";
 
-    public TeamSelect() {
-
+    public TeamSelect(int diff_) {
+        diff=diff_;
         this.entries= Arrays.asList(entities[0].getName(),entities[1].getName(),entities[2].getName(),entities[3].getName(),entities[4].getName(),entities[5].getName(),entities[6].getName());
 
         this.stats = entities[0].getStats();
@@ -230,6 +231,7 @@ public class TeamSelect {
             team.set(2,"None");
         }
     }
+    public int getDiff(){return diff;}
 
     public Entity getParty(int n){
         int i = 0;

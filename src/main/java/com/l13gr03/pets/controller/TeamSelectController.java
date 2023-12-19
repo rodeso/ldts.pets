@@ -47,7 +47,7 @@ public class TeamSelectController extends Controller<TeamSelect> {
                 if (getModel().getCurrentColumn()==3){
                     Party party=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
                     Party party1=new HardCPU().createParty();
-                    game.setState(new BattleState(new Battlefield(party,party1)));
+                    game.setState(new BattleState(new Battlefield(party,party1,getModel().getDiff())));
 
 /*
 
