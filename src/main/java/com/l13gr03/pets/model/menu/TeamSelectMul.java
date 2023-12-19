@@ -260,6 +260,7 @@ public class TeamSelectMul {
         currentEntry = 0;
         currentColumn=0;
         currentTeam=-1;
+        nextSelect=false;
         this.stats = entities[0].getStats();
         this.team= Arrays.asList("None","None","None");
     }
