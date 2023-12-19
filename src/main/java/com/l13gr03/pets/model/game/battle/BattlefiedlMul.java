@@ -165,16 +165,16 @@ public class BattlefiedlMul {
         if (currentEntry < 0) {
             currentEntry = this.Option.size() - 1;
             if (player==1) {
-                option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
-            }else{
-                option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
-            }        }
-        else{
-            if (player==1) {
                 option2 = Arrays.asList(player1.getP(1).getName(), player1.getP(2).getName(), player1.getP(3).getName());
             }else {
                 option2 = Arrays.asList(player2.getP(1).getName(), player2.getP(2).getName(), player2.getP(3).getName());
 
+            }          }
+        else{
+            if (player==1) {
+                option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+            }else{
+                option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
             }        }
     }
     public void nextEntry2() {
