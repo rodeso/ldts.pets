@@ -260,8 +260,8 @@ public class BattlefiedlMul {
             }
 
             //determine if attack hits
-            if (hit.oneInFifty()) {attackerAttack.miss();}
-            if (hit.oneInFifty()) {defenderAttack.miss();}
+            if (hit.oneInFifty(roundNumber)) {attackerAttack.miss();}
+            if (hit.oneInFifty(roundNumber)) {defenderAttack.miss();}
 
 
             //start ability
