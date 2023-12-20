@@ -2,20 +2,24 @@ package com.l13gr03.pets.controller;
 
 import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
+import com.l13gr03.pets.model.game.battle.BattlefiedlMul;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.battle.bots.HardCPU;
-import com.l13gr03.pets.model.game.battle.bots.MediumCPU;
 import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.TeamSelect;
+import com.l13gr03.pets.model.menu.TeamSelectMul;
+import com.l13gr03.pets.states.BattleMulState;
 import com.l13gr03.pets.states.BattleState;
 import com.l13gr03.pets.states.MenuState;
+import com.l13gr03.pets.states.TeamSelectState;
 
 import java.io.IOException;
 
-public class TeamSelectController extends Controller<TeamSelect> {
-    public TeamSelectController(TeamSelect teamSelect) {
-        super(teamSelect);
+public class TeamSelectMulController extends Controller<TeamSelectMul> {
+    Party party1;
+    public TeamSelectMulController(TeamSelectMul teamSelectMul) {
+        super(teamSelectMul);
     }
 
     @Override
@@ -45,10 +49,15 @@ public class TeamSelectController extends Controller<TeamSelect> {
                     game.setState(new MenuState(new Menu()));
                 }
                 if (getModel().getCurrentColumn()==3){
-                    Party party=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
-                    Party party1=new HardCPU().createParty();
-                    game.setState(new BattleState(new Battlefield(party,party1,getModel().getDiff())));
-
+                    if (getModel().getPlayer()==1) {
+                        party1=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
+                        getModel().nextPlayer();
+                        getModel().reset();
+                    }
+                    else{
+                        Party party2=new Party(getModel().getParty(0), getModel().getParty(1), getModel().getParty(2));
+                        game.setState(new BattleMulState(new BattlefiedlMul(party1,party2)));
+                    }
 
                 }
                 break;

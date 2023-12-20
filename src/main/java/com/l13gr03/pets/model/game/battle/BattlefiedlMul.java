@@ -10,10 +10,13 @@ import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.StatusRandomizer;
 import com.l13gr03.pets.utils.random.TurnRandomizer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.Stack;
 
-public class Battlefield {
-    private Round currentRound;
+public class BattlefiedlMul {
+    private RoundMul currentRound;
     private String round;
     private List<String> PokeHP;
     private List<String> Option;
@@ -22,7 +25,7 @@ public class Battlefield {
     private int currentEntry2=-1;
     private int currentColumn=0;
 
-    private List<Round> history;
+    private List<RoundMul> history;
     private Position position1, position2;
     private Party player1, player2;
     private Entity active1, active2;
@@ -35,9 +38,10 @@ public class Battlefield {
     private List<String> poke2Arte;
     private String poke1Color;
     private String poke2Color;
-    private int diff;
-    public Battlefield(Party p1, Party p2,int diff_) {
-        diff=diff_;
+    private int player=1;
+
+    public BattlefiedlMul(Party p1, Party p2) {
+
         history = new Stack<>();
         player1 = p1;
         player2 = p2;
@@ -54,13 +58,30 @@ public class Battlefield {
         return history.size();
     }
     //during battle, both choose the entity they want to choose and the attack, if they want to change they wait a round
-    public Round newRound() {
-        currentRound = new Round(active1, active2, attack1, attack2, history.size());
+    public RoundMul newRoundMul() {
+        currentRound = new RoundMul(active1, active2, attack1, attack2, history.size() + 1);
         PokeHP= Arrays.asList(active1.getName(),Integer.toString(active1.getHP()),active2.getName(),Integer.toString(active2.getHP()));
         history.add(currentRound);
         round="ROUND "+ Integer.toString(getRoundCounter());
         return currentRound;
     }
+    public void player2(){
+        player=2;
+        option2= Arrays.asList(active2.getMove(0).getDescription(),active2.getMove(1).getDescription(),active2.getMove(2).getDescription(),active2.getMove(3).getDescription());
+        currentEntry=0;
+        currentEntry2=-1;
+        currentColumn=0;
+
+    }
+    public void player1(){
+        player=1;
+        option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+        currentEntry=0;
+        currentColumn=0;
+        currentEntry2=-1;
+
+    }
+    public int getPlayer(){return player;}
     public void change(int player, int entity) {
         Entity.Attack c = new Entity.Attack("Physical", "Change", "Null", 0, 0);
         if (player == 1) {
@@ -90,7 +111,7 @@ public class Battlefield {
     }
     public void showHistory() throws InterruptedException {
         System.out.println("Showing History:");
-        for (Round round : history) {
+        for (RoundMul round : history) {
             break;
         }
     }
@@ -125,20 +146,36 @@ public class Battlefield {
         currentEntry++;
         if (currentEntry > this.Option.size() - 1) {
             currentEntry = 0;
-            option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
+            if (player==1) {
+                option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+            }else{
+                option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
+            }
         }else{
-            option2= Arrays.asList(player1.getP(1).getName(),player1.getP(2).getName(),player1.getP(3).getName());
+            if (player==1) {
+                option2 = Arrays.asList(player1.getP(1).getName(), player1.getP(2).getName(), player1.getP(3).getName());
+            }else {
+                option2 = Arrays.asList(player2.getP(1).getName(), player2.getP(2).getName(), player2.getP(3).getName());
+
+            }
         }
     }
     public void previousEntry() {
         currentEntry--;
         if (currentEntry < 0) {
             currentEntry = this.Option.size() - 1;
-            option2= Arrays.asList(player1.getP(1).getName(),player1.getP(2).getName(),player1.getP(3).getName());
-        }
+            if (player==1) {
+                option2 = Arrays.asList(player1.getP(1).getName(), player1.getP(2).getName(), player1.getP(3).getName());
+            }else {
+                option2 = Arrays.asList(player2.getP(1).getName(), player2.getP(2).getName(), player2.getP(3).getName());
+
+            }          }
         else{
-            option2= Arrays.asList(active1.getMove(0).getDescription(),active1.getMove(1).getDescription(),active1.getMove(2).getDescription(),active1.getMove(3).getDescription());
-        }
+            if (player==1) {
+                option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
+            }else{
+                option2 = Arrays.asList(active2.getMove(0).getDescription(), active2.getMove(1).getDescription(), active2.getMove(2).getDescription(), active2.getMove(3).getDescription());
+            }        }
     }
     public void nextEntry2() {
         currentEntry2++;
@@ -189,13 +226,12 @@ public class Battlefield {
     public int getWinner(){
         return winner;
     }
-    public int getDiff(){return diff;}
-    public class Round {
+    public class RoundMul {
         private Entity e1, e2;
         private Entity.Attack c1, c2;
         private int d1, d2;
         private int roundNumber;
-        private Round(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int rn) {
+        private RoundMul(Entity p1, Entity p2, Entity.Attack a1, Entity.Attack a2, int rn) {
             e1 = p1;
             e2 = p2;
             c1 = a1;
@@ -203,7 +239,7 @@ public class Battlefield {
             roundNumber = rn;
         }
 
-        public void playRound() throws InterruptedException {
+        public void playRoundMul() throws InterruptedException {
             Randomizer random = new TurnRandomizer();
             Randomizer hit = new StatusRandomizer();
 
@@ -224,9 +260,8 @@ public class Battlefield {
             }
 
             //determine if attack hits
-
-            if (hit.oneInFifty(roundNumber)) {attackerAttack.miss();}
-            if (hit.oneInFifty(roundNumber)) {defenderAttack.miss();}
+            if (hit.oneInFifty()) {attackerAttack.miss();}
+            if (hit.oneInFifty()) {defenderAttack.miss();}
 
 
             //start ability
@@ -444,7 +479,7 @@ public class Battlefield {
                         option2 = Arrays.asList(active1.getMove(0).getDescription(), active1.getMove(1).getDescription(), active1.getMove(2).getDescription(), active1.getMove(3).getDescription());
                         currentEntry=0;
                     }
-                        else GAMEOVER(2);
+                    else GAMEOVER(2);
                 } else {
                     if (!player2.getP(2).isKO()) {
                         e2 = player2.getP(2);

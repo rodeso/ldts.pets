@@ -6,8 +6,9 @@ import com.l13gr03.pets.model.game.entities.species.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class TeamSelect {
-    int diff;
+public class TeamSelectMul {
+    private int player=1;
+
     private List<String> entries;
     private Entity[] entities=new Entity[]{new AquaticAlly("Blastem"),new BiomorphicBeast("Angree"),new CelestialGuardian("Doxxis"),new CyberneticCompanion("Metagrosso"),new LavaLurker("Nekizal"),new ShadowSpecter("Nocturnyx"), new StoneGolem("Big7"), new None("None")};
     private  int[] stats;
@@ -22,8 +23,8 @@ public class TeamSelect {
     private String back="Go Back";
     private String next="Next";
 
-    public TeamSelect(int diff_) {
-        diff=diff_;
+    public TeamSelectMul() {
+
         this.entries= Arrays.asList(entities[0].getName(),entities[1].getName(),entities[2].getName(),entities[3].getName(),entities[4].getName(),entities[5].getName(),entities[6].getName());
 
         this.stats = entities[0].getStats();
@@ -231,7 +232,9 @@ public class TeamSelect {
             team.set(2,"None");
         }
     }
-    public int getDiff(){return diff;}
+    public void nextPlayer(){player=2;}
+    public int getPlayer(){return player;}
+
 
     public Entity getParty(int n){
         int i = 0;
@@ -253,4 +256,13 @@ public class TeamSelect {
             default -> new None(a);
         };
     }
+    public void reset(){
+        currentEntry = 0;
+        currentColumn=0;
+        currentTeam=-1;
+        nextSelect=false;
+        this.stats = entities[0].getStats();
+        this.team= Arrays.asList("None","None","None");
+    }
 }
+

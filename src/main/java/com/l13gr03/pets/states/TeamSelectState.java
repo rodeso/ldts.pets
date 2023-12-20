@@ -10,8 +10,10 @@ import com.l13gr03.pets.view.TeamSelectViewer;
 import com.l13gr03.pets.view.Viewer;
 
 public class TeamSelectState extends State<TeamSelect> {
+
     public TeamSelectState(TeamSelect model) {
         super(model);
+
     }
 
     @Override
@@ -23,4 +25,5 @@ public class TeamSelectState extends State<TeamSelect> {
     protected Controller<TeamSelect> getController() {
         return new TeamSelectController(getModel());
     }
+
 }
