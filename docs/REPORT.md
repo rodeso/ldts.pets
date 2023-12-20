@@ -72,15 +72,70 @@ The game is played using the `arrow keys` to move the cursor to the intended act
 ## DESIGN
 
 
+### Multiple Entities
+Problem at Hand:
+
+In our game, each Pet has a type that affects their stats, attacks and abilities, but we don't want to have to deal
+with every class differently because in essence, they are all entities.
+
+Solution:
+
+Design Pattern -> IDK THE NAME 
+Thus, we created an Abstract class called Entity and all the different entities  extend that same class, making it
+very simple to handle.
+
+### Turn Based Game - Multiple Rounds
+Problem at Hand:
+
+Since this is a Turn-Based Game, having turns is crucial to the functioning of the game. We needed a way to have different
+rounds being created everytime an action was chosen.
+
+Solution:
+
+Our Battlefield class works as a RoundFactory where everytime an action is chosen, it creates a new Round with all the 
+things that were chosen.
+### Turn Based Game - Order
+Problem at Hand:
+
+Since they take turns attacking each other, there has to be an order at which they do their actions. Speed was chosen as the
+criteria but what happens when both have the same speed, it has to be random.
+
+Solution:
+
+Creating a Randomizer Interface and classes that implement it to choose everything that works at random, being lucky hits,
+who attacks first when having the same speed. This also allows us to force random events to happen since we control the randomizer,
+as opposed to using the java util random.
+
+### Attack types and Their Damage
+Problem at Hand:
+
+Each Pet has different attacks that deal different damage depending on the attack element, defender's element, attack type and defender's stats.
+That would require a lot of switch cases and if clauses in the Round's class.
+
+Solution:
+
+
+### Missing attacks and switching
+### MVC
+### Lanterna
+
+
 ### UML Class Diagram
 
 A UML class diagram showcasing used Design Patterns:
 
 ![UML class diagram](UML/ClassUML.png)
 
+### UML Sequence Diagram
+
+### UML State Diagram
+
+
 #### KNOWN CODE SMELLS
 
 > This section should describe 3 to 5 different code smells that you have identified in your current implementation.
+
+> I really don't know
 
 ### TESTING
 
