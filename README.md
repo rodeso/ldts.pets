@@ -10,9 +10,11 @@ This project was developed for LDTS 2023⁄24 by:
 
 ## Install
 
-Clone this repository:
+Go to the Releases page and download the latest release.
 
-    git clone 
+Unzip and on the Root folder do:
+
+    ./gradlew run
 
 ## Description
 
@@ -25,12 +27,12 @@ Beyond their diverse move sets, each type of PETS possesses unique abilities tie
 Engage in thrilling battles, challenge friends, and climb the ranks to become the ultimate PETS champion. Choose your team wisely, master the strengths and weaknesses of each type, and embark on an adventure where pixelated entities come to life in a tactical showdown like never before! Are you ready to unleash the power of your PETS?
 
 
-### CONTROLS
+### Controls
 
 - The game is played using the `arrow keys` to move the cursor to the intended action.
 
 
-### MEDIA
+### Media
 
 #### Menus
 | Main Menu                      |
@@ -53,3 +55,40 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 - **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
 - **Single-Player Friendly** - The Battles can be fought agaisnt a CPU
 
+## How To Play
+
+### Single-Player vs Multiplayer
+
+Choosing the option Play will allow you to play against a CPU, with difficulty of your choosing, either Easy, Medium or Hard.
+Multiplayer allows you to play 1v1, each player taking turns choosing their Party and Moves.
+
+### Choosing your Party
+
+This is a crucial part of the Battle's strategy. Having a balanced Party in terms of Stats and Types can help you from getting into trouble.
+Select 3 Pets of your choosing to move on to the Battle.
+
+### Types of Pet
+
+There are 7 Species of Pets: AquaticAlly, BiomorphicBeast, CelestialGuardian, LavaLurker, ShadowSpecter and StoneGolem.
+Moves of certain Elements do more Damage to certain Species and receive a boost if the Attacker has a matching Specie to the Attack's Element.
+Aquatic is strong agaisnt Lava, which is strong against Bio, being strong against Stone, which in turn is good against Shadow, having an advantage
+against Celestial, which defeats Cybernetic and finally wins against Aquatic.
+
+### Battle
+
+At the start of each Round, each player decides to either attack or switch.
+
+#### Attacking
+
+Players should choose the attack that will yield the most amount of damage in order to KO the enemy team.
+#### Switching
+
+When in a typing disadvantage, players may choose to switch their current Pet for another one in the Party.
+In doing so, they are losing an attacking round, while the enemy may still attack, inflicting damage to the newly selected Pet,
+possibly KOing them.
+
+### Winning
+
+The player which KOs all the enemy's Pets while having at least one alive wins!
+
+## License

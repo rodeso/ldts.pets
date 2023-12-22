@@ -130,20 +130,24 @@ Solution:
 
 ### UML Class Diagram
 
-A UML class diagram showcasing used Design Patterns:
+A UML Class diagram showcasing used Design Patterns:
 
-![UML class diagram](UML/ClassUML.png)
+![UML class diagram](UML/Class-UML.png)
 
 ### UML Sequence Diagram
 
+A UML Sequence diagram showcasing the flow of the program:
+
+
+
 ### UML State Diagram
 
+A 
 
 #### KNOWN CODE SMELLS
 
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation.
-
-> I really don't know
+The Multiplayer Mode uses a new Model, State, Controller and Viewer instead of using the same as the Singleplayer Mode.
+However, they barely have any changes but we did this because they serve different purposes, as per the Single Responsibility Principle.
 
 ### TESTING
 
