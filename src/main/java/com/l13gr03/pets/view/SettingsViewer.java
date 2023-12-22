@@ -2,7 +2,6 @@ package com.l13gr03.pets.view;
 
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.Position;
-import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
 
 public class SettingsViewer extends Viewer<Settings> {

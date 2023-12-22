@@ -2,26 +2,30 @@ package com.l13gr03.pets.model.game.entities;
 
 import com.l13gr03.pets.model.Position;
 import com.l13gr03.pets.model.game.entities.moves.AttackFactory;
+import com.l13gr03.pets.utils.random.Randomizer;
+import com.l13gr03.pets.utils.random.StatusRandomizer;
 
 import java.util.List;
 
 public abstract class Entity {
     private Position position;
     //Attributes
-    private String name;
-    private final int id = 0;
+    private final String name;
     private static boolean shiny = false;
     private boolean abilityState = false;
     private boolean condition = false; //false is no condition, true is either burn or poison
     private boolean KO = false;
-    private int[] stats = new int[6];
-    private Attack[] attacks = new Attack[4];
+    private final int[] stats = new int[6];
+    private final Attack[] attacks = new Attack[4];
     private List<String> arte;
     private String color;
+    private String shcolor;
 
     //Methods
     public Entity(String n) {
         AttackFactory a = new AttackFactory();
+        Randomizer r = new StatusRandomizer();
+        if (r.oneInFifty(0)) setShiny();
         name = n;
         setAttacks(a.createAttack(this));
     }
@@ -45,7 +49,6 @@ public abstract class Entity {
         if (newStats.length == stats.length) {
             System.arraycopy(newStats, 0, stats, 0, stats.length);
         } /*else {
-            // idk what to do here yet :shrug:
             throw error;
         }*/
     }
@@ -132,10 +135,10 @@ public abstract class Entity {
 
     //Attack Class
     public static class Attack {
-        private String type;
-        private String attack_element;
-        private String description;
-        private int damage;
+        private final String type;
+        private final String attack_element;
+        private final String description;
+        private final int damage;
         private int elementId;
         private boolean miss = false;
         public Attack(String t, String desc,String ae, int d, int eId) {
@@ -176,5 +179,6 @@ public abstract class Entity {
     }
     public List<String> getArte(){return arte;}
     public String getColor(){return color;}
+    public String getShColor(){return shcolor;}
 
 }

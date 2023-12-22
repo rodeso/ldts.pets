@@ -20,13 +20,20 @@ This project was developed for LDTS 2023⁄24 by:
     2. [Media](#media)
 2. [Implemented features](#implemented-features)
 3. [Planned features](#planned-features)
-4. [Design](#design)
-    
-5. [Code smells and refactoring suggestions](#known-code-smells)
-6. [Testing](#testing)
-7. [Self-evaluation](#self-evaluation)
+4. [Design](#design---problems-and-solutions)
+    1. [Multiple Entities](#multiple-entities)
+    2. [Turn Based Game - Multiple Rounds](#turn-based-game---multiple-rounds)
+    3. [Turn Based Game - Order](#turn-based-game---order)
+    4. [Attack Types and Their Damage](#attack-types-and-their-damage)
+    5. [Missing Attacks and Switching](#missing-attacks-and-switching)
+    6. [MVC](#mvc)
+    7. [Lanterna](#lanterna)
+5. [UML Class Diagram](#uml-class-diagram)
+6. [Known Code Smells](#known-code-smells)
+7. [Testing](#testing)
+8. [Self-evaluation](#self-evaluation)
 
-<a name="description"><a/>
+
 ## Description
 
 Dive into the awe-inspiring world of PETS, where your tactical decisions will determine the outcome of intense battles. Each Pet boasts a distinct design, a captivating name, and a set of powerful moves, ranging from physical and special attacks to cunning status-inflicting maneuvers. Unleash the full potential of your team and outsmart your opponents with a combination of brute force, strategic planning, and a touch of elemental mastery.
@@ -37,13 +44,10 @@ Beyond their diverse move sets, each type of PETS possesses unique abilities tie
 
 Engage in thrilling battles, challenge friends, and climb the ranks to become the ultimate PETS champion. Choose your team wisely, master the strengths and weaknesses of each type, and embark on an adventure where pixelated entities come to life in a tactical showdown like never before! Are you ready to unleash the power of your PETS?
 
-<a name="controls"><a/>
 ### CONTROLS
 
 The game is played using the `arrow keys` to move the cursor to the intended action.
-<a name="media"><a/>
 ### MEDIA
-<a name="galery"><a/>
 #### Menus
 | Main Menu                 |
 |---------------------------|
@@ -70,7 +74,7 @@ The game is played using the `arrow keys` to move the cursor to the intended act
 
 Everything Is Done
 
-## DESIGN
+## DESIGN - Problems and Solutions
 
 
 ### Multiple Entities
@@ -133,14 +137,10 @@ A UML Sequence diagram showcasing the flow of the program:
 
 
 
-### UML State Diagram
-
-A 
-
 #### KNOWN CODE SMELLS
 
 The Multiplayer Mode uses a new Model, State, Controller and Viewer instead of using the same as the Singleplayer Mode.
-However, they barely have any changes but we did this because they serve different purposes, as per the Single Responsibility Principle.
+However, they barely have any changes, but we did this because they serve different purposes, as per the Single Responsibility Principle.
 
 ### TESTING
 

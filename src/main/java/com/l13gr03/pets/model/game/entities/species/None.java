@@ -1,8 +1,6 @@
 package com.l13gr03.pets.model.game.entities.species;
 
 import com.l13gr03.pets.model.game.entities.Entity;
-import com.l13gr03.pets.utils.random.Randomizer;
-import com.l13gr03.pets.utils.random.StatusRandomizer;
 
 public class None extends Entity {
     private static final int id = 0;

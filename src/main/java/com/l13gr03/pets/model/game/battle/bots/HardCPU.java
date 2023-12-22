@@ -18,13 +18,13 @@ public class HardCPU extends CPU{
     }
 
     public int change(Party party, Entity current, Entity e) {
-        if (CHEAT_SHEET.get(party.getP(1).getId()) == e.getId() && party.getP(1) != current) {
+        if (CHEAT_SHEET.get(party.getP(1).getId()) == e.getId() && party.getP(1) != current && (!party.getP(1).isKO())) {
             return 1;
         }
-        else if (CHEAT_SHEET.get(party.getP(2).getId()) == e.getId() && party.getP(2) != current) {
+        else if (CHEAT_SHEET.get(party.getP(2).getId()) == e.getId() && party.getP(2) != current && (!party.getP(2).isKO())) {
             return 2;
         }
-        else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId() && party.getP(3) != current) {
+        else if (CHEAT_SHEET.get(party.getP(3).getId()) == e.getId() && party.getP(3) != current && (!party.getP(3).isKO())) {
             return 3;
         }
         else if (party.getP(1) != current && (!party.getP(1).isKO())) {

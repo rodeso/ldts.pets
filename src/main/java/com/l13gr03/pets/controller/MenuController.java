@@ -6,9 +6,6 @@ import com.l13gr03.pets.model.menu.*;
 import com.l13gr03.pets.states.DifficultyState;
 import com.l13gr03.pets.states.SettingsState;
 import com.l13gr03.pets.states.TeamSelectMulState;
-import com.l13gr03.pets.states.TeamSelectState;
-//import com.l13gr03.pets.model.menu.Settings;
-//import com.l13gr03.pets.states.SettingsState;
 
 import java.io.IOException;
 

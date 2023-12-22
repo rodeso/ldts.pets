@@ -5,8 +5,6 @@ import com.l13gr03.pets.model.game.entities.*;
 import com.l13gr03.pets.model.game.entities.species.*;
 import com.l13gr03.pets.utils.random.Randomizer;
 import com.l13gr03.pets.utils.random.ThreeRandomizer;
-import com.l13gr03.pets.utils.calculator.PhysicalDamageCalculator;
-import com.l13gr03.pets.utils.calculator.SpecialDamageCalculator;
 import com.l13gr03.pets.utils.calculator.Calculator;
 
 import java.util.Random;

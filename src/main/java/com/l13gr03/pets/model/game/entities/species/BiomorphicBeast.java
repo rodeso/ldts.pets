@@ -1,6 +1,5 @@
 package com.l13gr03.pets.model.game.entities.species;
 
-import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.entities.Entity;
 
 import java.util.Arrays;

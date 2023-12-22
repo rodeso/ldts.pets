@@ -3,16 +3,11 @@ package com.l13gr03.pets.controller;
 import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.BattlefiedlMul;
-import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
-import com.l13gr03.pets.model.game.battle.bots.HardCPU;
 import com.l13gr03.pets.model.menu.Menu;
-import com.l13gr03.pets.model.menu.TeamSelect;
 import com.l13gr03.pets.model.menu.TeamSelectMul;
 import com.l13gr03.pets.states.BattleMulState;
-import com.l13gr03.pets.states.BattleState;
 import com.l13gr03.pets.states.MenuState;
-import com.l13gr03.pets.states.TeamSelectState;
 
 import java.io.IOException;
 

@@ -4,10 +4,8 @@ import com.l13gr03.pets.Game;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.menu.Difficulty;
 import com.l13gr03.pets.model.menu.Menu;
-import com.l13gr03.pets.model.menu.Settings;
 import com.l13gr03.pets.model.menu.TeamSelect;
 import com.l13gr03.pets.states.MenuState;
-import com.l13gr03.pets.states.SettingsState;
 import com.l13gr03.pets.states.TeamSelectState;
 
 import java.io.IOException;
