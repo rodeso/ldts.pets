@@ -90,5 +90,3 @@ possibly KOing them.
 ### Winning
 
 The player which KOs all the enemy's Pets while having at least one alive wins!
-
-## License
