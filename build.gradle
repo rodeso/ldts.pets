@@ -27,9 +27,6 @@ test {
         includeEngines ('junit-jupiter', 'jqwik')
     }
 }
-tasks.withType(JavaCompile) {
-    options.forkOptions.jvmArgs += ['-Xmx512m', '-XX:MaxPermSize=256m']
-}
 
 /*
 pitest {

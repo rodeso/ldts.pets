@@ -21,15 +21,8 @@ This project was developed for LDTS 2023⁄24 by:
 2. [Implemented features](#implemented-features)
 3. [Planned features](#planned-features)
 4. [Design](#design)
-    1. [Lanterna facade](#lanterna-facade)
-    2. [ElementView factory](#factory-elementview)
-    3. [ViewFactory](#factory-view)
-    4. [ArenaModelLoaderStream factory](#factory-arenamodelloaderstream)
-    5. [Menus and games](#state-game)
-    6. [ArenaController is the *God of Dynamics*](#command-composite-arenacontroller)
-    7. [Movement strategies](#strategy-movement)
-    8. [Composite Views](#composite-view)
-5. [Code smells and refactoring suggestions](#code-smells)
+    
+5. [Code smells and refactoring suggestions](#known-code-smells)
 6. [Testing](#testing)
 7. [Self-evaluation](#self-evaluation)
 
