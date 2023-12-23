@@ -12,12 +12,12 @@ public class BattleMulState extends State<BattlefiedlMul> {
     }
 
     @Override
-    protected Viewer<BattlefiedlMul> getViewer() {
+    public Viewer<BattlefiedlMul> getViewer() {
         return new BattleMulViewer(getModel());
     }
 
     @Override
-    protected Controller<BattlefiedlMul> getController() {
+    public Controller<BattlefiedlMul> getController() {
         return new BattleMulController(getModel());
     }
 }

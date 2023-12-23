@@ -1,4 +1,4 @@
-package com.l13gr03.pets.gui;
+package com.l13gr03.pets.View;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 

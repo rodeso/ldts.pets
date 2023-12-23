@@ -1,5 +1,6 @@
-package com.l13gr03.pets.gui;
+package com.l13gr03.pets.View;
 
+import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.Position;
 import com.l13gr03.pets.model.menu.GameOver;
 import com.l13gr03.pets.view.GameOverViewer;

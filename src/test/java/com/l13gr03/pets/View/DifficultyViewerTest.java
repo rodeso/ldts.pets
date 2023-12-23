@@ -1,4 +1,5 @@
-package com.l13gr03.pets.gui;
+package com.l13gr03.pets.View;
+import com.l13gr03.pets.gui.LanternaGUI;
 import com.l13gr03.pets.model.Position;
 
 import com.l13gr03.pets.model.game.entities.Entity;
