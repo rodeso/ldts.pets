@@ -9,7 +9,7 @@ public class MenuViewer extends Viewer<Menu> {
     }
 
     @Override
-    protected void drawElements(GUI gui) {
+    public void drawElements(GUI gui) {
         int centerX = gui.getWidth()/2;
         int centerY = gui.getHeight()/2;
         for (int i = 0; i < getModel().getNumberEntries(); i++) {

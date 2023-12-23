@@ -10,7 +10,7 @@ public class TeamSelectMulViewer extends Viewer<TeamSelectMul> {
     }
 
     @Override
-    protected void drawElements(GUI gui) {
+    public void drawElements(GUI gui) {
         int Xentities = 4;
         int Yentities = 2;
         for (int i = 0; i < getModel().getNumberEntries(); i++) {

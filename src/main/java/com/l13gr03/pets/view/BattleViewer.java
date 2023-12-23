@@ -10,7 +10,7 @@ public class BattleViewer extends Viewer<Battlefield> {
     }
 
     @Override
-    protected void drawElements(GUI gui) {
+    public void drawElements(GUI gui) {
         int RX= 2;
         int RY= 2;
         gui.drawText(

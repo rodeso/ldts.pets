@@ -10,7 +10,7 @@ public class DifficultyViewer extends Viewer<Difficulty> {
     }
 
     @Override
-    protected void drawElements(GUI gui) {
+    public void drawElements(GUI gui) {
         int centerX = gui.getWidth()/2;
         int centerY = gui.getHeight()/2;
         gui.drawText(new Position(centerX-getModel().header.length()/2,centerY-2), getModel().header,"#FFFFFF");

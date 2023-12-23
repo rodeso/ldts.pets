@@ -9,8 +9,8 @@ public class Difficulty {
 
 
     public String header="Choose the difficulty level";
-    private final List<String> entries;
-    private int currentEntry = 0;
+    public List<String> entries;
+    public int currentEntry = 0;
 
     public Difficulty() {
         this.entries = Arrays.asList("Easy","Medium","Hard", "Back");
@@ -39,6 +39,7 @@ public class Difficulty {
     public int getNumberEntries() {
         return this.entries.size();
     }
+    public String getHeader(){return header;}
 
 
 }

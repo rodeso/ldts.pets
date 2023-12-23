@@ -5,7 +5,7 @@ import com.l13gr03.pets.gui.GUI;
 import java.io.IOException;
 
 public abstract class Viewer<T> {
-    private final T model;
+    public T model;
 
     public Viewer(T model) {
         this.model = model;

@@ -2,11 +2,12 @@ package com.l13gr03.pets.gui;
 
 import com.l13gr03.pets.model.Position;
 import com.l13gr03.pets.model.game.battle.BattlefiedlMul;
+import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.entities.species.AquaticAlly;
 import com.l13gr03.pets.model.game.entities.species.BiomorphicBeast;
 import com.l13gr03.pets.model.game.entities.species.CelestialGuardian;
-import com.l13gr03.pets.view.BattleMulViewer;
+import com.l13gr03.pets.view.BattleViewer;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
@@ -20,9 +21,9 @@ public class BattleViewerTest {
         CelestialGuardian c = new CelestialGuardian("C");
         Party p1 = new Party(a,b,c);
         Party p2 = new Party(c,b,a);
-        BattlefiedlMul battlefield = new BattlefiedlMul(p1,p2);
+        Battlefield battlefield = new Battlefield(p1,p2,2);
         // Criar uma instância da classe que contém o método drawElements
-        BattleMulViewer BMV = new BattleMulViewer(battlefield);
+        BattleViewer BMV = new BattleViewer(battlefield);
         // Criar um mock da classe GUI
         GUI guiMock = mock(GUI.class);
         // Configurar o estado do seu modelo conforme necessário antes de chamar drawElements
