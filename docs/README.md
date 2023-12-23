@@ -103,7 +103,7 @@ We created the Abstract Entity and the other classes that implement it, as well 
 
 #### Consequences:
 We can treat all Pets as equals for most of the actions in the game, and group them in a simple Party object.
-
+It also allows for SOLID design as the Liskov Substitution Principle applies.
 ### Turn Based Game - Multiple Rounds
 #### Problem in Context:
 
@@ -116,57 +116,80 @@ We made the Round class a **Composition** from the Battlefield. Battlefield work
 Battlefield initiates a new Round object every round with the information needed.
 >See the [Class UML](#uml-class-diagram) and note the Battlefield-Round Composite Relation.
 #### Consequences:
-The Rounds
+The Rounds are treated as a Unit, which makes the Game-Loop pattern flow much better.
 ### Turn Based Game - Order
 #### Problem in Context:
 Since they take turns attacking each other, there has to be an order at which they do their actions. Speed was chosen as the
 criteria but what happens when both have the same speed, it has to be random.
+A Random and Customizable Calculator was needed.
 #### The Pattern:
+We used the **Strategy Pattern**, by creating a Randomizer Interface and then Classes that we can call as object to serve as the random function.
 
 #### Implementation:
-
+Randomizer Interface and Classes that implement it.
+>See the [Class UML](#uml-class-diagram) and note in the Utils box the Randomizers.
 #### Consequences:
-
-Creating a Randomizer Interface and classes that implement it to choose everything that works at random, being lucky hits,
-who attacks first when having the same speed. This also allows us to force random events to happen since we control the randomizer,
-as opposed to using the java util random. These were created with the Strategy Pattern in mind.
-
+This allows us to use random numbers but still be able to manipulate them in certain cases.
+This makes use of SOLID design as allows for the Interface Segregation Principle.
 ### Attack types and Their Damage
 #### Problem in Context:
 Each Pet has different attacks that deal different damage depending on the attack element, defender's element, attack type and defender's stats.
 That would require a lot of switch cases and if clauses in the Round's class.
 
 #### The Pattern:
-
+We used the **Command Pattern** to create Calculators of specific kinds for each of our needs.
 #### Implementation:
 Creating a Calculator Interface using the Command Pattern to calculate Physical Damage, Special Damage or Advantage, simplifying the whole process.
-
+>See the [Class UML](#uml-class-diagram) and note in the Utils box the Calculators.
 #### Consequences:
+This allows us to simplify the Battlefield and Round class, while also keeping SOLID design, such as the Single Responsibility Principle and Open-Closed Principle.
 
 
-
-### UML Class Diagram
+## UML Class Diagram
 
 A UML Class diagram showcasing used Design Patterns:
 
 ![UML class diagram](UML/Class-UML.png)
 
 
-#### KNOWN CODE SMELLS
+## KNOWN CODE SMELLS
 
 The Multiplayer Mode uses a new Model, State, Controller and Viewer instead of using the same as the Singleplayer Mode.
 However, they barely have any changes. We did this because they serve different purposes, as per the Single Responsibility Principle,
 we thought it is best we separate them.
 
-### TESTING
+## TESTING
 
+### Coverage
 
+![coverage-total.png](../reports/test/coverage-total.png)
+
+#### Coverage for Model
+![coverage-model.png](../reports/test/coverage-model.png)
+![coverage-model-entities.png](../reports/test/coverage-model-entities.png)
+![coverage-model-menu.png](../reports/test/coverage-model-menu.png)
+
+#### Coverage for View
+![coverage-view.png](../reports/test/coverage-view.png)
+
+### Pitest
+
+The Pitest Reports can be found [here](../reports/pit)
+```
+================================================================================
+- Statistics
+================================================================================
+>> Line Coverage (for mutated classes only): 992/2560 (39%)
+>> Generated 1697 mutations Killed 194 (11%)
+>> Mutations with no coverage 1065. Test strength 31%
+>> Ran 722 tests (0.43 tests per mutation)
+```
 
 ### SELF-EVALUATION
 Everyone invested their time and skill making this project, and seeing it run made it all worth it.
 Each of us worked on different parts of the project independently, as well as together giving each 
 other important insight. We consider it a valuable experience, as it improved our java and 
-principle/pattern skills, as well as our team work
+principle/pattern skills, as well as our team work. It may not be the best work, but we gave it **our best**.
 
 - Afonso Mansilha = 1/3
 - Eduardo Cruz = 1/3
