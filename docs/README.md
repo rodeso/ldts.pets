@@ -14,8 +14,8 @@ This project was developed for LDTS 2023⁄24 by:
 1. [Description](#description)
    1. [Controls](#controls)
    2. [Media](#media)
-2. [Implemented features](#implemented-features)
-3. [Planned features](#planned-features)
+2. [Implemented Features](#implemented-features)
+3. [Planned Features](#planned-features)
 4. [Design](#design---problems-and-solutions)
    1. [Architectural Structuring](#architectural-structuring)
    2. [Entities and Parties](#entities-and-parties)
@@ -76,7 +76,7 @@ We needed a way to structure the project, separating the data, interface and con
 This way we could have an improved way to implement new features.
 #### The Pattern:
 We opted for two patterns for the project, the the **MVC Architectural Pattern**,
-which is commonly used in a GUI and the **_State Pattern_** which is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
+which is commonly used in a GUI and the **State Pattern** which is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
 #### Implementation:
 We have the data storing classes in the model package, the logic manipulator classes of the game in the controller package,
 the visual effect creator classes in the view package and their respective states also on a separate package.
