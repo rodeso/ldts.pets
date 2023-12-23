@@ -53,7 +53,9 @@ Engage in thrilling battles, challenge friends, and climb the ranks to become th
 
 - **Choose Your Own Team** - Each Player can create their dream Team by picking their favourites from the great Pet selection.
 - **Startegy is Key** - Different Pets will have their unique traits which can decide the outcome of the battle, attacks giving twice the damage or even abilities.
-- **Single-Player Friendly** - The Battles can be fought agaisnt a CPU
+- **Single-Player Friendly** - The Battles can be fought against a CPU with custom difficulty.
+- **Play With Friends** - Challenge your friends for an epic 1V1 Battle!
+
 
 ## How To Play
 
