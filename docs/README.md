@@ -111,12 +111,12 @@ Since this is a Turn-Based Game, having turns is crucial to the functioning of t
 rounds being created everytime an action was chosen.
 
 #### The Pattern:
-We made the Round class a 
+We made the Round class a **Composition** from the Battlefield. Battlefield works as a **Round Factory**.
 #### Implementation:
-
+Battlefield initiates a new Round object every round with the information needed.
+>See the [Class UML](#uml-class-diagram) and note the Battlefield-Round Composite Relation.
 #### Consequences:
-Our Battlefield class works as a RoundFactory where everytime an action is chosen, it creates a new Round with all the 
-things that were chosen.
+The Rounds
 ### Turn Based Game - Order
 #### Problem in Context:
 Since they take turns attacking each other, there has to be an order at which they do their actions. Speed was chosen as the
