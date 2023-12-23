@@ -8,6 +8,8 @@ This project was developed for LDTS 2023⁄24 by:
  - Eduardo Cruz (up202205138@up.pt),
  - Rodrigo de Sousa (up202205751@up.pt)
 
+The Report can be found [here](/docs/README.md)
+
 ## Install
 
 Go to the Releases page and download the latest release.
