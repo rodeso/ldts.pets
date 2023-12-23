@@ -1,7 +1,6 @@
-package com.l13gr03.pets.Controller;
+package com.l13gr03.pets.controller;
 
 import com.l13gr03.pets.Game;
-import com.l13gr03.pets.controller.BattleController;
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
