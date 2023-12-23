@@ -264,6 +264,8 @@ public class EntityTest {
         assertEquals(arte,k.getArte());
         assertEquals("#2fced2",k.getShcolor());
 
+        k.useAbility(-1);
+        assertTrue(k.isAbilityOn());
 
 
     }
