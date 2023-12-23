@@ -90,16 +90,19 @@ The code becomes much better structured and easy to work on, being adding featur
 #### Problem in Context:
 
 In our game, each Pet has a type that affects their stats, attacks and abilities, but we don't want to have to deal
-with every class differently because in essence, they are all entities.
+with every class differently because in essence, they are all entities. Also, we have are using them as an element only,
+a Party.
 
 #### The Pattern:
 
-Design Pattern -> IDK THE NAME 
+Using the  **Composition Pattern** we can have an Abstract Entity class and the various other Pet Species, and also a Party
+class that aggregates 3 Pets as a single object.
 #### Implementation:
+We created the Abstract Entity and the other classes that implement it, as well as a Party class.
+>See the [Class UML](#uml-class-diagram) and note in the Model box the Enitity-Party Relation and the Entity-Entities Relation.
 
 #### Consequences:
-Thus, we created an Abstract class called Entity and all the different entities  extend that same class, making it
-very simple to handle.
+We can treat all Pets as equals for most of the actions in the game, and group them in a simple Party object.
 
 ### Turn Based Game - Multiple Rounds
 #### Problem in Context:
@@ -107,11 +110,8 @@ very simple to handle.
 Since this is a Turn-Based Game, having turns is crucial to the functioning of the game. We needed a way to have different
 rounds being created everytime an action was chosen.
 
-In our game, each Pet has a type that affects their stats, attacks and abilities, but we don't want to have to deal
-with every class differently because in essence, they are all entities.
-
 #### The Pattern:
-
+We made the Round class a 
 #### Implementation:
 
 #### Consequences:
@@ -151,16 +151,12 @@ A UML Class diagram showcasing used Design Patterns:
 
 ![UML class diagram](UML/Class-UML.png)
 
-### UML Sequence Diagram
-
-A UML Sequence diagram showcasing the flow of the program:
-
-
 
 #### KNOWN CODE SMELLS
 
 The Multiplayer Mode uses a new Model, State, Controller and Viewer instead of using the same as the Singleplayer Mode.
-However, they barely have any changes, but we did this because they serve different purposes, as per the Single Responsibility Principle.
+However, they barely have any changes. We did this because they serve different purposes, as per the Single Responsibility Principle,
+we thought it is best we separate them.
 
 ### TESTING
 

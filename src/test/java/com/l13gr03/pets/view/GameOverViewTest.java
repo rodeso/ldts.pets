@@ -1,14 +1,12 @@
-package com.l13gr03.pets.View;
+package com.l13gr03.pets.view;
 
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.Position;
 import com.l13gr03.pets.model.menu.GameOver;
-import com.l13gr03.pets.view.GameOverViewer;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 

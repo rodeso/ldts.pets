@@ -1,12 +1,9 @@
-package com.l13gr03.pets.View;
+package com.l13gr03.pets.view;
 import com.l13gr03.pets.gui.GUI;
-import com.l13gr03.pets.gui.LanternaGUI;
 import com.l13gr03.pets.model.Position;
-import com.l13gr03.pets.model.menu.Menu;
 import com.l13gr03.pets.model.menu.Settings;
-import com.l13gr03.pets.view.MenuViewer;
-import com.l13gr03.pets.view.SettingsViewer;
 import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;

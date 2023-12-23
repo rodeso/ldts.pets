@@ -1,14 +1,7 @@
-package com.l13gr03.pets.States;
+package com.l13gr03.pets.states;
 import com.l13gr03.pets.controller.BattleMulController;
-import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.game.battle.BattlefiedlMul;
-import com.l13gr03.pets.model.game.battle.Party;
-import com.l13gr03.pets.model.game.entities.species.AquaticAlly;
-import com.l13gr03.pets.model.game.entities.species.BiomorphicBeast;
-import com.l13gr03.pets.model.game.entities.species.CelestialGuardian;
-import com.l13gr03.pets.states.BattleMulState;
 import com.l13gr03.pets.view.BattleMulViewer;
-import com.l13gr03.pets.view.Viewer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

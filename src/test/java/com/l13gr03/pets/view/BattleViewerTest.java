@@ -1,14 +1,12 @@
-package com.l13gr03.pets.View;
+package com.l13gr03.pets.view;
 
 import com.l13gr03.pets.gui.GUI;
 import com.l13gr03.pets.model.Position;
-import com.l13gr03.pets.model.game.battle.BattlefiedlMul;
 import com.l13gr03.pets.model.game.battle.Battlefield;
 import com.l13gr03.pets.model.game.battle.Party;
 import com.l13gr03.pets.model.game.entities.species.AquaticAlly;
 import com.l13gr03.pets.model.game.entities.species.BiomorphicBeast;
 import com.l13gr03.pets.model.game.entities.species.CelestialGuardian;
-import com.l13gr03.pets.view.BattleViewer;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
