@@ -1,12 +1,22 @@
-## LDTS_L13GR03 - Pixelated Entities Tactical Showdown [P.E.T.S]
+# LDTS_L13GR03 
+Pixelated Entities Tactical Showdown [P.E.T.S]
 
-Welcome to the dazzling realm of Pixelated Entities Tactical Showdown (PETS), a riveting turn-based battle game that pits players against each other in an epic clash of strategic prowess. In this pixelated universe, you have the power to assemble a team of three extraordinary PETS, each belonging to one of seven unique types: AquaticAlly, BiomorphicBeast, CelestialGuardian, CyberneticCompanion, LavaLurker, StoneGolem, and ShadowSpecters.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-This project was developed for LDTS 2023⁄24 by:
+- **Project name:** LDTS_L13GR03 - Pixelated Entities Tactical Showdown [P.E.T.S]
+- **Short description:** Battle Stadium Simulator
+- **Environment:** Windows/Unix console
+- **Tools:** Java
+- **Institution:** [FEUP](https://sigarra.up.pt/feup/en/web_page.Inicial)
+- **Course:** [LDTS](https://sigarra.up.pt/feup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=520319) (Software Design and Testing Laboratory)
+- **Project grade:** 16.6
+- **Group members:**
  - Afonso Mansilha (up202206002@up.pt), 
  - Eduardo Cruz (up202205138@up.pt),
  - Rodrigo de Sousa (up202205751@up.pt)
+
+---
 
 The Report can be found [here](/docs/README.md)
 
